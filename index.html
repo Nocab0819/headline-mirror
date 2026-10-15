@@ -184,7 +184,7 @@ table.truth th{background:var(--ink);color:var(--yel);font-size:18px}
 /* v4 visuals */
 .hmain::before{content:"";position:absolute;inset:-10px;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(22,22,22,.10) 1.6px,transparent 1.8px);background-size:14px 14px}
 .burstbg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.burstbg svg{position:absolute;left:50%;top:50%;width:2400px;height:2400px;transform:translate(-50%,-50%);animation:spin 80s linear infinite}
+.burstbg svg{position:absolute;left:50%;top:50%;width:260vmax;height:260vmax;transform:translate(-50%,-50%);animation:spin 80s linear infinite}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
 .onburst{position:relative;z-index:1}
 .news{flex:1;display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center;position:relative}
@@ -245,6 +245,7 @@ table.truth th{background:var(--ink);color:var(--yel);font-size:18px}
 .three .l{font-size:44px;font-weight:900}.three .k{font-size:22px;font-weight:900;color:#555;margin-top:2px}
 .pgdots{display:flex;gap:8px;align-items:center}.pgdots i{width:14px;height:14px;border:3px solid #161616;border-radius:50%;background:#fff}.pgdots i.on{background:var(--red)}
 .mirrorstage{position:relative}
+.bignews .card{background:var(--yel);transform:rotate(-1.5deg)}.bignews .card h1{font-size:68px}.bignews .rule{background:var(--red);color:#fff}
 </style>
 </head>
 <body>
@@ -274,13 +275,12 @@ const DEPTS=[
  {n:"客服中心",c:"#2C9A55",tag:"rider",ag:"乘客第一",agd:"每天接投訴電話的是我們。乘客要覺得安全、敢一個人進站。"}];
 const AGENDA_BONUS=1;
 const EVENTS=[
- {k:"coldx2",t:"警察工會的公關戰",d:"工會找了公關公司放負面新聞。本回合每個「冷血」章 −4（加倍）！",src:"論文：警察工會與管理層談不攏合約，聘請公關公司「散布關於港務局的故事」。"},
- {k:"herohalf",t:"好事沒人報導",d:"你們偷偷資助了 500 份感恩節餐點，報紙卻隻字未提。本回合「英雄」章只 +1。",src:"論文：港務局資助了 400–500 份感恩節餐點，媒體沒有報導，反而批評他們冷酷。"},
- {k:"twohero",t:"投訴信變少了",d:"每週投訴信從 7 封降到 1 封，記者心情不錯。本回合每個記者有 2 個英雄章。",src:"論文：1989 年投訴信從每週 7 封降到 1 封。"},
- {k:"coldsnap",t:"寒流來襲：華氏 15 度",d:"符合「讓人有地方去」的行動，自動多 1 個英雄章；符合「維持秩序」的行動，自動多 1 個冷血章。",src:"論文：員工說「氣溫降到華氏 15 度，憑良心，我們怎麼能把他們趕出去？」"},
- {k:"agenda2",t:"新董事上任：回歸本業",d:"新任執行董事要各部門顧好自己的本分。本回合 ★ 部門立場 +2。",src:"論文：1986 年新任執行董事主張「回歸基本業務」。"},
- {k:"acc4",t:"全國週刊記者在現場",d:"《新聞週刊》正在寫〈42 街的噩夢〉。本回合押中自己的頭條 +4！",src:"論文：1989 年 2 月《新聞週刊》刊出〈42 街的噩夢〉。"},
- {k:"leakback",t:"沒有人要接手",d:"市政府答應接手又反悔，大家開始互相指責。每組補回一張 📰 爆料卡！",src:"論文：市府人力資源管理局非正式同意接管接待中心，後來反悔。"}];
+ {k:"coldx2",y:[1987,1988],t:"警察工會的公關戰",d:"工會找了公關公司放負面新聞。本回合每個「冷血」章 −4（加倍）！",src:"論文：警察工會與管理層談不攏合約，聘請公關公司「散布關於港務局的故事」。"},
+ {k:"herohalf",y:[1987,1988],t:"好事沒人報導",d:"你們偷偷資助了 500 份感恩節餐點，報紙卻隻字未提。本回合「英雄」章只 +1。",src:"論文：港務局資助了 400–500 份感恩節餐點，媒體沒有報導，反而批評他們冷酷。"},
+ {k:"coldsnap",y:[1987],t:"寒流來襲：華氏 15 度",d:"符合「讓人有地方去」的行動，自動多 1 個英雄章；符合「維持秩序」的行動，自動多 1 個冷血章。",src:"論文：員工說「氣溫降到華氏 15 度，憑良心，我們怎麼能把他們趕出去？」"},
+ {k:"agenda2",y:[1985],t:"新董事上任：回歸本業",d:"新任執行董事要各部門顧好自己的本分。本回合 ★ 部門立場 +2。",src:"論文：1986 年新任執行董事主張「回歸基本業務」。"},
+ {k:"big",y:[1989],big:1,t:"全國週刊：〈42 街的噩夢〉",d:"全國都在看你們。本回合所有印章的分數加倍（英雄 +4、無能 −2、冷血 −4），押中自己的頭條 +4。最後一年，翻盤或崩盤就在這裡。",src:"論文：1989 年 2 月《新聞週刊》刊出〈42 街的噩夢〉，港務局第一次登上全國版面。"},
+ {k:"leakback",y:[1988],t:"沒有人要接手",d:"市政府答應接手又反悔，大家開始互相指責。每組補回一張 📰 爆料卡！",src:"論文：市府人力資源管理局非正式同意接管接待中心，後來反悔。"}];
 const EK=Object.fromEntries(EVENTS.map(e=>[e.k,e]));
 function burst(c1,c2){let r="";for(let i=0;i<36;i++){const a=i*10*Math.PI/180,b=(i*10+5)*Math.PI/180;r+=`<path d="M1200 1200 L${1200+1700*Math.cos(a)} ${1200+1700*Math.sin(a)} L${1200+1700*Math.cos(b)} ${1200+1700*Math.sin(b)}Z" fill="${c2}"/>`}
  return `<div class="burstbg"><svg viewBox="0 0 2400 2400"><rect width="2400" height="2400" fill="${c1}"/>${r}</svg></div>`}
@@ -431,7 +431,7 @@ const HOWTO=[
   vis:()=>`<div class="stamps">${STAMPS.map(s=>stampHTML(s.k,96,26)).join("")}</div>`},
  {h:"照鏡子・計分",p:"被蓋最多的章就是你們的<b>頭條</b>（平手時，押中其中一個就算猜中）。<br>每個章都有分數，另外還有兩種加分：",
   vis:()=>`<div style="display:flex;flex-direction:column;gap:8px">${STAMPS.map(s=>`<div class="ptsrow">${stampHTML(s.k,62,18)}<span>每個 ${sv(s.v)}</span></div>`).join("")}<div class="ptsrow"><span class="spec">🪞 押中自己的頭條</span><span>+${ACC_BONUS}</span></div><div class="ptsrow"><span class="spec">★ 行動符合部門立場</span><span>+${AGENDA_BONUS}</span></div><div class="ptsrow"><span class="spec">🗞️ 蓋的章跟多數記者一樣</span><span>每個 +${PRESS_BONUS}</span></div></div>`},
- {h:"📺 突發新聞",p:"每一年翻完事件後，會插播一則<b>突發新聞</b>，臨時改變<b>這一年</b>的規則，例如「冷血章 −4」「英雄章有 2 個」「押中 +4」。<br>手機上方會一直提醒你這回合的特殊規則。每一則都是論文裡真的發生過的事。",
+ {h:"📺 突發新聞",p:"從第二年開始，翻完事件後會插播一則<b>突發新聞</b>，臨時改變<b>這一年</b>的規則，例如「冷血章 −4」「部門立場 +2」。<br>最後一年是<b>大號外</b>：所有章的分數加倍，最有機會翻盤。手機上方會一直提醒你這回合的特殊規則。",
   vis:()=>`<div style="width:340px;border:5px solid #161616;border-radius:12px;overflow:hidden">${newsroom()}</div>`},
  {h:"兩張髒牌（整場各 1 次）",p:"📰 <b>爆料</b>：在蓋章畫面，按某一組下方的「對他們爆料」，你給他們的章<b>算兩倍</b>。揭曉時會公開是誰爆的料。<br>🔄 <b>甩鍋</b>：送出行動前的第 ③ 步，指定一組。這回合你們收到的<b>「冷血」章全部轉給他們</b>。<br>用掉後，手機上方的圖示就會消失。",
   vis:()=>`<div style="display:flex;gap:24px"><div style="width:140px">${icon("leak")}</div><div style="width:140px">${icon("buck")}</div></div><div class="stamps"><span class="spec leak">📰 爆料</span><span class="spec buck">🔄 甩鍋</span></div>`},
@@ -528,7 +528,7 @@ function go(ph){H.phase=ph;
  if(ph==="judge")H.timerEnd=Date.now()+80000;
  if(ph==="reveal"){H.act[H.k]=H.act[H.k]||{};H.groups.forEach(g=>{if(!H.act[H.k][g.id])H.act[H.k][g.id]={a:Math.floor(Math.random()*4),pred:STAMPS[Math.floor(Math.random()*4)].k,buck:null,auto:1};
    const x=H.act[H.k][g.id];if(x.buck){if(g.buck>0)g.buck--;else x.buck=null}})}
- if(ph==="news"){if(!H.ev[H.k]){if(!H.evDeck||!H.evDeck.length)H.evDeck=shuffle(EVENTS.map(e=>e.k));H.ev[H.k]=H.evDeck.shift();if(H.ev[H.k]==="leakback")H.groups.forEach(g=>g.leak=Math.max(g.leak,1))}}
+ if(ph==="news"){if(!H.ev[H.k]){const yr=curR().y,usedK=Object.values(H.ev);let pool=EVENTS.filter(e=>e.y.includes(yr)&&!usedK.includes(e.k));if(!pool.length)pool=EVENTS.filter(e=>e.y.includes(yr));H.ev[H.k]=shuffle(pool)[0].k;if(H.ev[H.k]==="leakback")H.groups.forEach(g=>g.leak=Math.max(g.leak,1))}}
  if(ph==="truth")H.tp=0;
  if(ph==="final")H.fp=0;
  if(ph==="mirror"){H.judge[H.k]=H.judge[H.k]||{};H.groups.forEach(g=>{const j=H.judge[H.k][g.id];if(j&&j.leak){if(g.leak>0)g.leak--;else j.leak=null}});computeRound();H.mi=-1;H.order=H.groups.map(g=>g.id)}
@@ -538,8 +538,8 @@ function computeRound(){const k=H.k,res={},raw={},leaked={};
  H.groups.forEach(j=>{const J=(H.judge[k]||{})[j.id];if(!J)return;Object.entries(J.map).forEach(([t,s])=>{if(!raw[t]||t===j.id||!SK[s])return;const w=J.leak===t?2:1;raw[t][s]+=w;if(w===2)leaked[t].push(j.id)})});
  const E=curEv()?curEv().k:null;
  if(E==="coldsnap")H.groups.forEach(g=>{const tg=curR().acts[H.act[k][g.id].a].tg||[];if(tg.includes("care"))raw[g.id].hero++;if(tg.includes("order"))raw[g.id].cold++});
- const VAL={hero:E==="herohalf"?1:2,show:0,inept:-1,cold:E==="coldx2"?-4:-2};
- const AB=E==="acc4"?4:ACC_BONUS, GB=E==="agenda2"?2:AGENDA_BONUS;
+ const VAL={hero:E==="herohalf"?1:E==="big"?4:2,show:0,inept:E==="big"?-2:-1,cold:(E==="coldx2"||E==="big")?-4:-2};
+ const AB=E==="big"?4:ACC_BONUS, GB=E==="agenda2"?2:AGENDA_BONUS;
  const fin={};H.groups.forEach(g=>fin[g.id]={...raw[g.id]});
  const buckFrom={};H.groups.forEach(g=>buckFrom[g.id]=[]);
  const buckOut={};
@@ -557,7 +557,7 @@ function hRender(){
  const el=document.getElementById("host");const R=curR();
  const phaseName={lobby:"等待各組加入",event:"事件",news:"突發新聞",act:"祕密行動",reveal:"行動揭曉",judge:"記者時間",mirror:"照鏡子",final:"結算",truth:"真相"}[H.phase];
  const showTimer=H.phase==="act"||H.phase==="judge";
- el.innerHTML=`<div class="hhead"><div class="logo">HEADLINE!<small>頭條！鏡中人</small></div>
+ el.innerHTML=`<div class="hhead"><div class="logo">HEADLINE!<small>頭條！鏡中人 · v7</small></div>
   ${["lobby","final","truth"].includes(H.phase)?"":`<div class="yearchip">${R.y}</div><div class="phase">ROUND ${H.k+1}/${H.plan.length} · ${phaseName}</div>`}
   <div class="hspace"></div>${showTimer?`<div class="timer" id="tmr"></div>`:""}<div class="ctrl" id="ctrl"></div>${H.phase!=="lobby"?`<button class="btn w" id="rst" style="font-size:15px;padding:8px 10px" title="重新開始">⟲</button>`:""}</div>
   <div class="hmain" id="hm"></div><div class="hfoot" id="hf"></div>`;
@@ -608,13 +608,14 @@ function hEvent(hm,ctrl){
    ${p.news?`<div class="newsmini"><b>THE LOOKING GLASS · 頭版</b><div>${p.news}</div></div><div class="who">${p.who}</div>`:""}
    ${p.sfx?`<div class="sfx big">${p.sfx}</div>`:""}
    ${p.sub?`<div class="cap foot" style="background:#fff">${p.sub}</div>`:""}</div>`).join("")}</div>`;
- ctrl.innerHTML=`<button class="btn y" id="go">📺 插播新聞 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("news");
+ const hasEv=EVENTS.some(e=>e.y.includes(R.y)),bigEv=EVENTS.some(e=>e.big&&e.y.includes(R.y));
+ ctrl.innerHTML=hasEv?`<button class="btn y" id="go">${bigEv?"📰 號外！":"📺 插播新聞"} ▶</button>`:`<button class="btn" id="go">開始行動 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go(hasEv?"news":"act");
 }
 function hNews(hm,ctrl){const e=curEv();
- hm.innerHTML=`${burst("#E23B2E","#C62E22")}<div class="news onburst" style="padding:10px 30px 30px">
+ hm.innerHTML=`${e.big?burst("#161616","#2a2a2a"):burst("#E23B2E","#C62E22")}<div class="news onburst ${e.big?"bignews":""}" style="padding:10px 30px 30px">
   <div class="tv pop">${newsroom()}<div class="ticker"><div>突發新聞 BREAKING NEWS　★　${esc(e.t)}　★　${esc(e.d)}　★　本回合規則改變</div></div></div>
-  <div class="card flip"><div class="flash">BREAKING NEWS!</div><h1>${esc(e.t)}</h1><div class="d">${esc(e.d)}</div>
-   <div class="rule">⚠ 只在這一年有效 · 這是論文裡真的發生的事，最後會告訴你出處</div></div></div>`;
+  <div class="card flip">${e.big?`<div class="flash" style="font-size:64px">號外！EXTRA!</div>`:`<div class="flash">BREAKING NEWS!</div>`}<h1>${esc(e.t)}</h1><div class="d">${esc(e.d)}</div>
+   <div class="rule">${e.big?"⚠ 最後一年・分數翻倍":"⚠ 只在這一年有效"}</div></div></div>`;
  ctrl.innerHTML=`<button class="btn" id="go">開始行動 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("act");
 }
 function qBox(R,extra){return `<div class="box qbox"><div class="cap" style="align-self:flex-start">${R.y}・${R.t}</div><div class="rc">${R.recap}</div>${extra||""}</div>`}
@@ -750,7 +751,7 @@ function chipClick(gid){const g=G(gid);if(!g)return;
 /* 傳給各組手機的狀態 */
 function broadcast(){if(!net)return;
  H.groups.forEach(g=>{const id=connOf[g.id];if(!id)return;const R=curR();const t=totals();
-   const e=curEv();const v={t:"state",phase:H.phase,k:H.k,hm:heroMax(),ev:e&&["news","act","reveal","judge","mirror"].includes(H.phase)?{t:e.t,d:e.d}:null,n:H.plan.length,y:R.y,title:R.t,recap:R.recap,me:{id:g.id,name:g.name,color:g.color,ag:g.ag,agd:g.agd},leak:g.leak,buck:g.buck,score:t[g.id]?t[g.id].pts:0};
+   const e=curEv();const v={t:"state",phase:H.phase,k:H.k,hm:heroMax(),ev:e&&["news","act","reveal","judge","mirror"].includes(H.phase)?{t:e.t,d:e.d,big:e.big}:null,n:H.plan.length,y:R.y,title:R.t,recap:R.recap,me:{id:g.id,name:g.name,color:g.color,ag:g.ag,agd:g.agd},leak:g.leak,buck:g.buck,score:t[g.id]?t[g.id].pts:0};
    if(H.phase==="act"){v.acts=R.acts.map(a=>({t:a.t,s:a.s,ic:a.ic,m:(a.tg||[]).includes(g.tag)}));v.done=!!(H.act[H.k]||{})[g.id];v.others=H.groups.filter(o=>o.id!==g.id).map(o=>({id:o.id,name:o.name,color:o.color}))}
    if(H.phase==="judge"){v.targets=H.groups.filter(o=>o.id!==g.id).map(o=>{const a=R.acts[H.act[H.k][o.id].a];return {id:o.id,name:o.name,color:o.color,t:a.t,ic:a.ic}});v.done=!!(H.judge[H.k]||{})[g.id]}
    if(H.phase==="mirror"){const idx=H.order.indexOf(g.id);if(idx>=0&&idx<=H.mi){const x=H.res[H.k][g.id];v.res={...x,leakedBy:x.leakedBy.map(i=>G(i).name),buckOut:x.buckOut?{to:G(x.buckOut.to).name,n:x.buckOut.n}:null,buckFrom:x.buckFrom.map(b=>({from:G(b.from).name,n:b.n}))}}v.mine=R.acts[H.act[H.k][g.id].a].t}
@@ -799,14 +800,14 @@ function pRender(){
   <div class="box" style="padding:14px;background:#161616;color:#fff"><div style="font-size:13px;color:#FFD23F;font-weight:900">🤫 你們的祕密部門立場（別給其他組看）</div><div style="font-size:26px;font-weight:900;margin-top:4px">${esc(s.me.ag)}</div><div style="font-size:14px;margin-top:4px">${esc(s.me.agd)}</div><div style="font-size:13px;margin-top:6px;color:#FFD23F">行動卡上有 ★ 的，就是符合立場的選擇（+${AGENDA_BONUS}）</div></div>
   <p class="pnote">整組共用這一支手機。等主持人開始前，先看看規則 ↓</p>${rulesBox()}`;
  if(s.phase==="event")body=look(s.y+"!","看看這一年發生了什麼。");
- if(s.phase==="news")body=`<div class="lookup"><div class="sfx" style="color:#E23B2E">BREAKING!</div><div class="box" style="padding:12px 14px;text-align:left"><div style="font-size:22px;font-weight:900">${esc(s.ev.t)}</div><div style="font-size:15px;font-weight:700;margin-top:6px;line-height:1.5">${esc(s.ev.d)}</div></div><div class="cap">這一年的規則改了！抬頭看大螢幕 ↑</div></div>`;
+ if(s.phase==="news")body=`<div class="lookup"><div class="sfx" style="color:#E23B2E">${s.ev.big?"號外！":"BREAKING!"}</div><div class="box" style="padding:12px 14px;text-align:left"><div style="font-size:22px;font-weight:900">${esc(s.ev.t)}</div><div style="font-size:15px;font-weight:700;margin-top:6px;line-height:1.5">${esc(s.ev.d)}</div></div><div class="cap">這一年的規則改了！抬頭看大螢幕 ↑</div></div>`;
  if(s.phase==="reveal")body=look("BAM!","所有部門的行動同時翻開了！");
  if(s.phase==="act"){
    if(s.done)body=look("SENT!","已送出。等其他部門……");
    else if(P.step===0){body=`<h2>① 這一年，你們部門要做什麼？</h2><div class="spec" style="font-size:13px">🤫 你們的立場：${esc(s.me.ag)}　★＝符合（+${AGENDA_BONUS}）</div><div class="acts">${s.acts.map((a,i)=>`<button class="act ${P.sel.a===i?"sel":""}" data-a="${i}"><span class="L">${"ABCD"[i]}</span>${a.m?`<span style="position:absolute;right:6px;top:2px;font-size:22px;color:#E23B2E">★</span>`:""}${icon(a.ic)}${a.t}<small>${a.s}</small></button>`).join("")}</div>
      <button class="btn" id="nx" ${P.sel.a==null?"disabled":""}>下一步：押注 ▶</button>`}
    else if(P.step===1){const a=s.acts[P.sel.a];body=`<div class="box" style="padding:8px 10px;display:flex;align-items:center;gap:10px;font-weight:900"><span style="width:44px">${icon(a.ic)}</span>你們選了：${a.t}</div>
-     <h2>② 你覺得明天報紙會把你們寫成什麼？</h2><p class="pnote">猜中「別人眼中的你」+${s.ev&&s.ev.t.includes("週刊")?4:ACC_BONUS}</p>
+     <h2>② 你覺得明天報紙會把你們寫成什麼？</h2><p class="pnote">猜中「別人眼中的你」+${s.ev&&s.ev.big?4:ACC_BONUS}</p>
      <div class="sts">${STAMPS.map(x=>`<button class="stbtn ${P.sel.p===x.k?"sel":""}" data-p="${x.k}"><span class="ic" style="background:${x.c}"></span><span>${x.t}<small>${sv(x.v)} 分</small></span></button>`).join("")}</div>
      <div style="display:flex;gap:10px"><button class="btn w" id="bk">◀</button><button class="btn" id="nx2" style="flex:1" ${P.sel.p?"":"disabled"}>${s.buck?"下一步 ▶":"送出 ✓"}</button></div>`}
    else{body=`<h2>③ 要用 🔄 甩鍋卡嗎？</h2><p class="pnote">整場只有一張。這回合你們收到的「冷血」章，會全部轉給你指定的那組。</p>
