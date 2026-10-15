@@ -427,10 +427,10 @@ const HOWTO=[
   vis:()=>`<div style="display:flex;flex-direction:column;gap:8px;font-weight:900;font-size:24px">${["① 事件","📺 突發新聞","② 祕密行動","③ 翻牌","④ 記者蓋章","⑤ 照鏡子"].map(x=>`<div class="spec" style="font-size:24px">${x}</div>`).join("")}</div>`},
  {h:"祕密行動 + 押注",p:"從 4 張行動卡選 1 張，<b>★ 代表符合你們部門的立場</b>。<br>再押注：「明天報紙會把我們寫成——英雄、作秀、無能，還是冷血？」",
   vis:()=>`<div style="width:150px">${icon("police")}</div><div class="spec">★ 符合部門立場</div>`},
- {h:"換你當記者",p:"所有行動翻開後，給<b>其他每一組</b>各蓋一個頭條章（不能蓋自己）。<br><b>英雄章每回合只有 1 個</b>，要給誰？",
+ {h:"換你當記者",p:"所有行動翻開後，給<b>其他每一組</b>各蓋一個頭條章（不能蓋自己）。<br>每回合<b>英雄章只有 1 個、冷血章也只有 1 個</b>。<br>🗞️ 你蓋的章如果跟<b>多數記者一樣</b>（就是那組最後的頭條），每個 +1。亂蓋扣人分，自己也賺不到。",
   vis:()=>`<div class="stamps">${STAMPS.map(s=>stampHTML(s.k,96,26)).join("")}</div>`},
  {h:"照鏡子・計分",p:"被蓋最多的章就是你們的<b>頭條</b>（平手時，押中其中一個就算猜中）。<br>每個章都有分數，另外還有兩種加分：",
-  vis:()=>`<div style="display:flex;flex-direction:column;gap:8px">${STAMPS.map(s=>`<div class="ptsrow">${stampHTML(s.k,62,18)}<span>每個 ${sv(s.v)}</span></div>`).join("")}<div class="ptsrow"><span class="spec">🪞 押中自己的頭條</span><span>+${ACC_BONUS}</span></div><div class="ptsrow"><span class="spec">★ 行動符合部門立場</span><span>+${AGENDA_BONUS}</span></div></div>`},
+  vis:()=>`<div style="display:flex;flex-direction:column;gap:8px">${STAMPS.map(s=>`<div class="ptsrow">${stampHTML(s.k,62,18)}<span>每個 ${sv(s.v)}</span></div>`).join("")}<div class="ptsrow"><span class="spec">🪞 押中自己的頭條</span><span>+${ACC_BONUS}</span></div><div class="ptsrow"><span class="spec">★ 行動符合部門立場</span><span>+${AGENDA_BONUS}</span></div><div class="ptsrow"><span class="spec">🗞️ 蓋的章跟多數記者一樣</span><span>每個 +${PRESS_BONUS}</span></div></div>`},
  {h:"📺 突發新聞",p:"每一年翻完事件後，會插播一則<b>突發新聞</b>，臨時改變<b>這一年</b>的規則，例如「冷血章 −4」「英雄章有 2 個」「押中 +4」。<br>手機上方會一直提醒你這回合的特殊規則。每一則都是論文裡真的發生過的事。",
   vis:()=>`<div style="width:340px;border:5px solid #161616;border-radius:12px;overflow:hidden">${newsroom()}</div>`},
  {h:"兩張髒牌（整場各 1 次）",p:"📰 <b>爆料</b>：在蓋章畫面，按某一組下方的「對他們爆料」，你給他們的章<b>算兩倍</b>。揭曉時會公開是誰爆的料。<br>🔄 <b>甩鍋</b>：送出行動前的第 ③ 步，指定一組。這回合你們收到的<b>「冷血」章全部轉給他們</b>。<br>用掉後，手機上方的圖示就會消失。",
@@ -489,6 +489,8 @@ function hNew(){const room=Math.random().toString(36).slice(2,6).toUpperCase().r
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 const curEv=()=>EK[H.ev[H.k]]||null;
 const heroMax=()=>curEv()&&curEv().k==="twohero"?2:1;
+const PRESS_BONUS=1;
+const limOf=k=>k==="hero"?heroMax():k==="cold"?1:99;
 function hSave(){try{localStorage.setItem(HKEY,JSON.stringify(H))}catch(e){}}
 function hLoad(){try{return JSON.parse(localStorage.getItem(HKEY))}catch(e){return null}}
 const G=id=>H.groups.find(g=>g.id===id);
@@ -514,7 +516,7 @@ function onHostMsg(id,m){
    net.send(id,{t:"welcome",gid:g.id});hSave();hRender();return}
  const g=H.groups.find(g=>connOf[g.id]===id);if(!g)return;
  if(m.t==="act"&&H.phase==="act"&&m.k===H.k){(H.act[H.k]=H.act[H.k]||{})[g.id]={a:m.a,pred:m.pred,buck:(g.buck>0&&m.buck&&G(m.buck)&&m.buck!==g.id)?m.buck:null};hSave();hRender();checkAll()}
- if(m.t==="judge"&&H.phase==="judge"&&m.k===H.k){let heroUsed=0;const hm=heroMax();const map={};Object.entries(m.map||{}).forEach(([t,s])=>{if(s==="hero"){if(heroUsed>=hm)return;heroUsed++}map[t]=s});
+ if(m.t==="judge"&&H.phase==="judge"&&m.k===H.k){const used={};const map={};Object.entries(m.map||{}).forEach(([t,s])=>{used[s]=(used[s]||0)+1;if(used[s]>limOf(s))s="inept";map[t]=s});
    (H.judge[H.k]=H.judge[H.k]||{})[g.id]={map,leak:(g.leak>0&&m.leak&&G(m.leak)&&m.leak!==g.id)?m.leak:null};hSave();hRender();checkAll()}
 }
 function checkAll(){
@@ -546,6 +548,7 @@ function computeRound(){const k=H.k,res={},raw={},leaked={};
    const pred=H.act[k][g.id].pred,acc=top.includes(pred);const sp=STAMPS.reduce((s,x)=>s+VAL[x.k]*c[x.k],0);
    const agenda=(curR().acts[H.act[k][g.id].a].tg||[]).includes(g.tag);
    res[g.id]={counts:c,top,pred,acc,agenda,ab:AB,gb:GB,val:VAL,stampPts:sp,pts:sp+(acc?AB:0)+(agenda?GB:0),a:H.act[k][g.id].a,leakedBy:leaked[g.id],buckOut:buckOut[g.id]||null,buckFrom:buckFrom[g.id]}});
+ H.groups.forEach(j=>{const J=(H.judge[k]||{})[j.id];let n=0;if(J)Object.entries(J.map).forEach(([t,st])=>{if(res[t]&&t!==j.id&&res[t].top.includes(st))n++});res[j.id].press=n;res[j.id].pts+=n*PRESS_BONUS});
  H.res[k]=res}
 function totals(){const t={};H.groups.forEach(g=>t[g.id]={pts:0,acc:0,hero:0,cracks:0,show:0,cold:0,rounds:0,agenda:0,img:0});
  Object.values(H.res).forEach(res=>Object.entries(res).forEach(([id,x])=>{if(!t[id])return;t[id].rounds++;t[id].agenda+=x.agenda?1:0;t[id].img+=x.stampPts;t[id].pts+=x.pts;t[id].acc+=x.acc?1:0;t[id].cracks+=x.acc?0:1;t[id].hero+=x.counts.hero;t[id].show+=x.counts.show;t[id].cold+=x.counts.cold}));return t}
@@ -584,7 +587,7 @@ function hLobby(hm,ctrl){
   <div class="box rules"><h2>HOW TO PLAY</h2>
    <div class="r"><i>1</i><div>每組是交通局的一個<b>部門</b>，每回合是一年。</div></div>
    <div class="r"><i>2</i><div><b>祕密行動：</b>選行動，並押注「明天報紙會怎麼寫我們」。</div></div>
-   <div class="r"><i>3</i><div><b>當記者：</b>給其他每一組蓋頭條章，每回合只有 1 個「英雄」章。</div></div>
+   <div class="r"><i>3</i><div><b>當記者：</b>給其他每一組蓋頭條章。英雄、冷血各只有 1 個；跟多數記者一樣 +1。</div></div>
    <div class="r"><i>4</i><div><b>照鏡子：</b>章有分數，猜中別人眼中的自己 +2。</div></div>
    <div class="stamps">${STAMPS.map(s=>`<span style="display:flex;align-items:center;gap:4px;font-weight:900;font-size:20px">${stampHTML(s.k,64,18)}${sv(s.v)}</span>`).join("")}</div>
    <div class="r" style="margin-top:4px;align-items:center"><span class="spec leak">📰 爆料</span><span class="spec buck">🔄 甩鍋</span><div>整場各 1 次</div></div>
@@ -633,7 +636,7 @@ function hReveal(hm,ctrl){
 function hJudge(hm,ctrl){
  const R=curR();const n=Object.keys(H.judge[H.k]||{}).length;
  hm.innerHTML=`${evStrip()}<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap"><div class="qtitle"><span>②</span>你們是記者！給其他每一組蓋頭條章</div>
-   <div class="stamps">${STAMPS.map(s=>stampHTML(s.k,58,16)).join("")}</div><span class="spec">這回合英雄章只有 ${heroMax()} 個</span><span class="spec leak">📰 爆料＝這個章算兩倍</span>
+   <div class="stamps">${STAMPS.map(s=>stampHTML(s.k,58,16)).join("")}</div><span class="spec">每人：英雄 ${heroMax()} 個・冷血 1 個</span><span class="spec" style="background:#BDE8C8">🗞️ 蓋的章跟多數記者一樣 +1</span><span class="spec leak">📰 爆料＝這個章算兩倍</span>
    <div class="cap" style="margin-left:auto;font-size:26px">${n} / ${H.groups.length} 組已蓋完</div></div>${actGrid(R,true)}`;
  ctrl.innerHTML=`<button class="btn y" id="go">時間到，照鏡子 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("mirror");
 }
@@ -652,7 +655,7 @@ function hMirror(hm,ctrl){
      <div class="headline"><div class="mast"><span>明鏡日報</span><span>${R.y}</span></div><div class="hl">${hl}</div></div>
      ${evs.length?`<div class="events">${evs.join("")}</div>`:""}
      <div class="tally">${STAMPS.map((s,i)=>`<div class="col"><span>${x.counts[s.k]}</span><div class="bar pop" style="height:${10+x.counts[s.k]/mx*110}px;background:${s.c};animation-delay:${i*.15}s"></div>${stampHTML(s.k,60,17)}<span style="${x.val&&x.val[s.k]!==s.v?"color:var(--red);font-size:22px":""}">${sv(x.val?x.val[s.k]:s.v)}</span></div>`).join("")}</div>
-     <div class="verdict">他們押注自己會被寫成 ${stampHTML(x.pred,60,17)} ${x.acc?"——猜中了！":"——猜錯了。"}<br>印章 ${sv(x.stampPts)}${x.acc?`　猜中 +${x.ab}`:""}${x.agenda?`　★部門立場 +${x.gb}`:""}　＝　<b style="color:var(--red);font-size:34px">${sv(x.pts)}</b></div></div></div>`}
+     <div class="verdict">他們押注自己會被寫成 ${stampHTML(x.pred,60,17)} ${x.acc?"——猜中了！":"——猜錯了。"}<br>印章 ${sv(x.stampPts)}${x.acc?`　猜中 +${x.ab}`:""}${x.agenda?`　★部門立場 +${x.gb}`:""}${x.press?`　🗞️記者命中 +${x.press}`:""}　＝　<b style="color:var(--red);font-size:34px">${sv(x.pts)}</b></div></div></div>`}
  const last=H.mi>=H.order.length-1,lastRound=H.k>=H.plan.length-1;
  ctrl.innerHTML=last?`<button class="btn" id="go">${lastRound?"最終結算 ▶":"下一年 ▶"}</button>`:`<button class="btn y" id="go">揭曉${H.mi<0?"第一組":"下一組"} ▶</button>`;
  ctrl.querySelector("#go").onclick=()=>{if(!last){H.mi++;hSave();hRender()}else if(!lastRound){H.k++;go("event")}else go("final")};
@@ -733,12 +736,12 @@ function chipClick(gid){const g=G(gid);if(!g)return;
    m.querySelector("#x").onclick=()=>m.remove();
    m.querySelector("#ok").onclick=()=>{if(a===null||!p)return;(H.act[H.k]=H.act[H.k]||{})[gid]={a,pred:p,buck:bk};m.remove();hSave();hRender();checkAll()}}
  else if(H.phase==="judge"){const map={};const others=H.groups.filter(x=>x.id!==gid);
-   const m=document.createElement("div");m.className="modal";m.innerHTML=`<div class="box"><h2>代打：${esc(g.name)} 當記者</h2><p class="tiny">這回合英雄章最多 ${heroMax()} 個。</p>
+   const m=document.createElement("div");m.className="modal";m.innerHTML=`<div class="box"><h2>代打：${esc(g.name)} 當記者</h2><p class="tiny">英雄章最多 ${heroMax()} 個，冷血章最多 1 個。</p>
    ${others.map(o=>`<div class="target" style="border-bottom:2px solid #161616"><div class="tt">${icon(R.acts[H.act[H.k][o.id].a].ic)}<span>${esc(o.name)}：${R.acts[H.act[H.k][o.id].a].t}</span></div>
    <div class="mini">${STAMPS.map(s=>`<button data-o="${o.id}" data-s="${s.k}">${s.t}</button>`).join("")}</div>${g.leak>0?`<button class="leakbtn" data-l="${o.id}">📰 對他們爆料</button>`:""}</div>`).join("")}
    <div style="display:flex;gap:10px;margin-top:16px"><button class="btn w" id="x">取消</button><button class="btn" id="ok">送出</button></div></div>`;document.body.appendChild(m);
    const paint=()=>m.querySelectorAll("[data-o]").forEach(x=>{const on=map[x.dataset.o]===x.dataset.s;x.classList.toggle("sel",on);x.style.background=on?SK[x.dataset.s].c:"#fff";
-     x.disabled=x.dataset.s==="hero"&&!on&&Object.values(map).filter(v=>v==="hero").length>=heroMax()});
+     x.disabled=!on&&Object.values(map).filter(v=>v===x.dataset.s).length>=limOf(x.dataset.s)});
    m.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{map[b.dataset.o]=b.dataset.s;paint()});
    let lk=null;m.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{lk=lk===b.dataset.l?null:b.dataset.l;m.querySelectorAll("[data-l]").forEach(x=>x.classList.toggle("on",x.dataset.l===lk))});
    m.querySelector("#x").onclick=()=>m.remove();
@@ -779,7 +782,7 @@ function startPlayer(){
 function rulesBox(){return `<div class="box prules"><h3>HOW TO PLAY</h3>
  ${HOWTO.map((s,i)=>`<div class="row"><i>${i+1}</i><div><b>${s.h}</b><br>${s.p}</div></div>`).join("")}
  <div style="font-weight:900">計分表</div><div class="stamps" style="gap:8px">${STAMPS.map(s=>`<span style="display:flex;align-items:center;gap:2px;font-weight:900">${stampHTML(s.k,46,13)}${sv(s.v)}</span>`).join("")}</div>
- <div class="stamps" style="gap:8px"><span class="spec">🪞 押中自己的頭條 +${ACC_BONUS}</span><span class="spec">★ 符合部門立場 +${AGENDA_BONUS}</span></div></div>`}
+ <div class="stamps" style="gap:8px"><span class="spec">🪞 押中自己的頭條 +${ACC_BONUS}</span><span class="spec">★ 符合部門立場 +${AGENDA_BONUS}</span><span class="spec">🗞️ 蓋的章跟多數記者一樣，每個 +${PRESS_BONUS}</span></div></div>`}
 function pRender(){
  const el=document.getElementById("player"),s=P.st;
  if(P.nolib){el.innerHTML=`<div class="lookup"><div class="sfx">OOPS!</div><p>手機無法載入連線元件。<br>請確認有網路，或請主持人幫你們「代打」。</p></div>`;return}
@@ -812,9 +815,9 @@ function pRender(){
  if(s.phase==="judge"){
    if(s.done)body=look("PRINTED!","印章都蓋好了。等其他記者……");
    else{const all=s.targets.every(t=>P.jmap[t.id]);const heroes=Object.keys(P.jmap).filter(k=>P.jmap[k]==="hero");
-     body=`<h2>你們是記者！給每一組蓋一個章。</h2><p class="pnote">英雄章這回合只有 ${s.hm} 個。${s.leak?"📰 爆料卡可以讓一個章算兩倍（整場一次）。":""}</p>
+     body=`<h2>你們是記者！給每一組蓋一個章。</h2><p class="pnote">英雄章 ${s.hm||1} 個、冷血章 1 個。<b>你蓋的章跟多數記者一樣，你們 +${PRESS_BONUS}</b>——想像全城讀者會怎麼看。${s.leak?"📰 爆料卡可以讓一個章算兩倍（整場一次）。":""}</p>
      ${s.targets.map(t=>`<div class="box target"><div class="tt">${icon(t.ic)}<span><span style="color:${t.color}">${esc(t.name)}</span><br>${t.t}</span></div>
-      <div class="mini">${STAMPS.map(x=>{const on=P.jmap[t.id]===x.k;const dis=x.k==="hero"&&!on&&heroes.length>=s.hm;return `<button data-o="${t.id}" data-s="${x.k}" class="${on?"sel":""}" style="${on?"background:"+x.c:""}" ${dis?"disabled":""}>${x.t}</button>`}).join("")}</div>
+      <div class="mini">${STAMPS.map(x=>{const on=P.jmap[t.id]===x.k;const lim=x.k==="hero"?(s.hm||1):x.k==="cold"?1:99;const dis=!on&&Object.values(P.jmap).filter(v=>v===x.k).length>=lim;return `<button data-o="${t.id}" data-s="${x.k}" class="${on?"sel":""}" style="${on?"background:"+x.c:""}" ${dis?"disabled":""}>${x.t}</button>`}).join("")}</div>
       ${s.leak?`<button class="leakbtn ${P.leak===t.id?"on":""}" data-l="${t.id}">📰 ${P.leak===t.id?"已爆料：這個章算兩倍":"對他們爆料"}</button>`:""}</div>`).join("")}
      <button class="btn" id="js" ${all?"":"disabled"}>送去印刷 ✓</button>`}}
  if(s.phase==="mirror"){
@@ -822,7 +825,7 @@ function pRender(){
    else{const x=s.res;const ev=[];if(x.leakedBy.length)ev.push(`📰 被 ${x.leakedBy.map(esc).join("、")} 爆料！`);if(x.buckOut)ev.push(`🔄 甩鍋給 ${esc(x.buckOut.to)}，丟出 ${x.buckOut.n} 個冷血章`);x.buckFrom.forEach(b=>ev.push(`💥 ${esc(b.from)} 甩來 ${b.n} 個冷血章`));
      body=`<div class="box res"><div>${mirror(x.acc?0:3,140,x.acc)}</div><div class="sfx" style="color:${x.acc?"var(--yel)":"var(--red)"}">${x.acc?"SHINE!":"KRAK!"}</div>
      <p style="font-weight:900;font-size:17px">別人把你們寫成：${x.top.length?x.top.map(k=>stampHTML(k,54,15)).join(" "):"（沒人注意）"}</p>
-     <p style="font-weight:700">你們以為：<b>${SK[x.pred].t}</b></p>${x.agenda?`<div class="spec">★ 符合部門立場 +${AGENDA_BONUS}</div>`:""}${ev.map(e=>`<div class="spec">${e}</div>`).join("")}<p class="cap">本回合 ${sv(x.pts)}　·　累計 ${s.score}</p></div><p class="pnote">抬頭看大螢幕 ↑</p>`}}
+     <p style="font-weight:700">你們以為：<b>${SK[x.pred].t}</b></p>${x.agenda?`<div class="spec">★ 符合部門立場 +${AGENDA_BONUS}</div>`:""}${x.press?`<div class="spec">🗞️ 當記者命中 ${x.press} 次 +${x.press}</div>`:""}${ev.map(e=>`<div class="spec">${e}</div>`).join("")}<p class="cap">本回合 ${sv(x.pts)}　·　累計 ${s.score}</p></div><p class="pnote">抬頭看大螢幕 ↑</p>`}}
  if(s.phase==="final"||s.phase==="truth"){const t=s.tot;body=`<div class="lookup"><div class="sfx">#${s.rank}</div><p>${esc(s.me.name)}　${s.ng} 組中第 ${s.rank} 名</p>
    <div class="box" style="padding:14px 18px;font-weight:900;line-height:1.7">總分 ${t.pts}<br>猜中別人眼中的自己 ${t.acc}/${t.rounds} 次<br>英雄 ×${t.hero} · 冷血 ×${t.cold}<br>照部門立場行動 ${t.agenda}/${t.rounds} 次</div>
    ${s.phase==="truth"?`<div class="cap">你們經營的交通局，就是紐約港務局。<br>答案在大螢幕上 ↑</div>`:`<div class="cap">真相，留到報告最後。</div>`}</div>`}
