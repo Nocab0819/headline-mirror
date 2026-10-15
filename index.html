@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>頭條！鏡中人 HEADLINE!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--cream:#F7EAD0;--paper:#FFF8E8;--ink:#161616;--red:#E23B2E;--yel:#FFD23F;--blue:#2E6FD8;--sky:#7CC6F0;--green:#2C9A55;
+ --zh:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;--comic:'Bangers','Noto Sans TC',Impact,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--zh);color:var(--ink);background:var(--cream);
+ background-image:radial-gradient(circle,rgba(226,59,46,.16) 1.3px,transparent 1.8px);background-size:12px 12px;overflow-x:hidden}
+button{font:inherit;color:inherit;border:none;background:none;cursor:pointer}
+.box{background:var(--paper);border:4px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+.sfx{font-family:var(--comic);color:var(--yel);letter-spacing:2px;-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--ink)}
+.cap{background:var(--yel);border:3px solid var(--ink);padding:6px 12px;font-weight:900;display:inline-block}
+.bubble{position:relative;background:#fff;border:4px solid var(--ink);border-radius:26px;padding:14px 18px;font-weight:700}
+.bubble:after{content:"";position:absolute;left:34px;bottom:-24px;border:12px solid transparent;border-top:16px solid var(--ink)}
+.btn{display:inline-block;background:var(--red);color:#fff;font-weight:900;border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:12px 22px;font-size:20px;transition:transform .08s}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.y{background:var(--yel);color:var(--ink)}
+.btn.w{background:#fff;color:var(--ink)}
+.btn[disabled]{opacity:.35;pointer-events:none}
+.stamp{display:inline-flex;align-items:center;justify-content:center;font-weight:900;border:4px solid currentColor;border-radius:50%;transform:rotate(-12deg);background:rgba(255,255,255,.85)}
+.pop{animation:pop .45s cubic-bezier(.3,1.7,.5,1) both}
+@keyframes pop{from{transform:scale(.2) rotate(-25deg);opacity:0}}
+.shake{animation:shake .5s}
+@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.flip{animation:flip .6s cubic-bezier(.3,1.3,.5,1) both}
+@keyframes flip{from{transform:rotateY(90deg) scale(.8);opacity:0}}
+
+/* ================= HOST ================= */
+#host{display:none;height:100vh;flex-direction:column;padding:18px 26px 14px;gap:14px}
+.hhead{display:flex;align-items:center;gap:18px}
+.logo{font-family:var(--comic);font-size:46px;line-height:1;color:var(--red);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
+.logo small{font-family:var(--zh);font-weight:900;font-size:22px;color:var(--ink);-webkit-text-stroke:0;text-shadow:none;margin-left:6px}
+.yearchip{font-family:var(--comic);font-size:40px;background:var(--ink);color:var(--yel);padding:2px 16px;transform:rotate(-3deg)}
+.phase{font-weight:900;font-size:22px;background:#fff;border:3px solid var(--ink);padding:6px 14px}
+.hspace{flex:1}
+.timer{font-family:var(--comic);font-size:44px;min-width:110px;text-align:center}
+.timer.low{color:var(--red)}
+.hmain{flex:1;min-height:0;display:flex;flex-direction:column;position:relative}
+.hfoot{display:flex;gap:12px;align-items:stretch}
+.gchip{flex:1;display:flex;align-items:center;gap:10px;padding:8px 12px;background:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);font-weight:900;font-size:18px;cursor:pointer;min-width:0}
+.gchip .dot{width:22px;height:22px;border-radius:50%;border:3px solid var(--ink);flex:none}
+.gchip .nm{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gchip .st{font-family:var(--comic);font-size:22px}
+.gchip.ok{background:var(--yel)}
+.gchip.off{opacity:.5}
+.gchip .sc{font-family:var(--comic);font-size:26px}
+.panels{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:20px;flex:1;min-height:0}
+.panel{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;text-align:center}
+.panel:nth-child(1){background:#CFEAFB radial-gradient(circle,rgba(46,111,216,.22) 1.6px,transparent 2.2px) 0 0/14px 14px}
+.panel:nth-child(3){background:#FFE9A8 radial-gradient(circle,rgba(226,59,46,.25) 1.8px,transparent 2.4px) 0 0/14px 14px}
+.panel .cap{position:absolute;left:-4px;top:-4px;font-size:22px;max-width:92%;text-align:left;line-height:1.4}
+.panel .art{width:46%;max-width:220px}
+.panel .bubble{font-size:26px;line-height:1.45;max-width:94%}
+.panel .who{margin-top:30px;font-weight:900;font-size:20px}
+.panel .big{font-size:110px;line-height:1}
+.panel .foot{position:absolute;left:auto;top:auto;right:-4px;bottom:-4px;font-size:20px;text-align:left;max-width:88%}
+.art svg,.act svg{width:100%;height:auto;display:block}
+.newsmini{background:#EDE3CC;border:3px solid var(--ink);padding:14px 18px;transform:rotate(-2deg);max-width:94%}
+.newsmini b{display:block;font-size:14px;letter-spacing:4px;border-bottom:3px double var(--ink);padding-bottom:4px;margin-bottom:8px}
+.newsmini div{font-weight:900;font-size:34px;line-height:1.25}
+.lobby{display:grid;grid-template-columns:1fr 1.05fr;gap:28px;flex:1;min-height:0}
+.lobby .qrbox{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px}
+#qr{background:#fff;padding:12px;border:4px solid var(--ink)}
+#qr img,#qr canvas{display:block;width:300px;height:300px}
+.url{font-weight:900;font-size:18px;word-break:break-all;text-align:center}
+.rules{padding:24px 28px;display:flex;flex-direction:column;gap:16px}
+.rules h2{font-family:var(--comic);font-size:44px;color:var(--blue);-webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill;letter-spacing:1px}
+.rules .r{display:flex;gap:14px;align-items:flex-start;font-size:21px;font-weight:700;line-height:1.45}
+.rules .r i{font-style:normal;font-family:var(--comic);font-size:30px;background:var(--red);color:#fff;border:3px solid var(--ink);width:44px;height:44px;flex:none;display:flex;align-items:center;justify-content:center}
+.stamps{display:flex;gap:12px;flex-wrap:wrap}
+.center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center}
+.center h1{font-size:54px;font-weight:900;line-height:1.25}
+.center p{font-size:24px;font-weight:700}
+.grid{display:grid;gap:18px;flex:1;min-height:0}
+.card{display:flex;flex-direction:column;align-items:center;padding:14px 12px 16px;text-align:center;position:relative;min-height:0}
+.card .dept{font-weight:900;font-size:20px;color:#fff;border:3px solid var(--ink);padding:3px 12px;margin-top:-30px;margin-bottom:6px}
+.card .art{width:56%;max-width:150px}
+.card .t{font-weight:900;font-size:24px;line-height:1.3;margin-top:6px}
+.card .bam{position:absolute;right:-14px;top:-22px;font-size:40px;transform:rotate(12deg)}
+.mirrorstage{flex:1;display:grid;grid-template-columns:1fr 1.2fr;gap:30px;min-height:0;align-items:center}
+.mleft{display:flex;flex-direction:column;align-items:center;gap:12px}
+.mright{display:flex;flex-direction:column;gap:16px}
+.headline{background:#EDE3CC;border:4px solid var(--ink);padding:16px 22px;box-shadow:7px 7px 0 var(--ink);transform:rotate(-1.5deg)}
+.headline .mast{display:flex;justify-content:space-between;border-bottom:4px double var(--ink);padding-bottom:4px;font-weight:900;letter-spacing:4px}
+.headline .hl{font-weight:900;font-size:44px;line-height:1.2;margin-top:8px}
+.tally{display:flex;gap:14px;align-items:flex-end}
+.tally .col{display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:900}
+.tally .bar{width:70px;background:var(--ink);border:3px solid var(--ink)}
+.verdict{font-size:26px;font-weight:900;line-height:1.45}
+.board{flex:1;display:flex;flex-direction:column;gap:12px;justify-content:center;max-width:1100px;margin:0 auto;width:100%}
+.brow{display:flex;align-items:center;gap:18px;padding:10px 18px;font-size:24px;font-weight:900}
+.brow .rk{font-family:var(--comic);font-size:44px;width:60px}
+.brow .nm{flex:1}
+.brow .pts{font-family:var(--comic);font-size:46px}
+.brow .sub{font-size:16px;font-weight:700;color:#444}
+table.truth{width:100%;border-collapse:collapse;font-size:21px;background:var(--paper)}
+table.truth td,table.truth th{border:3px solid var(--ink);padding:10px 14px;text-align:left;vertical-align:top}
+table.truth th{background:var(--ink);color:var(--yel);font-size:18px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:50}
+.modal .box{padding:22px;max-width:760px;width:92%;max-height:90vh;overflow:auto}
+.ctrl{display:flex;gap:12px;align-items:center}
+.tiny{font-size:14px;font-weight:700;color:#555}
+
+/* ================= PLAYER ================= */
+#player{display:none;max-width:480px;margin:0 auto;min-height:100vh;flex-direction:column;padding:14px 16px 28px}
+.ptop{display:flex;align-items:center;gap:10px;padding:10px 12px;color:#fff;border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);font-weight:900;font-size:20px}
+.ptop .yr{margin-left:auto;font-family:var(--comic);font-size:28px;color:var(--yel);-webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill}
+.pbody{flex:1;display:flex;flex-direction:column;gap:14px;margin-top:18px}
+.pbody h2{font-size:24px;font-weight:900;line-height:1.35}
+.lookup{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.lookup .sfx{font-size:64px}
+.lookup p{font-weight:700;font-size:18px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.act{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 8px 12px;background:#fff;border:4px solid var(--ink);box-shadow:4px 4px 0 var(--ink);text-align:center;font-weight:900;font-size:16px;line-height:1.3}
+.act svg{width:62%;max-width:90px}
+.act small{font-weight:700;font-size:12px;color:#555}
+.act.sel{background:var(--yel);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.sts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stbtn{display:flex;align-items:center;gap:10px;padding:10px;background:#fff;border:4px solid var(--ink);box-shadow:4px 4px 0 var(--ink);font-weight:900;font-size:20px}
+.stbtn.sel{background:var(--yel);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.stbtn .ic{width:34px;height:34px;border-radius:50%;border:3px solid var(--ink);flex:none}
+.target{padding:12px;display:flex;flex-direction:column;gap:10px}
+.target .tt{display:flex;align-items:center;gap:10px;font-weight:900}
+.target .tt svg{width:54px;height:54px;flex:none}
+.target .mini{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.target .mini button{border:3px solid var(--ink);background:#fff;font-weight:900;font-size:16px;padding:8px 0}
+.target .mini button.sel{color:#fff}
+.res{padding:16px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
+.res .sfx{font-size:56px}
+.pnote{font-size:13px;color:#555;font-weight:700;text-align:center}
+.conn{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:13px;padding:6px 12px;font-weight:700;display:none;z-index:60}
+</style>
+</head>
+<body>
+<div id="host"></div>
+<div id="player"></div>
+<div class="conn" id="conn"></div>
+<script>
+/* =====================================================================
+   頭條！鏡中人 — 一個檔案，兩種身份
+   · 沒有 ?room= → 主辦大螢幕（投影）
+   · 有 ?room=XXXX → 各組手機
+   連線：PeerJS（點對點）；?local=1 時改用同一瀏覽器內的 BroadcastChannel（測試用）
+   ===================================================================== */
+const Q=new URLSearchParams(location.search);
+const ROOM=Q.get("room"), LOCAL=Q.has("local");
+const IS_HOST=!ROOM;
+const PEER_PREFIX="headline-mirror-";
+const PEER_OPTS={debug:0,config:{iceServers:[{urls:"stun:stun.l.google.com:19302"},{urls:"stun:stun1.l.google.com:19302"}]}};
+
+/* ---------------- 遊戲資料 ---------------- */
+const DEPTS=[{n:"高層辦公室",c:"#E23B2E"},{n:"專案小組",c:"#2E6FD8"},{n:"公關室",c:"#F29A1F"},{n:"警察隊",c:"#3B3B3B"},{n:"設施管理部",c:"#2C9A55"},{n:"預算室",c:"#8E44AD"}];
+const STAMPS=[{k:"hero",t:"英雄",c:"#2E6FD8",h:"挺身而出！{d}成了車站英雄"},{k:"cold",t:"冷血",c:"#1F8FC4",h:"冷血！{d}把人推進寒夜"},
+  {k:"inept",t:"無能",c:"#D98A00",h:"束手無策？{d}一事無成"},{k:"show",t:"作秀",c:"#E23B2E",h:"作秀！{d}只會擺拍"}];
+const SK=Object.fromEntries(STAMPS.map(s=>[s.k,s]));
+const ROUNDS=[
+ {y:1982,t:"新大廳的不速之客",
+  p:[{cap:"1982 年・紐約",art:"building",sub:"巴士總站剛花 2.26 億美元翻修完成，金碧輝煌。"},
+     {bubble:"花了這麼多錢，大廳卻睡滿了人？我不敢一個人進站！",who:"—— 一位乘客"},
+     {sfx:"嘆——",sub:"城裡的廉價旅館一間間關門，越來越多人無處可去。"}],
+  acts:[{t:"叫警察請他們離開",s:"依《反遊蕩法》處理",ic:"police",pa:1},{t:"移走長椅",s:"讓大廳「不好待」",ic:"bench"},
+        {t:"找社福機構外展",s:"把人送去庇護所",ic:"heart"},{t:"先不管",s:"這是市政府的事",ic:"zzz"}]},
+ {y:1985,t:"旗艦淪陷",
+  p:[{cap:"1985 年",art:"plane",sub:"他們出現在世界貿易中心……還有機場。"},
+     {bubble:"我們要像一家企業一樣運作。我們不是社福機構！",who:"—— 新上任的執行董事"},
+     {sfx:"淪陷！",sub:"問題第一次寫進了公司的商業計畫。"}],
+  acts:[{t:"封閉候車區",s:"晚上只留售票區",ic:"fence",pa:1},{t:"外包給志工團",s:"錢我們出，社工他們出",ic:"hands",pa:1},
+        {t:"貼海報教育乘客",s:"「認識車站裡的遊民」",ic:"poster",pa:1},{t:"成立自己的社服部門",s:"聘社工，自己來",ic:"house"}]},
+ {y:1987,t:"寒夜",
+  p:[{cap:"1987 年",art:"crowd",sub:"反遊蕩法廢除，快克湧入。有些夜晚，設施裡超過 1,000 人。"},
+     {news:"聖誕節前夕　交通局化身「小氣財神」",who:"—— 地方報紙頭版"},
+     {sfx:"華氏15°",sub:"今晚很冷。警察工會不想再趕人了。"}],
+  acts:[{t:"照規定清場",s:"規定就是規定",ic:"door"},{t:"寒夜讓他們留下",s:"候車室的燈不關",ic:"lamp",pa:1},
+        {t:"發聲明澄清",s:"公布我們做過的善事",ic:"mic"},{t:"成立專案小組",s:"還資助員工研究這個問題",ic:"book",pa:1}]},
+ {y:1988,t:"沒有人接電話",
+  p:[{cap:"1988 年",art:"money",sub:"公司正推動 58 億美元大計畫，好新聞卻全被壞消息蓋過。"},
+     {bubble:"接待中心？好，營運我們接手……（十個月後）抱歉，我們不接了。",who:"—— 市政府"},
+     {sfx:"嘟——嘟——",sub:"沒有人要接手。"}],
+  acts:[{t:"自己出錢蓋接待中心",s:"約 250 萬美元，交社福營運",ic:"house",pa:1},{t:"加派警力",s:"更多巡邏",ic:"police"},
+        {t:"砸錢打形象廣告",s:"讓大家看見我們的好",ic:"tv"},{t:"繼續等市政府",s:"這本來就不是我們的事",ic:"clock"}]},
+ {y:1989,t:"42 街的噩夢",
+  p:[{cap:"1989 年 2 月 27 日",art:"news",sub:"全國週刊：〈42 街的噩夢〉。"},
+     {bubble:"等等……每週投訴信從 7 封降到 1 封了？",who:"—— 祕書"},
+     {sfx:"取經！",sub:"其他交通機構紛紛來問：你們怎麼做到的？"}],
+  acts:[{t:"開記者會宣布成果",s:"讓大家知道是我們",ic:"mic"},{t:"把功勞讓給社福夥伴",s:"我們退到幕後",ic:"trophy",pa:1},
+        {t:"當全國領頭羊",s:"成立聯盟，由我們主導",ic:"flag"},{t:"見好就收",s:"回到交通本業",ic:"exit"}]}
+];
+const PA_NOTE=["警察依法驅離，送往庇護所","封閉區域、移長椅、外包外展、貼海報","寒夜不趕人；成立專案小組＋研究獎學金","花約 250 萬美元蓋兩個接待中心","不居功，讓社福團體領功；私下分享經驗"];
+
+/* ---------------- 漫畫圖示（粗黑線） ---------------- */
+function icon(k){const S='stroke="#161616" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"';
+ const A={
+ police:`<path d="M50 8 L60 32 L86 34 L66 52 L72 78 L50 64 L28 78 L34 52 L14 34 L40 32Z" fill="#FFD23F" ${S}/><circle cx="50" cy="45" r="9" fill="#2E6FD8" ${S}/>`,
+ bench:`<rect x="12" y="40" width="76" height="12" fill="#C98B4E" ${S}/><rect x="12" y="24" width="76" height="10" fill="#C98B4E" ${S}/><path d="M20 52 V78 M80 52 V78" ${S}/><path d="M14 14 L86 86 M86 14 L14 86" stroke="#E23B2E" stroke-width="9" stroke-linecap="round"/>`,
+ heart:`<path d="M50 84 C14 60 8 38 22 24 C34 12 48 20 50 32 C52 20 66 12 78 24 C92 38 86 60 50 84Z" fill="#E23B2E" ${S}/><path d="M32 36 Q40 28 46 36" stroke="#fff" stroke-width="4" fill="none"/>`,
+ zzz:`<circle cx="50" cy="56" r="30" fill="#7CC6F0" ${S}/><path d="M36 54 Q42 48 46 54 M54 54 Q60 48 64 54" ${S} fill="none"/><text x="66" y="28" font-family="Bangers,Impact" font-size="30" fill="#161616">Z</text><text x="80" y="14" font-family="Bangers,Impact" font-size="20" fill="#161616">z</text>`,
+ fence:`<path d="M14 30 V86 M32 22 V86 M50 30 V86 M68 22 V86 M86 30 V86" ${S}/><path d="M8 44 H92 M8 70 H92" stroke="#E23B2E" stroke-width="8"/><path d="M8 44 H92 M8 70 H92" ${S} stroke-width="3"/>`,
+ hands:`<circle cx="36" cy="52" r="24" fill="#FFD23F" ${S}/><circle cx="64" cy="52" r="24" fill="#2E6FD8" fill-opacity=".8" ${S}/><path d="M42 52 L50 60 L60 44" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>`,
+ poster:`<rect x="18" y="10" width="64" height="80" fill="#fff" ${S}/><path d="M50 22 V56" stroke="#E23B2E" stroke-width="10" stroke-linecap="round"/><circle cx="50" cy="72" r="6" fill="#E23B2E"/>`,
+ house:`<path d="M10 48 L50 14 L90 48" fill="none" ${S}/><rect x="20" y="44" width="60" height="44" fill="#FFD23F" ${S}/><path d="M50 82 C36 72 32 64 38 58 C43 53 49 56 50 60 C51 56 57 53 62 58 C68 64 64 72 50 82Z" fill="#E23B2E" ${S} stroke-width="3"/>`,
+ door:`<rect x="26" y="12" width="48" height="78" fill="#2E6FD8" ${S}/><circle cx="64" cy="54" r="4" fill="#161616"/><text x="6" y="30" font-size="22" fill="#7CC6F0">✳</text><text x="78" y="72" font-size="18" fill="#7CC6F0">✳</text>`,
+ lamp:`<path d="M30 40 Q50 6 70 40Z" fill="#FFD23F" ${S}/><path d="M50 40 V82 M34 86 H66" ${S}/><path d="M18 52 L8 58 M82 52 L92 58 M50 50 V50" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/>`,
+ mic:`<rect x="38" y="10" width="24" height="44" rx="12" fill="#BDBDBD" ${S}/><path d="M26 44 Q26 68 50 68 Q74 68 74 44 M50 68 V86 M36 88 H64" fill="none" ${S}/>`,
+ book:`<circle cx="42" cy="42" r="26" fill="#7CC6F0" ${S}/><path d="M60 60 L86 86" stroke="#161616" stroke-width="10" stroke-linecap="round"/><path d="M30 40 Q42 30 54 40" stroke="#fff" stroke-width="4" fill="none"/>`,
+ tv:`<rect x="10" y="22" width="80" height="56" fill="#2E6FD8" ${S}/><path d="M36 10 L50 22 L64 10" fill="none" ${S}/><text x="50" y="62" text-anchor="middle" font-family="Bangers,Impact" font-size="26" fill="#FFD23F">AD!</text>`,
+ clock:`<circle cx="50" cy="50" r="38" fill="#fff" ${S}/><path d="M50 26 V50 L66 60" ${S} fill="none"/>`,
+ trophy:`<path d="M30 14 H70 V36 Q70 58 50 60 Q30 58 30 36Z" fill="#FFD23F" ${S}/><path d="M30 22 H16 Q16 42 32 44 M70 22 H84 Q84 42 68 44" fill="none" ${S}/><path d="M50 60 V76 M34 86 H66 V76 H34Z" fill="#C98B4E" ${S}/>`,
+ flag:`<path d="M24 90 V10" ${S}/><path d="M24 12 H80 L68 30 L80 48 H24Z" fill="#E23B2E" ${S}/>`,
+ exit:`<rect x="14" y="12" width="44" height="76" fill="#fff" ${S}/><path d="M48 50 H90 M76 36 L90 50 L76 64" fill="none" ${S} stroke="#2C9A55" stroke-width="8"/>`,
+ building:`<rect x="18" y="26" width="64" height="62" fill="#FFD23F" ${S}/><path d="M18 26 L50 8 L82 26" fill="#E23B2E" ${S}/><rect x="42" y="60" width="16" height="28" fill="#2E6FD8" ${S}/><path d="M28 40 H38 M62 40 H72 M28 52 H38 M62 52 H72" ${S}/><text x="80" y="18" font-size="20" fill="#E23B2E">✦</text>`,
+ plane:`<path d="M8 56 L92 40 L84 30 L56 38 L40 14 L30 16 L40 42 L18 46 L12 38 L6 40Z" fill="#7CC6F0" ${S}/><path d="M10 80 H90" ${S}/>`,
+ crowd:`<g ${S}><circle cx="24" cy="42" r="10" fill="#C98B4E"/><circle cx="50" cy="36" r="10" fill="#E2BE98"/><circle cx="76" cy="42" r="10" fill="#8D6748"/><path d="M10 88 Q10 58 24 56 Q38 58 38 88Z" fill="#2E6FD8"/><path d="M36 88 Q36 52 50 50 Q64 52 64 88Z" fill="#E23B2E"/><path d="M62 88 Q62 58 76 56 Q90 58 90 88Z" fill="#2C9A55"/></g>`,
+ money:`<path d="M30 30 Q50 14 70 30 Q90 50 82 76 Q50 92 18 76 Q10 50 30 30Z" fill="#2C9A55" ${S}/><text x="50" y="68" text-anchor="middle" font-family="Bangers,Impact" font-size="36" fill="#FFD23F">$</text>`,
+ news:`<rect x="10" y="16" width="80" height="68" fill="#EDE3CC" ${S}/><path d="M20 30 H80" stroke="#161616" stroke-width="7"/><path d="M20 46 H58 M20 58 H58 M20 70 H52" ${S} stroke-width="3"/><rect x="64" y="44" width="16" height="28" fill="#E23B2E" ${S} stroke-width="3"/>`};
+ return `<svg viewBox="0 0 100 100" aria-hidden="true">${A[k]||A.news}</svg>`}
+function mirror(cracks,w=200,shine=false){
+ const c=Math.min(cracks,5);const lines=["M40 30 L70 80 L58 96 L84 140","M70 80 L110 70 L130 100","M84 140 L120 160 L128 200","M58 96 L30 120 L34 170","M110 70 L120 40 L150 30"];
+ return `<svg viewBox="0 0 180 230" width="${w}" height="${w*1.28}" aria-label="鏡子"><ellipse cx="90" cy="115" rx="84" ry="108" fill="#161616"/><ellipse cx="90" cy="115" rx="72" ry="96" fill="${shine?"#BDE7FF":"#9FC9E0"}" stroke="#FFD23F" stroke-width="6"/>
+ <path d="M44 170 L64 170 L140 40 L122 40Z" fill="#fff" opacity=".45"/>${lines.slice(0,c).map(d=>`<path d="${d}" stroke="#161616" stroke-width="4" fill="none" stroke-linecap="round"/>`).join("")}
+ ${shine?`<g stroke="#FFD23F" stroke-width="6" stroke-linecap="round"><path d="M6 30 L20 40"/><path d="M174 30 L160 40"/><path d="M90 0 V12"/></g>`:""}</svg>`}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+function connNote(t){const c=document.getElementById("conn");if(!t){c.style.display="none";return}c.textContent=t;c.style.display="block"}
+
+/* =====================================================================
+   連線層
+   ===================================================================== */
+function HostNet(room,onMsg,onClose,onReady){
+ if(LOCAL){const bc=new BroadcastChannel("hm-"+room);
+   bc.onmessage=e=>{const m=e.data;if(m.to!=="host")return;if(m.data.t==="bye")onClose(m.from);else onMsg(m.from,m.data)};
+   setTimeout(onReady,0);return {send:(id,d)=>bc.postMessage({to:id,data:d})}}
+ const conns={};let peer;
+ function start(tries=0){
+   peer=new Peer(PEER_PREFIX+room,PEER_OPTS);
+   peer.on("open",()=>{connNote("");onReady()});
+   peer.on("connection",c=>{c.on("open",()=>{conns[c.peer]=c});c.on("data",d=>{conns[c.peer]=c;onMsg(c.peer,d)});c.on("close",()=>{delete conns[c.peer];onClose(c.peer)});c.on("error",()=>{})});
+   peer.on("disconnected",()=>{connNote("重新連線中…");setTimeout(()=>{try{peer.reconnect()}catch(e){}},1500)});
+   peer.on("error",e=>{if(e.type==="unavailable-id"&&tries<10){connNote("房間代碼被占用，重試中…");peer.destroy();setTimeout(()=>start(tries+1),2500)}
+     else if(e.type==="network"||e.type==="server-error"||e.type==="socket-error"){connNote("連線伺服器不穩，可用畫面下方「代打」繼續")}});
+ }
+ if(typeof Peer==="undefined"){connNote("無法載入連線元件（沒有網路？）。可在大廳新增組別，用「代打」進行。");setTimeout(onReady,0);return {send:()=>{}}}
+ start();
+ return {send:(id,d)=>{const c=conns[id];if(c&&c.open)try{c.send(d)}catch(e){}}};
+}
+function ClientNet(room,onMsg,onStatus){
+ if(LOCAL){const me="c"+Math.random().toString(36).slice(2,8);const bc=new BroadcastChannel("hm-"+room);
+   bc.onmessage=e=>{if(e.data.to===me)onMsg(e.data.data)};
+   const api={send:d=>bc.postMessage({to:"host",from:me,data:d})};setTimeout(()=>onStatus("open"),0);
+   addEventListener("pagehide",()=>api.send({t:"bye"}));return api}
+ let peer,conn,alive=false;
+ function connect(){
+   if(!peer||peer.destroyed){peer=new Peer(PEER_OPTS);peer.on("open",dial);peer.on("error",e=>{onStatus("err");if(e.type==="peer-unavailable")setTimeout(dial,2500)});peer.on("disconnected",()=>{try{peer.reconnect()}catch(e){}})}
+   else dial()}
+ function dial(){
+   conn=peer.connect(PEER_PREFIX+room,{reliable:true});
+   conn.on("open",()=>{alive=true;onStatus("open")});
+   conn.on("data",onMsg);
+   conn.on("close",()=>{alive=false;onStatus("lost");setTimeout(dial,2000)});
+   conn.on("error",()=>{});
+   setTimeout(()=>{if(!alive){try{conn.close()}catch(e){}}},8000)}
+ if(typeof Peer==="undefined"){setTimeout(()=>onStatus("nolib"),0);return {send:()=>{}}}
+ connect();
+ setInterval(()=>{if(!alive&&peer&&peer.open)dial()},6000);
+ return {send:d=>{if(conn&&conn.open)try{conn.send(d)}catch(e){}}};
+}
+
+/* =====================================================================
+   主辦（大螢幕）
+   ===================================================================== */
+let H,net,connOf={},tick;
+const HKEY="headline-host-v1";
+function hNew(){const room=Math.random().toString(36).slice(2,6).toUpperCase().replace(/[01OI]/g,"X");
+ return {room,groups:[],r:0,phase:"lobby",act:{},judge:{},res:{},mi:-1,order:[],timerEnd:0}}
+function hSave(){try{localStorage.setItem(HKEY,JSON.stringify(H))}catch(e){}}
+function hLoad(){try{return JSON.parse(localStorage.getItem(HKEY))}catch(e){return null}}
+function G(id){return H.groups.find(g=>g.id===id)}
+function startHost(){
+ document.getElementById("host").style.display="flex";
+ H=hLoad()||hNew();if(Q.has("new"))H=hNew();
+ H.groups.forEach(g=>g.online=false);hSave();
+ net=HostNet(H.room,onHostMsg,id=>{const g=H.groups.find(g=>connOf[g.id]===id);if(g){g.online=false;delete connOf[g.id];hRender()}},()=>hRender());
+ hRender();
+ tick=setInterval(()=>{const el=document.getElementById("tmr");if(!el)return;const s=Math.max(0,Math.ceil((H.timerEnd-Date.now())/1000));el.textContent=s?s:"時間到";el.classList.toggle("low",s<=10)},500);
+}
+function onHostMsg(id,m){
+ if(m.t==="hello"){let g=m.gid&&G(m.gid);
+   if(m.claim){g=G(m.claim)}
+   if(!g){if(H.phase!=="lobby"){const off=H.groups.filter(x=>!x.online||!connOf[x.id]);
+       if(off.length)net.send(id,{t:"pick",options:off.map(x=>({id:x.id,name:x.name,color:x.color}))});
+       else net.send(id,{t:"full",msg:"遊戲已經開始了，請和隔壁組一起玩。"});return}
+     if(H.groups.length>=DEPTS.length){net.send(id,{t:"full",msg:"已經滿 6 組了，請和其他組一起玩。"});return}
+     const d=DEPTS.find(d=>!H.groups.some(g=>g.name===d.n));g={id:"g"+Date.now().toString(36)+Math.random().toString(36).slice(2,4),name:d.n,color:d.c,online:true};H.groups.push(g)}
+   g.online=true;Object.keys(connOf).forEach(k=>{if(connOf[k]===id)delete connOf[k]});connOf[g.id]=id;
+   net.send(id,{t:"welcome",gid:g.id});hSave();hRender();return}
+ const g=H.groups.find(g=>connOf[g.id]===id);if(!g)return;
+ if(m.t==="act"&&H.phase==="act"&&m.r===H.r){(H.act[H.r]=H.act[H.r]||{})[g.id]={a:m.a,pred:m.pred};hSave();hRender();checkAll()}
+ if(m.t==="judge"&&H.phase==="judge"&&m.r===H.r){(H.judge[H.r]=H.judge[H.r]||{})[g.id]=m.map;hSave();hRender();checkAll()}
+}
+function checkAll(){
+ if(H.phase==="act"&&H.groups.every(g=>(H.act[H.r]||{})[g.id]))setTimeout(()=>{if(H.phase==="act")go("reveal")},900);
+ if(H.phase==="judge"&&H.groups.every(g=>(H.judge[H.r]||{})[g.id]))setTimeout(()=>{if(H.phase==="judge")go("mirror")},900);
+}
+function go(ph){H.phase=ph;
+ if(ph==="act")H.timerEnd=Date.now()+90000;
+ if(ph==="judge")H.timerEnd=Date.now()+75000;
+ if(ph==="reveal"){H.groups.forEach(g=>{(H.act[H.r]=H.act[H.r]||{});if(!H.act[H.r][g.id])H.act[H.r][g.id]={a:Math.floor(Math.random()*4),pred:STAMPS[Math.floor(Math.random()*4)].k,auto:1}})}
+ if(ph==="mirror"){computeRound();H.mi=-1;H.order=H.groups.map(g=>g.id)}
+ hSave();hRender()}
+function computeRound(){const r=H.r,res={};
+ H.groups.forEach(g=>{const counts={hero:0,cold:0,inept:0,show:0};
+   H.groups.forEach(j=>{if(j.id===g.id)return;const m=(H.judge[r]||{})[j.id];if(m&&m[g.id])counts[m[g.id]]++});
+   const mx=Math.max(...Object.values(counts));const top=mx>0?Object.keys(counts).filter(k=>counts[k]===mx):[];
+   const pred=H.act[r][g.id].pred, acc=top.includes(pred);
+   res[g.id]={counts,top,pred,acc,pts:(acc?2:0)+counts.hero,a:H.act[r][g.id].a}});
+ H.res[r]=res}
+function totals(){const t={};H.groups.forEach(g=>t[g.id]={pts:0,acc:0,hero:0,cracks:0,show:0,cold:0});
+ Object.values(H.res).forEach(res=>Object.entries(res).forEach(([id,x])=>{if(!t[id])return;t[id].pts+=x.pts;t[id].acc+=x.acc?1:0;t[id].cracks+=x.acc?0:1;t[id].hero+=x.counts.hero;t[id].show+=x.counts.show;t[id].cold+=x.counts.cold}));return t}
+
+function hRender(){
+ const el=document.getElementById("host");const R=ROUNDS[H.r];
+ const phaseName={lobby:"等待各組加入",event:"事件",act:"祕密行動中",reveal:"行動揭曉",judge:"記者時間",mirror:"照鏡子",final:"結算",truth:"真相"}[H.phase];
+ const showTimer=H.phase==="act"||H.phase==="judge";
+ el.innerHTML=`<div class="hhead"><div class="logo">HEADLINE!<small>頭條！鏡中人</small></div>
+  ${["lobby","final","truth"].includes(H.phase)?"":`<div class="yearchip">${R.y}</div><div class="phase">ROUND ${H.r+1}/5 · ${phaseName}</div>`}
+  <div class="hspace"></div>${showTimer?`<div class="timer" id="tmr"></div>`:""}<div class="ctrl" id="ctrl"></div></div>
+  <div class="hmain" id="hm"></div>
+  <div class="hfoot" id="hf"></div>`;
+ const hm=el.querySelector("#hm"),ctrl=el.querySelector("#ctrl"),hf=el.querySelector("#hf");
+ // footer chips
+ const t=totals();
+ hf.innerHTML=H.groups.map(g=>{let st="";
+   if(H.phase==="act")st=(H.act[H.r]||{})[g.id]?"✓":"…";
+   if(H.phase==="judge")st=(H.judge[H.r]||{})[g.id]?"✓":"…";
+   if(H.phase==="lobby")st="✕";
+   const ok=st==="✓";
+   return `<div class="gchip ${ok?"ok":""} ${g.online?"":"off"}" data-g="${g.id}" title="${H.phase==="lobby"?"點一下移除這組":"點一下可代打"}"><span class="dot" style="background:${g.color}"></span><span class="nm">${esc(g.name)}</span>
+   ${st?`<span class="st">${st}</span>`:`<span class="sc">${t[g.id]?t[g.id].pts:0}</span>`}</div>`}).join("")||`<div class="tiny">還沒有組別加入</div>`;
+ hf.querySelectorAll(".gchip").forEach(c=>c.onclick=()=>proxy(c.dataset.g));
+ ({lobby:hLobby,event:hEvent,act:hAct,reveal:hReveal,judge:hJudge,mirror:hMirror,final:hFinal,truth:hTruth})[H.phase](hm,ctrl);
+ broadcast();
+}
+function hLobby(hm,ctrl){
+ const url=location.origin+location.pathname+"?room="+H.room+(LOCAL?"&local=1":"");
+ hm.innerHTML=`<div class="lobby"><div class="box qrbox"><div class="cap" style="font-size:24px">一組一支手機，掃這裡加入</div><div id="qr"></div><div class="url">${esc(url)}</div>
+  <div class="tiny">房間代碼 <b style="font-size:22px;color:#161616">${H.room}</b> · 已加入 ${H.groups.length} / 6 組</div></div>
+  <div class="box rules"><h2>HOW TO PLAY</h2>
+   <div class="r"><i>1</i><div>每組是交通局的一個<b>部門</b>。每一回合是一年，大螢幕會播出這一年發生的事。</div></div>
+   <div class="r"><i>2</i><div><b>祕密行動：</b>選一個行動，並押注——<b>你覺得明天報紙會怎麼寫你們？</b></div></div>
+   <div class="r"><i>3</i><div><b>換你當記者：</b>大家的行動一起翻開後，給<b>其他每一組</b>蓋一個頭條印章。</div></div>
+   <div class="r"><i>4</i><div><b>照鏡子：</b>押中別人眼中的你 +2；押錯，鏡子會裂。每拿到一個「英雄」+1。</div></div>
+   <div class="stamps">${STAMPS.map(s=>`<span class="stamp" style="color:${s.c};width:86px;height:86px;font-size:24px">${s.t}</span>`).join("")}</div></div></div>`;
+ try{new QRCode(hm.querySelector("#qr"),{text:url,width:300,height:300,correctLevel:QRCode.CorrectLevel.M})}catch(e){hm.querySelector("#qr").innerHTML=`<div style="width:300px;height:300px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900">QR 載入失敗<br>請輸入上方網址</div>`}
+ ctrl.innerHTML=`<button class="btn w" id="add" style="font-size:16px;padding:8px 12px">＋ 沒手機的組</button><button class="btn" id="go" ${H.groups.length<2?"disabled":""}>開始遊戲 ▶</button>`;
+ ctrl.querySelector("#add").onclick=()=>{if(H.groups.length>=6)return;const d=DEPTS.find(d=>!H.groups.some(g=>g.name===d.n));H.groups.push({id:"g"+Date.now().toString(36),name:d.n,color:d.c,online:false,manual:1});hSave();hRender()};
+ ctrl.querySelector("#go").onclick=()=>{H.r=0;go("event")};
+}
+function hEvent(hm,ctrl){
+ const R=ROUNDS[H.r];
+ hm.innerHTML=`<div class="panels">${R.p.map((p,i)=>`<div class="box panel flip" style="animation-delay:${i*.35}s">
+   ${p.cap?`<div class="cap">${p.cap}</div>`:""}
+   ${p.art?`<div class="art">${icon(p.art)}</div>`:""}
+   ${p.bubble?`<div class="bubble">${p.bubble}</div><div class="who">${p.who}</div>`:""}
+   ${p.news?`<div class="newsmini"><b>THE LOOKING GLASS · 頭版</b><div>${p.news}</div></div><div class="who">${p.who}</div>`:""}
+   ${p.sfx?`<div class="sfx big">${p.sfx}</div>`:""}
+   ${p.sub?`<div class="cap foot" style="background:#fff">${p.sub}</div>`:""}</div>`).join("")}</div>`;
+ ctrl.innerHTML=`<button class="btn" id="go">開始行動 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("act");
+}
+function hAct(hm,ctrl){
+ const n=Object.keys(H.act[H.r]||{}).length;
+ hm.innerHTML=`<div class="center"><div class="sfx" style="font-size:96px">SHHH…</div><h1>各部門正在祕密行動</h1>
+  <p>手機上：① 選一個行動　② 押注「明天報紙會怎麼寫我們」</p><p class="cap" style="font-size:30px">${n} / ${H.groups.length} 組已送出</p>
+  <p class="tiny">全部送出會自動翻牌。某組手機斷線？點下方組別可以代打。</p></div>`;
+ ctrl.innerHTML=`<button class="btn y" id="go">時間到，翻牌 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("reveal");
+}
+function cols(n){return n<=3?n:n===4?4:3}
+function hReveal(hm,ctrl){
+ const R=ROUNDS[H.r];const sfx=["BAM!","POW!","WHAM!","ZAP!","BOOM!","KRAK!"];
+ hm.innerHTML=`<div class="grid" style="grid-template-columns:repeat(${cols(H.groups.length)},1fr);padding-top:20px">${H.groups.map((g,i)=>{const a=R.acts[H.act[H.r][g.id].a];
+   return `<div class="box card flip" style="animation-delay:${i*.3}s"><div class="dept" style="background:${g.color}">${esc(g.name)}</div><div class="art">${icon(a.ic)}</div><div class="t">${a.t}</div><div class="tiny">${a.s}</div><div class="sfx bam pop" style="animation-delay:${i*.3+.4}s">${sfx[i%6]}</div></div>`}).join("")}</div>`;
+ ctrl.innerHTML=`<button class="btn" id="go">記者時間 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("judge");
+}
+function hJudge(hm,ctrl){
+ const n=Object.keys(H.judge[H.r]||{}).length;
+ hm.innerHTML=`<div class="center"><div class="sfx" style="font-size:96px">PRESS!</div><h1>現在，你們是記者。</h1>
+  <p>在手機上，給<b>其他每一組</b>的行動蓋一個頭條印章。</p>
+  <div class="stamps" style="justify-content:center">${STAMPS.map(s=>`<span class="stamp" style="color:${s.c};width:110px;height:110px;font-size:30px">${s.t}</span>`).join("")}</div>
+  <p class="cap" style="font-size:30px">${n} / ${H.groups.length} 組已蓋完</p></div>`;
+ ctrl.innerHTML=`<button class="btn y" id="go">時間到，照鏡子 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("mirror");
+}
+function hMirror(hm,ctrl){
+ const R=ROUNDS[H.r],res=H.res[H.r];
+ if(H.mi<0){hm.innerHTML=`<div class="center"><div class="sfx" style="font-size:120px">MIRROR, MIRROR…</div><h1>你以為的自己 vs. 別人眼中的你</h1><p>一組一組揭曉。</p></div>`}
+ else if(H.mi<H.order.length){const g=G(H.order[H.mi]),x=res[g.id],a=R.acts[x.a],mx=Math.max(1,...Object.values(x.counts));
+   const hl=x.top.length?SK[x.top[0]].h.replace("{d}",g.name):`${g.name}？沒有人注意到`;
+   hm.innerHTML=`<div class="mirrorstage"><div class="mleft"><div class="box" style="padding:6px 16px;background:${g.color};color:#fff;font-weight:900;font-size:28px">${esc(g.name)}</div>
+     <div class="${x.acc?"pop":"shake"}">${mirror(x.acc?0:3,250,x.acc)}</div><div class="sfx" style="font-size:72px;color:${x.acc?"var(--yel)":"var(--red)"}">${x.acc?"SHINE!":"KRAK!"}</div></div>
+    <div class="mright"><div class="tiny">行動：${a.t}</div>
+     <div class="headline"><div class="mast"><span>明鏡日報</span><span>${R.y}</span></div><div class="hl">${hl}</div></div>
+     <div class="tally">${STAMPS.map((s,i)=>`<div class="col"><span>${x.counts[s.k]}</span><div class="bar pop" style="height:${12+x.counts[s.k]/mx*120}px;background:${s.c};animation-delay:${i*.15}s"></div><span class="stamp" style="color:${s.c};width:62px;height:62px;font-size:18px">${s.t}</span></div>`).join("")}</div>
+     <div class="verdict">他們以為自己會被寫成：<span class="stamp" style="color:${SK[x.pred].c};width:70px;height:70px;font-size:20px;vertical-align:middle">${SK[x.pred].t}</span><br>${x.acc?"猜中了！看清楚了別人眼中的自己。":"猜錯了——鏡子裡的自己，和別人看到的不一樣。"}　<b style="color:var(--red)">+${x.pts}</b></div></div></div>`}
+ const last=H.mi>=H.order.length-1;
+ ctrl.innerHTML=last?`<button class="btn" id="go">${H.r<4?"下一年 ▶":"最終結算 ▶"}</button>`:`<button class="btn y" id="go">揭曉${H.mi<0?"第一組":"下一組"} ▶</button>`;
+ ctrl.querySelector("#go").onclick=()=>{if(!last){H.mi++;hSave();hRender()}else if(H.r<4){H.r++;go("event")}else go("final")};
+}
+function hFinal(hm,ctrl){
+ const t=totals();const rows=[...H.groups].sort((a,b)=>t[b.id].pts-t[a.id].pts);
+ const best=k=>[...H.groups].sort((a,b)=>t[b.id][k]-t[a.id][k])[0];
+ hm.innerHTML=`<div class="board"><div class="sfx" style="font-size:80px;text-align:center">FINAL!</div>
+  ${rows.map((g,i)=>`<div class="box brow pop" style="animation-delay:${(rows.length-i)*.25}s"><span class="rk">#${i+1}</span><span class="dot" style="width:26px;height:26px;border-radius:50%;border:3px solid #161616;background:${g.color}"></span>
+   <span class="nm">${esc(g.name)}<div class="sub">猜中 ${t[g.id].acc}/5 次 · 英雄 ×${t[g.id].hero} · 鏡子裂了 ${t[g.id].cracks} 次</div></span><span class="pts">${t[g.id].pts}</span></div>`).join("")}
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+   <span class="cap">🪞 最看得清自己：${esc(best("acc").name)}</span><span class="cap" style="background:#BFE0FF">🦸 全城英雄：${esc(best("hero").name)}</span><span class="cap" style="background:#FFC9C2">🎭 最會作秀：${esc(best("show").name)}</span></div></div>`;
+ ctrl.innerHTML=`<button class="btn w" id="go">真相（報告最後再按）</button>`;ctrl.querySelector("#go").onclick=()=>go("truth");
+}
+function hTruth(hm,ctrl){
+ const t=totals();const accAll=H.groups.reduce((s,g)=>s+t[g.id].acc,0),tot=H.groups.length*5;
+ const rows=ROUNDS.map((R,r)=>{const cnt=[0,0,0,0];Object.values(H.act[r]||{}).forEach(x=>cnt[x.a]++);const mx=Math.max(...cnt);const top=R.acts.filter((a,i)=>cnt[i]===mx&&mx>0).map(a=>a.t).join("、")||"—";
+   const heroA=(()=>{const h=[0,0,0,0];Object.values(H.res[r]||{}).forEach(x=>h[x.a]+=x.counts.hero);const m=Math.max(...h);return m>0?R.acts[h.indexOf(m)].t:"—"})();
+   return `<tr><td><b>${R.y}</b><br>${R.t}</td><td>${top}</td><td>${heroA}</td><td>${R.acts.filter(a=>a.pa).map(a=>"<b>"+a.t+"</b>").join("、")}<br><span class="tiny">${PA_NOTE[r]}</span></td></tr>`}).join("");
+ hm.innerHTML=`<div style="display:grid;grid-template-columns:1.5fr 1fr;gap:24px;flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:12px"><div class="cap" style="font-size:26px;align-self:flex-start">你們經營的「交通局」，就是紐約與紐澤西港務局</div>
+   <table class="truth"><tr><th>年份</th><th>全班最多部門選的</th><th>被蓋最多「英雄」的</th><th>真實的港務局</th></tr>${rows}</table></div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+   <div class="box" style="padding:18px;text-align:center"><div class="tiny">全班押中「別人眼中的自己」</div><div class="sfx" style="font-size:90px">${Math.round(accAll/Math.max(1,tot)*100)}%</div><div class="tiny">形象（image）＝ 你<b>以為</b>別人怎麼看你，不一定是別人真的怎麼看你</div></div>
+   <div class="box" style="padding:18px;display:flex;flex-direction:column;gap:10px;font-weight:900;font-size:21px;line-height:1.45">
+    <div>① 你是誰，決定你看見什麼問題。<span class="tiny">認同＝濾網</span></div>
+    <div>② 別人怎麼看你，決定你何時行動。<span class="tiny">形象＝鏡子</span></div>
+    <div>③ 你做了什麼，最後改寫你是誰。<span class="tiny">調適＝循環</span></div></div></div></div>`;
+ ctrl.innerHTML=`<button class="btn w" id="go" style="font-size:16px">開新的一局</button>`;ctrl.querySelector("#go").onclick=()=>{if(confirm("清除這局，重新開始？")){H=hNew();hSave();location.href=location.pathname+(LOCAL?"?local=1":"")}};
+}
+/* 代打（手機斷線或沒手機的組） */
+function proxy(gid){const g=G(gid);if(!g)return;
+ if(H.phase==="lobby"){if(!confirm(`移除「${g.name}」？`))return;
+   const cid=connOf[gid];if(cid)net.send(cid,{t:"full",msg:"主持人把這一組移除了。重新整理頁面可以再加入。"});
+   delete connOf[gid];H.groups=H.groups.filter(x=>x.id!==gid);hSave();hRender();return}
+ if(H.phase==="act"){const R=ROUNDS[H.r];let a=null,p=null;
+   const m=document.createElement("div");m.className="modal";m.innerHTML=`<div class="box"><h2>代打：${esc(g.name)}</h2><p class="tiny">請該組口頭告訴你，再點選。</p>
+   <div class="acts" style="grid-template-columns:repeat(4,1fr);margin-top:10px">${R.acts.map((x,i)=>`<button class="act" data-a="${i}">${icon(x.ic)}${x.t}</button>`).join("")}</div>
+   <p style="margin-top:12px;font-weight:900">他們押注的頭條：</p><div class="sts" style="grid-template-columns:repeat(4,1fr)">${STAMPS.map(s=>`<button class="stbtn" data-p="${s.k}"><span class="ic" style="background:${s.c}"></span>${s.t}</button>`).join("")}</div>
+   <div style="display:flex;gap:10px;margin-top:16px"><button class="btn w" id="x">取消</button><button class="btn" id="ok">送出</button></div></div>`;document.body.appendChild(m);
+   m.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{a=+b.dataset.a;m.querySelectorAll("[data-a]").forEach(x=>x.classList.toggle("sel",x===b))});
+   m.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{p=b.dataset.p;m.querySelectorAll("[data-p]").forEach(x=>x.classList.toggle("sel",x===b))});
+   m.querySelector("#x").onclick=()=>m.remove();
+   m.querySelector("#ok").onclick=()=>{if(a===null||!p)return;(H.act[H.r]=H.act[H.r]||{})[gid]={a,pred:p};m.remove();hSave();hRender();checkAll()}}
+ else if(H.phase==="judge"){const R=ROUNDS[H.r];const map={};const others=H.groups.filter(x=>x.id!==gid);
+   const m=document.createElement("div");m.className="modal";m.innerHTML=`<div class="box"><h2>代打：${esc(g.name)} 當記者</h2>
+   ${others.map(o=>`<div class="target" style="border-bottom:2px solid #161616"><div class="tt">${icon(R.acts[H.act[H.r][o.id].a].ic)}<span>${esc(o.name)}：${R.acts[H.act[H.r][o.id].a].t}</span></div>
+   <div class="mini">${STAMPS.map(s=>`<button data-o="${o.id}" data-s="${s.k}">${s.t}</button>`).join("")}</div></div>`).join("")}
+   <div style="display:flex;gap:10px;margin-top:16px"><button class="btn w" id="x">取消</button><button class="btn" id="ok">送出</button></div></div>`;document.body.appendChild(m);
+   m.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{map[b.dataset.o]=b.dataset.s;m.querySelectorAll(`[data-o="${b.dataset.o}"]`).forEach(x=>{const on=x===b;x.classList.toggle("sel",on);x.style.background=on?SK[x.dataset.s].c:"#fff"})});
+   m.querySelector("#x").onclick=()=>m.remove();
+   m.querySelector("#ok").onclick=()=>{if(others.some(o=>!map[o.id]))return;(H.judge[H.r]=H.judge[H.r]||{})[gid]=map;m.remove();hSave();hRender();checkAll()}}
+}
+/* 傳給各組手機的狀態 */
+function broadcast(){if(!net)return;
+ H.groups.forEach(g=>{const id=connOf[g.id];if(!id)return;const R=ROUNDS[H.r];const t=totals();
+   const v={t:"state",phase:H.phase,r:H.r,y:R.y,title:R.t,me:{id:g.id,name:g.name,color:g.color},score:t[g.id]?t[g.id].pts:0};
+   if(H.phase==="act"){v.acts=R.acts.map(a=>({t:a.t,s:a.s,ic:a.ic}));v.done=!!(H.act[H.r]||{})[g.id]}
+   if(H.phase==="judge"){v.targets=H.groups.filter(o=>o.id!==g.id).map(o=>{const a=R.acts[H.act[H.r][o.id].a];return {id:o.id,name:o.name,color:o.color,t:a.t,ic:a.ic}});v.done=!!(H.judge[H.r]||{})[g.id]}
+   if(H.phase==="mirror"){const idx=H.order.indexOf(g.id);if(idx>=0&&idx<=H.mi)v.res=H.res[H.r][g.id];v.mine=R.acts[H.act[H.r][g.id].a].t}
+   if(H.phase==="final"||H.phase==="truth"){const rows=[...H.groups].sort((a,b)=>t[b.id].pts-t[a.id].pts);v.rank=rows.findIndex(x=>x.id===g.id)+1;v.n=H.groups.length;v.tot=t[g.id]}
+   net.send(id,v)})}
+
+/* =====================================================================
+   各組手機
+   ===================================================================== */
+let P={gid:null,st:null,sel:{},jmap:{},key:""},cnet;
+const PKEY="headline-gid-"+ROOM;
+function startPlayer(){
+ document.getElementById("player").style.display="flex";
+ try{P.gid=sessionStorage.getItem(PKEY)}catch(e){}
+ pRender();
+ cnet=ClientNet(ROOM,m=>{
+   if(m.t==="welcome"){P.gid=m.gid;try{sessionStorage.setItem(PKEY,m.gid)}catch(e){};P.pick=null;connNote("");pRender()}
+   if(m.t==="pick"){P.pick=m.options;pRender()}
+   if(m.t==="full"){P.full=m.msg;pRender()}
+   if(m.t==="state"){const prev=P.st;P.st=m;const key=m.phase+"|"+m.r+"|"+(m.done?1:0)+"|"+(m.res?1:0);
+     if(key!==P.key){if(!prev||prev.r!==m.r||prev.phase!==m.phase){P.sel={};P.jmap={};P.step=0}P.key=key;
+       if(m.res&&!(prev&&prev.res))buzz(m.res.acc?[30]:[80,50,80]);pRender()}}
+ },s=>{if(s==="open"){connNote("");cnet.send({t:"hello",gid:P.gid})}
+   if(s==="lost")connNote("連線中斷，重新連線中…");
+   if(s==="err")connNote("找不到主辦，重試中…（確認主辦畫面開著）");
+   if(s==="nolib"){P.nolib=1;pRender()}});
+ setInterval(()=>{if(!P.st&&!P.pick&&cnet)cnet.send({t:"hello",gid:P.gid})},4000);
+}
+function pRender(){
+ const el=document.getElementById("player"),s=P.st;
+ if(P.nolib){el.innerHTML=`<div class="lookup"><div class="sfx">OOPS!</div><p>手機無法載入連線元件。<br>請確認有網路，或請主持人幫你們「代打」。</p></div>`;return}
+ if(P.full){el.innerHTML=`<div class="lookup"><div class="sfx">FULL!</div><p>${esc(P.full)}</p></div>`;return}
+ if(P.pick&&!s){el.innerHTML=`<div class="lookup"><div class="sfx">RE-JOIN</div><p>遊戲已經開始了。<br>你們是哪一組？</p>${P.pick.map(o=>`<button class="btn" data-claim="${o.id}" style="background:${o.color};width:100%">${esc(o.name)}</button>`).join("")}</div>`;
+   el.querySelectorAll("[data-claim]").forEach(b=>b.onclick=()=>cnet.send({t:"hello",claim:b.dataset.claim}));return}
+ if(!s){el.innerHTML=`<div class="lookup"><div class="sfx">HEADLINE!</div><p>連線到主辦中…<br><span class="pnote">房間 ${esc(ROOM)}</span></p></div>`;return}
+ const top=`<div class="ptop" style="background:${s.me.color}"><span>${esc(s.me.name)}</span>${["lobby","final","truth"].includes(s.phase)?"":`<span class="yr">${s.y}</span>`}</div>`;
+ let body="";
+ const look=(big,t)=>`<div class="lookup"><div class="sfx">${big}</div><p>${t}</p><div class="cap">抬頭看大螢幕 ↑</div></div>`;
+ if(s.phase==="lobby")body=`<div class="lookup"><div class="sfx">WELCOME!</div><p>你們這組是交通局的</p><div class="box" style="padding:10px 18px;font-size:30px;font-weight:900;background:${s.me.color};color:#fff">${esc(s.me.name)}</div><p>等主持人開始遊戲。<br><span class="pnote">整組共用這一支手機就好</span></p></div>`;
+ if(s.phase==="event")body=look(s.y+"!","「"+s.title+"」——看看這一年發生了什麼。");
+ if(s.phase==="reveal")body=look("BAM!","所有部門的行動同時翻開了！");
+ if(s.phase==="act"){
+   if(s.done)body=look("SENT!","已送出。等其他部門……");
+   else if(!P.step){body=`<h2>① 這一年，你們部門要做什麼？</h2><p class="pnote">組內討論，選一張</p><div class="acts">${s.acts.map((a,i)=>`<button class="act ${P.sel.a===i?"sel":""}" data-a="${i}">${icon(a.ic)}${a.t}<small>${a.s}</small></button>`).join("")}</div>
+     <button class="btn" id="nx" ${P.sel.a==null?"disabled":""}>下一步：押注 ▶</button>`}
+   else{const a=s.acts[P.sel.a];body=`<div class="box" style="padding:10px;display:flex;align-items:center;gap:10px;font-weight:900"><span style="width:48px">${icon(a.ic)}</span>你們選了：${a.t}</div>
+     <h2>② 你覺得明天報紙會把你們寫成什麼？</h2><p class="pnote">猜中「別人眼中的你」+2 分</p>
+     <div class="sts">${STAMPS.map(x=>`<button class="stbtn ${P.sel.p===x.k?"sel":""}" data-p="${x.k}"><span class="ic" style="background:${x.c}"></span>${x.t}</button>`).join("")}</div>
+     <div style="display:flex;gap:10px"><button class="btn w" id="bk">◀ 改行動</button><button class="btn" id="sd" style="flex:1" ${P.sel.p?"":"disabled"}>送出 ✓</button></div>`}}
+ if(s.phase==="judge"){
+   if(s.done)body=look("PRINTED!","印章都蓋好了。等其他記者……");
+   else{const all=s.targets.every(t=>P.jmap[t.id]);body=`<h2>現在你們是記者！<br>給每個部門蓋一個頭條印章。</h2>
+     ${s.targets.map(t=>`<div class="box target"><div class="tt">${icon(t.ic)}<span><span style="color:${t.color}">${esc(t.name)}</span><br>${t.t}</span></div>
+      <div class="mini">${STAMPS.map(x=>`<button data-o="${t.id}" data-s="${x.k}" class="${P.jmap[t.id]===x.k?"sel":""}" style="${P.jmap[t.id]===x.k?"background:"+x.c:""}">${x.t}</button>`).join("")}</div></div>`).join("")}
+     <button class="btn" id="js" ${all?"":"disabled"}>送去印刷 ✓</button>`}}
+ if(s.phase==="mirror"){
+   if(!s.res)body=look("MIRROR…","主持人正在一組一組揭曉。<br>你們做了：「"+esc(s.mine||"")+"」");
+   else{const x=s.res;body=`<div class="box res"><div>${mirror(x.acc?0:3,150,x.acc)}</div><div class="sfx" style="color:${x.acc?"var(--yel)":"var(--red)"}">${x.acc?"SHINE!":"KRAK!"}</div>
+     <p style="font-weight:900;font-size:18px">別人把你們寫成：${x.top.length?x.top.map(k=>`<span class="stamp" style="color:${SK[k].c};width:58px;height:58px;font-size:16px;margin:0 3px">${SK[k].t}</span>`).join(""):"（沒人注意）"}</p>
+     <p style="font-weight:700">你們以為：<b>${SK[x.pred].t}</b></p><p class="cap">本回合 +${x.pts}　·　累計 ${s.score}</p></div>${look("","等下一年")}`}}
+ if(s.phase==="final"||s.phase==="truth"){const t=s.tot;body=`<div class="lookup"><div class="sfx">#${s.rank}</div><p>${esc(s.me.name)}　${s.n} 組中第 ${s.rank} 名</p>
+   <div class="box" style="padding:14px 18px;font-weight:900;line-height:1.7">總分 ${t.pts}<br>猜中別人眼中的自己 ${t.acc}/5 次<br>拿到「英雄」${t.hero} 次 · 鏡子裂了 ${t.cracks} 次</div>
+   ${s.phase==="truth"?`<div class="cap">你們經營的交通局，就是紐約港務局。<br>答案在大螢幕上 ↑</div>`:`<div class="cap">真相，留到報告最後。</div>`}</div>`}
+ el.innerHTML=top+`<div class="pbody">${body}</div>`;
+ // bind
+ el.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{P.sel.a=+b.dataset.a;buzz(8);pRender()});
+ const nx=el.querySelector("#nx");if(nx)nx.onclick=()=>{P.step=1;pRender()};
+ const bk=el.querySelector("#bk");if(bk)bk.onclick=()=>{P.step=0;pRender()};
+ el.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{P.sel.p=b.dataset.p;buzz(8);pRender()});
+ const sd=el.querySelector("#sd");if(sd)sd.onclick=()=>{cnet.send({t:"act",r:s.r,a:P.sel.a,pred:P.sel.p});buzz(20);sd.disabled=true;sd.textContent="送出中…"};
+ el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{P.jmap[b.dataset.o]=b.dataset.s;buzz(8);const y=scrollY;pRender();scrollTo(0,y)});
+ const js=el.querySelector("#js");if(js)js.onclick=()=>{cnet.send({t:"judge",r:s.r,map:P.jmap});buzz(20);js.disabled=true;js.textContent="印刷中…"};
+}
+
+if(IS_HOST)startHost();else startPlayer();
+</script>
+</body>
+</html>
