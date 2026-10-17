@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>頭條！鏡中人 HEADLINE!</title>
+<title>北車大廳・鏡中人 HEADLINE!</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
@@ -246,6 +246,100 @@ table.truth th{background:var(--ink);color:var(--yel);font-size:18px}
 .pgdots{display:flex;gap:8px;align-items:center}.pgdots i{width:14px;height:14px;border:3px solid #161616;border-radius:50%;background:#fff}.pgdots i.on{background:var(--red)}
 .mirrorstage{position:relative}
 .bignews .card{background:var(--yel);transform:rotate(-1.5deg)}.bignews .card h1{font-size:68px}.bignews .rule{background:var(--red);color:#fff}
+/* v9 北車大廳 */
+.frames{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.frames.big{grid-template-columns:repeat(4,1fr);gap:18px;flex:1}
+.fcard{position:relative;background:var(--paper);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font-size:20px}
+.frames.big .fcard{font-size:30px;padding:22px 16px;justify-content:center}
+.fcard .art{width:90px}.frames.big .fcard .art{width:130px}
+.fcard small{font-size:15px;font-weight:700;color:#555;line-height:1.4}.frames.big .fcard small{font-size:19px}
+.fcard.locked{background:#D9D4C8;color:#8a857b;box-shadow:none;border-style:dashed}.fcard.locked .art{filter:grayscale(1);opacity:.35}
+.fc{position:absolute;right:-12px;top:-12px;background:var(--red);color:#fff;border:3px solid var(--ink);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--comic);font-size:28px}
+.framehead{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:6px}
+.fbig{display:flex;align-items:center;gap:10px;background:#161616;color:var(--yel);padding:4px 18px 4px 8px;border:4px solid #161616;font-size:34px;font-weight:900}.fbig svg{width:56px;height:56px;background:#fff;border-radius:6px}
+.fvotes{display:flex;gap:8px;flex-wrap:wrap}
+.tokbar{position:relative;height:30px;border:3px solid var(--ink);background:#fff;margin-top:auto;width:100%}.tokbar i{position:absolute;left:0;top:0;bottom:0;background:var(--yel)}.tokbar b{position:relative;font-size:18px;line-height:24px;padding-left:6px}
+.ocard.winc{background:#FFF3B0;outline:6px solid var(--red)}.ocard.dim{opacity:.45}
+.judgeview{flex:1;display:flex;gap:40px;align-items:center;justify-content:center}
+.jsteps{display:flex;flex-direction:column;gap:18px;max-width:900px}
+.jstep{display:flex;gap:18px;align-items:center;padding:18px 22px;font-size:26px;font-weight:700}.jstep>b{font-family:var(--comic);font-size:54px;color:var(--red)}
+.jstep .rx{font-size:44px;white-space:nowrap}.jstep .outs{display:flex;flex-wrap:wrap;gap:6px;max-width:330px}
+.resgrid{flex:1;display:grid;grid-template-columns:1fr 420px 1fr;gap:26px;min-height:0}
+.rcol{display:flex;flex-direction:column;gap:14px}.rcol.mid{align-items:center;justify-content:center;gap:10px}
+.oreacts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.oreact{display:flex;align-items:center;gap:8px;padding:10px 12px}.oreact .oe{font-size:34px}.oreact .on{flex:1;font-weight:900;font-size:21px}.oreact .ov{font-size:44px}
+.cnts{display:flex;gap:16px;font-size:34px;font-weight:900}.cnts span{padding:2px 12px;border:3px solid transparent}.cnts .maj{border-color:var(--ink);background:var(--yel)}
+.preds{display:flex;flex-direction:column;gap:8px}
+.prow{display:flex;align-items:center;gap:10px;background:var(--paper);border:3px solid var(--ink);padding:8px 12px;font-weight:900;font-size:20px}
+.prow .dot{width:18px;height:18px;border-radius:50%;border:3px solid var(--ink)}.prow .pn{flex:1}.prow .ok{color:var(--green)}.prow .ng{color:var(--red)}.prow b{font-family:var(--comic);font-size:28px;min-width:44px;text-align:right}
+.tracks{display:flex;flex-direction:column;gap:6px;width:100%}
+.trk{display:grid;grid-template-columns:120px 1fr 54px;align-items:center;gap:8px;font-weight:900;font-size:16px}
+.trk .bar{height:16px;border:3px solid var(--ink);background:#fff;position:relative}.trk .bar i{position:absolute;left:0;top:0;bottom:0}
+.trk em{font-style:normal;color:var(--red);font-size:14px;margin-left:4px}
+.idmini{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:900;background:#fff;border:3px solid var(--ink);padding:4px 10px}
+.idmini span{display:flex;align-items:center;gap:4px}.idmini i{width:12px;height:12px;border-radius:50%;display:inline-block}.idmini b{font-family:var(--comic);font-size:18px}
+.idmini .img{background:var(--yel);padding:0 6px}.idmini .img.neg{background:#FFC9C2}
+.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;width:100%;max-width:1700px}
+.jcol{background:var(--paper);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:12px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.jcol .y{font-family:var(--comic);font-size:36px}.jcol .s{font-size:15px;font-weight:900;color:#555}.jcol .w{font-size:20px;font-weight:900}
+.jcol .trk{grid-template-columns:80px 1fr 30px;font-size:12px}.jcol .im{font-weight:900;background:var(--yel);padding:2px 8px;align-self:flex-start}.jcol .im.neg{background:#FFC9C2}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.pgrid .btn{font-size:16px;padding:10px}
+/* phone */
+.fopts{display:flex;flex-direction:column;gap:10px}
+.fbtn{display:flex;gap:12px;align-items:center;text-align:left;background:#fff;border:4px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:10px 12px}
+.fbtn .ic{width:52px;flex:none}.fbtn b{font-size:19px;display:block}.fbtn small{font-size:13px;font-weight:700;color:#555;display:block;line-height:1.35}
+.fbtn.sel{background:var(--yel)}.fbtn[disabled]{background:#E3DED3;border-style:dashed;box-shadow:none;color:#8a857b}.fbtn[disabled] .ic{opacity:.3;filter:grayscale(1)}
+.toks{display:flex;flex-direction:column;gap:10px}
+.tok{display:flex;gap:10px;align-items:center;padding:8px 10px}.tok .ic{width:46px;flex:none}.tok .tt{flex:1;display:flex;flex-direction:column;gap:2px}.tok .tt b{font-size:17px}.tok .tt small{font-size:12px;color:#555;font-weight:700}
+.tok .st{display:flex;align-items:center;gap:6px}.tok .st button{width:38px;height:38px;border:3px solid var(--ink);background:#fff;font-size:22px;font-weight:900}.tok .st button[disabled]{opacity:.3}.tok .st b{font-family:var(--comic);font-size:26px;width:22px;text-align:center}
+.em{font-size:12px;font-weight:900;align-self:flex-start;padding:0 6px;border:2px solid var(--ink)}.em.up{background:#C9F0D6}.em.dn{background:#FFC9C2}
+.outcard{padding:14px;background:#2E6FD8;color:#fff}
+.stbtn.big{flex-direction:column;justify-content:center;gap:2px;font-size:16px;font-weight:900;padding:12px 4px}
+.phase{white-space:nowrap}.yearchip{white-space:nowrap}.idmini{flex-wrap:nowrap;white-space:nowrap}
+.evpage{flex:1;display:grid;grid-template-columns:1.05fr 1fr;gap:30px;min-height:0}
+.evscene{position:relative;display:flex;overflow:hidden}.evscene .scene{flex:1;display:flex;align-items:center;justify-content:center}.evscene .scene svg{width:100%;height:100%}
+.evtag{position:absolute;right:10px;bottom:10px;background:#fff}
+.evtext{display:flex;flex-direction:column;gap:18px;min-height:0}
+.evtitle{font-size:72px;line-height:1.1;font-weight:900;color:var(--ink)}
+.evrecap{padding:20px 24px;font-size:28px;font-weight:700;line-height:1.55}
+.evquote .bubble{font-size:24px}.evquote .who{font-weight:900;margin:30px 0 0 20px}
+.acards{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;min-height:0;padding-top:16px}
+.acard{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:14px 12px 12px}
+.acard .art{width:96px}.acard .t{font-size:24px;font-weight:900;line-height:1.25}.acard .tiny{font-size:15px}
+.ftag{align-self:stretch;color:#fff;font-weight:900;font-size:17px;padding:3px 6px;border:3px solid #161616}
+.gain{display:flex;flex-direction:column;gap:6px;margin-top:auto;align-self:stretch;text-align:left}
+.gain>div{display:flex;flex-wrap:wrap;gap:4px;align-items:center}.gain b{font-size:14px;padding:1px 6px;border:2px solid #161616}.gain .gu{background:#C9F0D6}.gain .gd{background:#FFC9C2}
+.dchip{color:#fff;font-size:13px;font-weight:900;padding:1px 6px;border-radius:3px}
+.acard.locked{background:#DDD8CC;box-shadow:none;border-style:dashed;color:#8a857b}.acard.locked .art{filter:grayscale(1);opacity:.35}
+.lockwhy{margin-top:auto;font-size:15px;font-weight:900;color:#8a857b;line-height:1.4}
+.vcount{font-size:22px;font-weight:900;display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap}.vcount b{font-family:var(--comic);font-size:34px}
+.acard.winc{background:#FFF3B0;outline:6px solid var(--red)}.acard.dim{opacity:.4}
+.judgeview .acard{width:340px}
+.pgrid.three{grid-template-columns:1fr 1fr 1fr}
+.vopts{display:flex;flex-direction:column;gap:10px}
+.vbtn{display:flex;gap:10px;align-items:flex-start;text-align:left;background:#fff;border:4px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:10px;width:100%;touch-action:manipulation}
+.vbtn .ic{width:50px;flex:none}.vbtn .tt{display:flex;flex-direction:column;gap:3px;flex:1}.vbtn b{font-size:18px}.vbtn small{font-size:12px;font-weight:700;color:#555}
+.vbtn .ft{align-self:flex-start;color:#fff;font-size:12px;font-weight:900;padding:1px 6px;border:2px solid #161616}
+.vbtn .who2{color:#1d6b38}.vbtn .who2.dn{color:#b3261e}.vbtn .lockwhy2{color:#8a857b}
+.vbtn.sel{background:var(--yel)}.vbtn[disabled]{background:#E3DED3;border-style:dashed;box-shadow:none;color:#8a857b}.vbtn[disabled] .ic{opacity:.3;filter:grayscale(1)}
+.rbtns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.rbtn{display:flex;flex-direction:column;align-items:center;gap:2px;background:#fff;border:4px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:10px 4px;font-weight:900;font-size:16px;touch-action:manipulation}
+.rbtn span{font-size:36px;line-height:1.1}.rbtn.sel{background:var(--yel);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.ctrl .btn{white-space:nowrap}
+.acard .gain b{font-size:16px}.acard .dchip{font-size:16px;padding:2px 7px}.acard .art{width:120px}.acard .t{font-size:26px}.acard .tiny{font-size:17px}.acard .ftag{font-size:19px}
+.hhead{gap:10px}.hhead .idmini{font-size:13px}
+.vhead{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:stretch}
+.vscene{height:190px;display:flex;overflow:hidden}.vscene .scene{flex:1;display:flex;align-items:center;justify-content:center}.vscene .scene svg{width:100%;height:100%}
+.vtext{display:flex;flex-direction:column;gap:10px;min-width:0}.vtext .qtitle{font-size:36px}
+.vrecap{font-size:22px;font-weight:700;line-height:1.5;background:#fff;border:4px solid #161616;padding:10px 16px}
+.vbtn .em{font-size:13px;font-weight:900;color:#555}.vbtn .em.up{color:#1d6b38}
+.modal .rbtns{margin-top:6px}
+@property --ba{syntax:'<angle>';inherits:false;initial-value:0deg}
+.burstbg{background:repeating-conic-gradient(from var(--ba) at 50% 50%,var(--c1) 0deg 5deg,var(--c2) 5deg 10deg);animation:bspin 80s linear infinite}
+.burstbg svg{display:none}
+@keyframes bspin{to{--ba:360deg}}
+.idfx{font-size:15px;font-weight:900;background:#fff;border:2px dashed #161616;padding:1px 8px}
+
 </style>
 </head>
 <body>
@@ -254,7 +348,7 @@ table.truth th{background:var(--ink);color:var(--yel);font-size:18px}
 <div class="conn" id="conn"></div>
 <script>
 /* =====================================================================
-   頭條！鏡中人 — 一個檔案，兩種身份
+   HEADLINE! 北車大廳・鏡中人 — 一個檔案，兩種身份
    · 沒有 ?room= → 主辦大螢幕（投影）
    · 有 ?room=XXXX → 各組手機
    連線：PeerJS（點對點）；?local=1 時改用同一瀏覽器內的 BroadcastChannel（測試用）
@@ -262,78 +356,94 @@ table.truth th{background:var(--ink);color:var(--yel);font-size:18px}
 const Q=new URLSearchParams(location.search);
 const ROOM=Q.get("room"), LOCAL=Q.has("local");
 const IS_HOST=!ROOM;
-const PEER_PREFIX="headline-mirror-";
+const PEER_PREFIX="headline-hall-";
 const PEER_OPTS={debug:0,config:{iceServers:[{urls:"stun:stun.l.google.com:19302"},{urls:"stun:stun1.l.google.com:19302"}]}};
+const VER="v11";
 
 /* ---------------- 遊戲資料 ---------------- */
+const GOALS={rail:"鐵路本業",order:"秩序動線",money:"商場收入",media:"媒體聲量",care:"讓人有地方去",rider:"旅客觀感"};
 const DEPTS=[
- {n:"高層辦公室",c:"#E23B2E",tag:"biz",ag:"守住交通本業",agd:"我們是全國最好的交通機構。社會問題？那是市政府的工作，別把我們拖下水。"},
- {n:"專案小組",c:"#2E6FD8",tag:"care",ag:"讓人有地方去",agd:"我們每天面對這些人。趕走不是辦法，要讓他們真的有地方去。"},
- {n:"公關室",c:"#F29A1F",tag:"image",ag:"明天上報要好看",agd:"做了什麼不重要，報紙怎麼寫才重要。"},
- {n:"警察隊",c:"#3B3B3B",tag:"order",ag:"維持秩序",agd:"規定就是規定。車站要有秩序，我們要能依法處理。"},
- {n:"預算室",c:"#8E44AD",tag:"cost",ag:"能省則省",agd:"錢是乘客的票錢，每一分都該花在交通上，不是社福。"},
- {n:"客服中心",c:"#2C9A55",tag:"rider",ag:"乘客第一",agd:"每天接投訴電話的是我們。乘客要覺得安全、敢一個人進站。"}];
-const AGENDA_BONUS=1;
-const EVENTS=[
- {k:"coldx2",y:[1987,1988],t:"警察工會的公關戰",d:"工會找了公關公司放負面新聞。本回合每個「冷血」章 −4（加倍）！",src:"論文：警察工會與管理層談不攏合約，聘請公關公司「散布關於港務局的故事」。"},
- {k:"herohalf",y:[1987,1988],t:"好事沒人報導",d:"你們偷偷資助了 500 份感恩節餐點，報紙卻隻字未提。本回合「英雄」章只 +1。",src:"論文：港務局資助了 400–500 份感恩節餐點，媒體沒有報導，反而批評他們冷酷。"},
- {k:"coldsnap",y:[1987],t:"寒流來襲：華氏 15 度",d:"符合「讓人有地方去」的行動，自動多 1 個英雄章；符合「維持秩序」的行動，自動多 1 個冷血章。",src:"論文：員工說「氣溫降到華氏 15 度，憑良心，我們怎麼能把他們趕出去？」"},
- {k:"agenda2",y:[1985],t:"新董事上任：回歸本業",d:"新任執行董事要各部門顧好自己的本分。本回合 ★ 部門立場 +2。",src:"論文：1986 年新任執行董事主張「回歸基本業務」。"},
- {k:"big",y:[1989],big:1,t:"全國週刊：〈42 街的噩夢〉",d:"全國都在看你們。本回合所有印章的分數加倍（英雄 +4、無能 −2、冷血 −4），押中自己的頭條 +4。最後一年，翻盤或崩盤就在這裡。",src:"論文：1989 年 2 月《新聞週刊》刊出〈42 街的噩夢〉，港務局第一次登上全國版面。"},
- {k:"leakback",y:[1988],t:"沒有人要接手",d:"市政府答應接手又反悔，大家開始互相指責。每組補回一張 📰 爆料卡！",src:"論文：市府人力資源管理局非正式同意接管接待中心，後來反悔。"}];
-const EK=Object.fromEntries(EVENTS.map(e=>[e.k,e]));
-function burst(c1,c2){let r="";for(let i=0;i<36;i++){const a=i*10*Math.PI/180,b=(i*10+5)*Math.PI/180;r+=`<path d="M1200 1200 L${1200+1700*Math.cos(a)} ${1200+1700*Math.sin(a)} L${1200+1700*Math.cos(b)} ${1200+1700*Math.sin(b)}Z" fill="${c2}"/>`}
- return `<div class="burstbg"><svg viewBox="0 0 2400 2400"><rect width="2400" height="2400" fill="${c1}"/>${r}</svg></div>`}
-function newsroom(){return `<svg viewBox="0 0 640 400"><rect width="640" height="400" fill="#2E6FD8"/>
- <g opacity=".25" fill="#fff">${Array.from({length:8},(_,i)=>`<rect x="${20+i*80}" y="40" width="54" height="${80+((i*37)%90)}"/>`).join("")}</g>
- <rect x="0" y="210" width="640" height="190" fill="#7CC6F0"/>
- <rect x="380" y="40" width="220" height="140" fill="#FFF8E8" stroke="#161616" stroke-width="6"/><text x="490" y="95" text-anchor="middle" font-size="30" font-weight="900" fill="#E23B2E">頭條！</text>
- <rect x="402" y="112" width="176" height="10" fill="#161616"/><rect x="402" y="132" width="140" height="10" fill="#161616"/><rect x="402" y="152" width="160" height="10" fill="#161616"/>
- <circle cx="210" cy="150" r="58" fill="#F6C9A0" stroke="#161616" stroke-width="6"/><path d="M152 140 Q160 80 210 84 Q262 80 268 140 Q250 108 210 112 Q172 108 152 140Z" fill="#161616"/>
- <circle cx="190" cy="150" r="7" fill="#161616"/><circle cx="232" cy="150" r="7" fill="#161616"/><ellipse cx="211" cy="182" rx="16" ry="11" fill="#161616"/>
- <path d="M120 300 Q130 220 210 214 Q290 220 300 300Z" fill="#E23B2E" stroke="#161616" stroke-width="6"/><path d="M196 216 L210 262 L224 216Z" fill="#fff" stroke="#161616" stroke-width="4"/>
- <rect x="40" y="280" width="560" height="120" fill="#FFD23F" stroke="#161616" stroke-width="6"/><text x="320" y="355" text-anchor="middle" font-size="44" font-weight="900" fill="#161616" font-family="Bangers,Impact,sans-serif" letter-spacing="3">CHANNEL 8 · LIVE</text>
- <rect x="300" y="236" width="18" height="50" fill="#161616"/><circle cx="309" cy="232" r="14" fill="#555" stroke="#161616" stroke-width="5"/>
- <circle cx="40" cy="30" r="12" fill="#E23B2E"/><text x="60" y="40" font-size="28" font-weight="900" fill="#fff" font-family="Bangers,Impact,sans-serif">LIVE</text></svg>`}
-function evStrip(){const e=curEv();return e?`<div class="evstrip"><b>BREAKING</b>${esc(e.t)}<span>· ${esc(e.d)}</span></div>`:""}
-const STAMPS=[{k:"hero",t:"英雄",c:"#2E6FD8",v:2,h:"挺身而出！{d}成了車站英雄"},{k:"show",t:"作秀",c:"#E23B2E",v:0,h:"作秀！{d}只會擺拍"},
-  {k:"inept",t:"無能",c:"#D98A00",v:-1,h:"束手無策？{d}一事無成"},{k:"cold",t:"冷血",c:"#1F8FC4",v:-2,h:"冷血！{d}把人推進寒夜"}];
-const SK=Object.fromEntries(STAMPS.map(s=>[s.k,s]));
-const ACC_BONUS=2;
-const ROUNDS=[
- {y:1982,t:"新大廳的不速之客",recap:"剛花 2.26 億美元翻修的巴士總站，大廳睡滿了無家可歸的人。乘客投訴不敢進站。",
-  p:[{cap:"1982 年・紐約",scene:"lobby",sub:"巴士總站剛翻修完，金碧輝煌。"},
-     {bubble:"花了這麼多錢，大廳卻睡滿了人？我不敢一個人進站！",who:"—— 一位乘客"},
-     {sfx:"嘆——",sub:"城裡的廉價旅館一間間關門，越來越多人無處可去。"}],
-  acts:[{t:"派警察依法請離",s:"依《反遊蕩法》處理",ic:"police",tg:["order","rider"],pa:1},{t:"移走候車長椅",s:"讓大廳「不好待」",ic:"bench",tg:["cost"]},
-        {t:"找社福機構外展",s:"把人送去庇護所",ic:"heart",tg:["care","image"]},{t:"先觀望",s:"這是市政府的事",ic:"zzz",tg:["biz","cost"]}]},
- {y:1985,t:"旗艦淪陷",recap:"他們出現在世界貿易中心和機場。新任執行董事說：「我們是企業，不是社福機構。」",
-  p:[{cap:"1985 年",scene:"spread",sub:"從巴士總站，到世貿中心，再到機場。"},
-     {bubble:"我們要像一家企業一樣運作。我們不是社福機構！",who:"—— 新上任的執行董事"},
-     {sfx:"淪陷！",sub:"問題第一次寫進了公司的商業計畫。"}],
-  acts:[{t:"夜間封閉候車區",s:"晚上只留售票區",ic:"fence",tg:["order","cost"],pa:1},{t:"外包給志工團",s:"錢我們出，社工他們出",ic:"hands",tg:["care","biz"],pa:1},
-        {t:"貼海報教育乘客",s:"「認識車站裡的遊民」",ic:"poster",tg:["rider","image"],pa:1},{t:"成立自己的社服部門",s:"聘社工，自己來",ic:"house",tg:["care"]}]},
- {y:1987,t:"寒夜",recap:"反遊蕩法廢除、快克湧入。報紙頭版罵你們是「小氣財神」。今晚華氏 15 度，候車室有 300 人。",
-  p:[{cap:"1987 年・聖誕節前",scene:"night",sub:"有些夜晚，設施裡超過 1,000 人。"},
-     {news:"聖誕節前夕　交通局化身「小氣財神」",who:"—— 地方報紙頭版"},
-     {sfx:"華氏 15°",sub:"今晚很冷。警察工會不想再趕人了。"}],
-  acts:[{t:"照規定清場",s:"規定就是規定",ic:"door",tg:["order","rider"]},{t:"寒夜讓他們留下",s:"候車室的燈不關",ic:"lamp",tg:["care"],pa:1},
-        {t:"發聲明澄清",s:"公布我們做過的善事",ic:"mic",tg:["image","cost"]},{t:"成立專案小組研究",s:"還資助員工專職研究",ic:"book",tg:["biz","care"],pa:1}]},
- {y:1988,t:"沒有人接電話",recap:"58 億美元大計畫的好新聞被蓋過。市政府答應接手接待中心，十個月後反悔。沒有人要接。",
-  p:[{cap:"1988 年",scene:"phone",sub:"好新聞全被壞消息蓋過。"},
-     {bubble:"接待中心？好，營運我們接手……（十個月後）抱歉，我們不接了。",who:"—— 市政府"},
-     {sfx:"嘟——嘟——",sub:"沒有人要接手。"}],
-  acts:[{t:"自己出錢蓋接待中心",s:"約 250 萬美元，交社福營運",ic:"house",tg:["care","rider"],pa:1},{t:"加派巡邏人力",s:"更多巡邏、更多規定",ic:"police",tg:["order"]},
-        {t:"砸錢打形象廣告",s:"讓大家看見我們的好",ic:"tv",tg:["image"]},{t:"繼續等市政府",s:"這本來就不是我們的事",ic:"clock",tg:["biz","cost"]}]},
- {y:1989,t:"42 街的噩夢",recap:"全國週刊刊出〈42 街的噩夢〉。但每週投訴信從 7 封降到 1 封，其他交通機構紛紛來取經。",
-  p:[{cap:"1989 年 2 月 27 日",scene:"newsstand",sub:"全國週刊：〈42 街的噩夢〉。"},
-     {bubble:"等等……每週投訴信從 7 封降到 1 封了？",who:"—— 祕書"},
-     {sfx:"取經！",sub:"其他交通機構紛紛來問：你們怎麼做到的？"}],
-  acts:[{t:"開記者會宣布成果",s:"讓大家知道是我們",ic:"mic",tg:["image"]},{t:"把功勞讓給社福夥伴",s:"我們退到幕後",ic:"trophy",tg:["care","cost"],pa:1},
-        {t:"擴大到機場",s:"機場也做外展＋巡邏",ic:"flag",tg:["order","rider"]},{t:"見好就收",s:"回到交通本業",ic:"exit",tg:["biz","cost"]}]}
-];
-const PA_NOTE=["警察依法驅離，送往庇護所","封閉區域、移長椅、外包外展、貼海報","寒夜不趕人；成立專案小組＋研究獎學金","花約 250 萬美元蓋兩個接待中心","不居功，讓社福團體領功；私下分享經驗"];
+ {n:"董事長室",c:"#E23B2E",goal:"rail",ag:"守住鐵路本業",agd:"準點、安全、公司要賺錢。大廳的事不要拖累鐵路本業。"},
+ {n:"站務處",c:"#3B3B3B",goal:"order",ag:"秩序與動線",agd:"每天幾十萬人進出，動線要順、站區要有秩序。"},
+ {n:"資產開發處",c:"#8E44AD",goal:"money",ag:"商場收入",agd:"大廳是全台最貴的地段之一，人潮要變成租金。"},
+ {n:"公關室",c:"#F29A1F",goal:"media",ag:"媒體聲量",agd:"做了什麼是一回事，新聞和網路怎麼寫才是重點。"},
+ {n:"永續ESG小組",c:"#2E6FD8",goal:"care",ag:"讓人有地方去",agd:"大廳上的人不會因為被趕走就消失，要讓他們有地方去。"},
+ {n:"旅客服務處",c:"#2C9A55",goal:"rider",ag:"旅客觀感",agd:"接投訴電話的是我們。旅客要覺得舒服、安全。"}];
+const OUTS=[
+ {n:"通勤旅客",e:"🧳",d:"我每天經過北車：要走得順、有地方坐、覺得安全。"},
+ {n:"移工團體",e:"🤝",d:"假日的大廳，是我們少數能和同鄉聚會的公共空間。"},
+ {n:"街友權益團體",e:"🏠",d:"趕人不是辦法。要有地方去，也要有尊嚴。"},
+ {n:"市議員",e:"🎤",d:"選民在看：車站要乾淨，也不能被罵冷血。"},
+ {n:"媒體記者",e:"📸",d:"有衝突、有畫面，才有新聞。"},
+ {n:"商場業者",e:"🛍️",d:"人潮要變錢潮，大廳要好逛、好看。"}];
+const FRAMES={
+ manage:{n:"管理問題",c:"#3B3B3B",d:"有人妨礙車站運作，用規定和設施處理",lock:""},
+ biz:{n:"商業問題",c:"#8E44AD",d:"大廳是資產，要讓它產生價值",lock:"要等台鐵把自己當成「一家公司」"},
+ image:{n:"形象問題",c:"#F29A1F",d:"重點是外界怎麼看我們",lock:"台鐵還沒被外界罵過：被罵一次（形象變化是負的）就解鎖"},
+ public:{n:"公共空間問題",c:"#2E6FD8",d:"大廳上的人，也是我們要照顧的",lock:"「這不像我們」：要先選過讓「公共空間守門人」+1 的做法"},
+ none:{n:"不處理",c:"#999",d:"",lock:""}};
+const FK=["manage","biz","image","public"];
+const TRACKS={T:{n:"交通專業",c:"#3B3B3B"},B:{n:"企業經營",c:"#8E44AD"},P:{n:"公共空間守門人",c:"#2E6FD8"}};
+const REACT={up:{e:"👍",t:"讚"},meh:{e:"😐",t:"無感"},down:{e:"👎",t:"罵"}};
+const ID0={T:3,B:1,P:0};
 
+const ROUNDS=[
+{y:2014,t:"候車椅之爭",scene:"lobby",cap:"2014 年・台北車站大廳",
+ recap:"夜裡，大廳和候車區睡滿無家可歸的人。旅客抱怨沒位子坐、不敢靠近。隔壁的基隆站，剛把候車座椅全部撤掉。",
+ bubble:"位子都被睡走了，我等車只能站著。",who:"—— 一位通勤旅客",
+ acts:[
+  {t:"請鐵路警察勸離",s:"依規定請他們離開",ic:"police",fr:"manage",own:["order"],id:{T:1}},
+  {t:"減少候車座椅",s:"讓大廳「不好待」",ic:"bench",fr:"manage",own:["rail"],id:{T:1}},
+  {t:"加強照明與巡邏",s:"讓旅客安心",ic:"lamp",fr:"manage",own:["rider"],id:{T:1}},
+  {t:"轉介社會局外展",s:"請社工協助安置",ic:"heart",fr:"public",own:["care"],id:{P:1}},
+  {t:"維持現狀",s:"這不是鐵路的事",ic:"zzz",fr:"none",own:[],id:{}}],
+ real:"報導指出，北車和國光客運減少了候車座位；同年基隆站撤掉候車椅。",pa:"1982–84　當成治安問題：警察驅離、移走長椅"},
+{y:2017,t:"限期清除公告",scene:"notice",cap:"2017 年 3 月・北車南二門",
+ recap:"站方在街友聚集處貼出公告：4 月 1 日前清走個人物品，否則視為廢棄物。人權團體要在南二門開記者會。",
+ bubble:"把我們的家當當垃圾？旅客的遺失物你們都會保管！",who:"—— 人權團體記者會",
+ acts:[
+  {t:"照公告清除",s:"規定就是規定",ic:"door",fr:"manage",own:["order"],id:{T:1}},
+  {t:"暫緩清除",s:"改口：只是「移走」，不是丟掉",ic:"clock",fr:"image",own:["rail"],id:{P:1}},
+  {t:"發新聞稿說明",s:"強調一切依法處理",ic:"mic",fr:"image",own:["media"],id:{T:1}},
+  {t:"和民團設寄物區",s:"指定地點放家當",ic:"hands",fr:"public",own:["care"],id:{P:1}},
+  {t:"維持現狀",s:"等風頭過去",ic:"zzz",fr:"none",own:[],id:{}}],
+ real:"暫緩清除。站長說「廢棄物」只是用語，物品會移到別處，但不會為街友設置設施。",pa:"1985–86　公事公辦，第一次被外界照了鏡子"},
+{y:2020,t:"禁坐令",scene:"checker",cap:"2020 年・疫情趨緩",scold:1,
+ recap:"疫情期間，大廳禁止席地而坐。疫情趨緩後，台鐵想乾脆永久禁坐。網路吵翻，移工和民團發起「坐爆北車」。",
+ bubble:"假日我們只有這裡可以和朋友見面。",who:"—— 一位移工",
+ acts:[
+  {t:"永久禁坐",s:"大廳只給人走",ic:"fence",fr:"manage",own:["order"],id:{T:1}},
+  {t:"開座談會",s:"找移工、民團、旅客來談",ic:"book",fr:"image",own:["media"],id:{P:1}},
+  {t:"貼笑臉貼紙",s:"開放公共使用",ic:"smile",fr:"public",own:["care"],id:{P:2}},
+  {t:"改設付費座位",s:"想坐就消費",ic:"buck",fr:"biz",own:["money"],id:{B:1}},
+  {t:"維持現狀",s:"繼續禁坐，不表態",ic:"zzz",fr:"none",own:[],id:{}}],
+ real:"開了多場座談，7 月在大廳地板貼上笑臉貼紙，改走「公共空間、公共使用、公民參與」。",pa:"1987　不只是商業問題，也是道德問題"},
+{y:2024,t:"公司化",scene:"corp",cap:"2024 年 1 月 1 日",auto:{B:2},
+ recap:"台鐵局改制為國營的台鐵公司。新的口號是：要像企業一樣經營，大廳商場招商是重點。（企業經營 +2）",
+ bubble:"我們現在是一家公司了，要自負盈虧！",who:"—— 新公司的主管會議",
+ acts:[
+  {t:"本業優先",s:"準點、安全最重要",ic:"flag",fr:"manage",own:["rail"],id:{T:1}},
+  {t:"大廳招商優先",s:"把人潮變成租金",ic:"tv",fr:"biz",own:["money"],id:{B:1}},
+  {t:"寫進 ESG 報告",s:"讓大家看見我們的責任",ic:"poster",fr:"image",own:["media"],id:{P:1}},
+  {t:"和社會局簽夜間外展",s:"有人來，就有人接",ic:"hands",fr:"public",own:["care"],id:{P:1}},
+  {t:"維持現狀",s:"先把公司顧好",ic:"zzz",fr:"none",own:[],id:{}}],
+ real:"台鐵局改制為國營台鐵公司。大廳延續 2020 年和各方取得共識的管理方式。",pa:"1985　新執行董事：「我們要像一家企業一樣運作」"},
+{y:2026,t:"黑白格退場",scene:"reno",cap:"2026 年 8 月",big:1,
+ recap:"新光三越投資超過 10 億翻新大廳，黑白格地板走入歷史。民團擔心禁坐令再起；董事長說，遊民問題涉及市府和鐵路警察，依「默契」維持秩序。全國都在看：這一年形象變化算兩倍。",
+ bubble:"翻新之後，我們還能坐在這裡嗎？",who:"—— 民團",
+ acts:[
+  {t:"翻新後恢復禁坐",s:"新大廳，新規矩",ic:"fence",fr:"manage",own:["order"],id:{T:1}},
+  {t:"大廳變活動廣告空間",s:"600 吋螢幕天天有活動",ic:"tv",fr:"biz",own:["money"],id:{B:1}},
+  {t:"成立大廳使用委員會",s:"民團、移工、旅客一起管",ic:"book",fr:"image",own:["rider"],id:{P:1}},
+  {t:"保留可坐空間",s:"寫進新設計",ic:"bench2",fr:"public",own:["care"],id:{P:1}},
+  {t:"依默契維持現狀",s:"不改規則，也不說破",ic:"zzz",fr:"none",own:["rail"],id:{}}],
+ real:"還沒有答案。台鐵說翻新後「原則維持現有管理方式」，遊民問題「依默契」處理。",pa:"1988 末–89　退到幕後，而且故事還沒寫完"}];
+const GOALDEPT=Object.fromEntries(DEPTS.map(d=>[d.goal,d]));
+const ownOf=a=>a.own.map(g=>GOALDEPT[g]);
+const shortN=n=>n.replace("永續ESG小組","ESG").replace("旅客服務處","旅服").replace("資產開發處","資產").replace("董事長室","董事長").replace("站務處","站務").replace("公關室","公關");
+function gainHTML(a,small){if(!a.own.length)return `<div class="gain"><div><b class="gu">提案</b><span class="tiny">沒有部門提案</span></div></div>`;return `<div class="gain"><div><b class="gu">提案</b>${ownOf(a).map(d=>`<span class="dchip" style="background:${d.c}">${small?shortN(d.n):d.n}</span>`).join("")}</div></div>`}
+
+/* ---------------- 漫畫圖示 ---------------- */
 /* ---------------- 漫畫圖示（粗黑線） ---------------- */
 function icon(k){const S='stroke="#161616" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"';
  const A={
@@ -358,6 +468,13 @@ function icon(k){const S='stroke="#161616" stroke-width="5" stroke-linejoin="rou
  buck:`<circle cx="30" cy="50" r="18" fill="#FFD23F" ${S}/><path d="M50 50 H88 M74 36 L88 50 L74 64" fill="none" ${S}/><text x="24" y="60" font-family="Bangers,Impact" font-size="26" fill="#161616">!</text>`};
  return `<svg viewBox="0 0 100 100" aria-hidden="true">${A[k]||A.leak}</svg>`}
 
+function icon2(k){const S='stroke="#161616" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"';
+ const A={
+ smile:`<circle cx="50" cy="50" r="36" fill="#FFD23F" ${S}/><circle cx="38" cy="42" r="5" fill="#161616"/><circle cx="62" cy="42" r="5" fill="#161616"/><path d="M32 58 Q50 76 68 58" fill="none" ${S}/>`,
+ bench2:`<rect x="12" y="40" width="76" height="12" fill="#C98B4E" ${S}/><rect x="12" y="24" width="76" height="10" fill="#C98B4E" ${S}/><path d="M20 52 V78 M80 52 V78" ${S}/><circle cx="78" cy="22" r="14" fill="#2C9A55" ${S}/><path d="M71 22 L76 27 L85 17" stroke="#fff" stroke-width="4" fill="none"/>`};
+ return A[k]?`<svg viewBox="0 0 100 100" aria-hidden="true">${A[k]}</svg>`:icon(k)}
+
+/* ---------------- 漫畫場景 ---------------- */
 /* ---------------- 漫畫場景插圖 ---------------- */
 const SCENE_BG={lobby:"#CFEAFB",spread:"#FFF3D6",night:"#1E2A4A",phone:"#FFF3D6",newsstand:"#DDEFFB"};
 function scene(k){
@@ -380,14 +497,14 @@ function scene(k){
   <path d="M110 230 Q140 210 160 200" stroke="#E23B2E" stroke-width="5" stroke-dasharray="10 8" fill="none"/><path d="M240 180 Q270 160 300 160" stroke="#E23B2E" stroke-width="5" stroke-dasharray="10 8" fill="none"/>
   ${walker(130,200,"#8D6748")}${walker(262,154,"#2C9A55")}${walker(318,206,"#8E44AD")}
   <rect y="250" width="400" height="50" fill="#E8C98C" stroke="#161616" stroke-width="4"/>
-  <g font-family="Noto Sans TC,sans-serif" font-weight="900" font-size="18" fill="#161616"><text x="26" y="278">巴士總站</text><text x="168" y="278">世貿中心</text><text x="314" y="278">機場</text></g>
+  <g font-family="Noto Sans TC,sans-serif" font-weight="900" font-size="18" fill="#161616"><text x="26" y="278">轉運站</text><text x="168" y="278">機場線</text><text x="314" y="278">百貨</text></g>
   <text x="200" y="44" text-anchor="middle" font-family="Bangers,Impact" font-size="40" fill="#E23B2E" stroke="#161616" stroke-width="1.5">!!!</text>`,
  night:`<rect width="400" height="300" fill="#1E2A4A"/><g fill="#fff">${Array.from({length:40},(_,i)=>`<circle cx="${(i*53)%400}" cy="${(i*37)%230}" r="${i%3+1.5}"/>`).join("")}</g>
   <circle cx="340" cy="44" r="22" fill="#FFF3B0" stroke="#161616" stroke-width="4"/>
   <g ${K}><rect x="40" y="90" width="230" height="160" fill="#5B6A8C"/><rect x="40" y="80" width="230" height="22" fill="#E23B2E"/>
   <rect x="125" y="160" width="60" height="90" fill="#FFD23F"/><path d="M155 160 V250" stroke-width="3"/>
   <rect x="64" y="120" width="34" height="28" fill="#FFD23F"/><rect x="212" y="120" width="34" height="28" fill="#FFD23F"/></g>
-  <text x="155" y="97" text-anchor="middle" font-family="Bangers,Impact" font-size="18" fill="#fff">BUS TERMINAL</text>
+  <text x="155" y="97" text-anchor="middle" font-family="Bangers,Impact" font-size="18" fill="#fff">TRANSIT HUB</text>
   <g ${K}><rect x="312" y="92" width="34" height="140" rx="17" fill="#fff"/><circle cx="329" cy="226" r="24" fill="#7CC6F0"/><rect x="321" y="196" width="16" height="30" fill="#7CC6F0" stroke="none"/></g>
   <rect y="250" width="400" height="50" fill="#E9F1F8" stroke="#161616" stroke-width="4"/>
   <g ${K} stroke-width="3"><circle cx="100" cy="236" r="9" fill="#E2BE98"/><path d="M84 262 Q84 244 100 244 Q116 244 116 262Z" fill="#8C7B62"/><circle cx="210" cy="236" r="9" fill="#8D6748"/><path d="M194 262 Q194 244 210 244 Q226 244 226 262Z" fill="#2C9A55"/></g>
@@ -408,6 +525,40 @@ function scene(k){
   <text x="300" y="40" text-anchor="middle" font-family="Bangers,Impact" font-size="30" fill="#E23B2E" stroke="#161616" stroke-width="1.5">7 → 1</text>
   <rect y="250" width="400" height="50" fill="#E8C98C" stroke="#161616" stroke-width="4"/>`};
  return `<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${S[k]}</svg>`}
+function checker(x,y,w,h,n){let s="";const cw=w/n,ch=h/3;for(let r=0;r<3;r++)for(let c=0;c<n;c++)if((r+c)%2===0)s+=`<rect x="${x+c*cw}" y="${y+r*ch}" width="${cw}" height="${ch}" fill="#161616"/>`;return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#F4F1E8"/>${s}`}
+function person(x,y,c,sit){return sit?`<circle cx="${x}" cy="${y-30}" r="10" fill="#F6C9A0" stroke="#161616" stroke-width="3"/><path d="M${x-14} ${y} Q${x} ${y-26} ${x+14} ${y}Z" fill="${c}" stroke="#161616" stroke-width="3"/>`
+ :`<circle cx="${x}" cy="${y-52}" r="10" fill="#F6C9A0" stroke="#161616" stroke-width="3"/><rect x="${x-10}" y="${y-42}" width="20" height="30" rx="6" fill="${c}" stroke="#161616" stroke-width="3"/><path d="M${x-6} ${y-12} V${y} M${x+6} ${y-12} V${y}" stroke="#161616" stroke-width="4"/>`}
+function scene2(k){const W=`viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet"`;
+ if(k==="notice")return `<svg ${W}><rect width="400" height="300" fill="#E9E1CF"/><rect x="0" y="230" width="400" height="70" fill="#CFC4AE"/>
+  <rect x="120" y="40" width="160" height="150" fill="#fff" stroke="#161616" stroke-width="5" transform="rotate(-2 200 115)"/>
+  <text x="200" y="78" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-weight="900" font-size="30" fill="#E23B2E">公　告</text>
+  <text x="200" y="112" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-weight="900" font-size="15" fill="#161616">4/1 前請清除個人物品</text>
+  <text x="200" y="136" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-weight="900" font-size="15" fill="#161616">逾期視為廢棄物</text>
+  <rect x="140" y="150" width="120" height="8" fill="#161616" opacity=".3"/><rect x="140" y="166" width="90" height="8" fill="#161616" opacity=".3"/>
+  <path d="M40 230 Q50 190 90 196 Q110 200 106 230Z" fill="#7C8A6E" stroke="#161616" stroke-width="4"/><rect x="300" y="196" width="60" height="38" rx="6" fill="#C98B4E" stroke="#161616" stroke-width="4"/>
+  <path d="M60 196 L70 176 L84 196" fill="#2E6FD8" stroke="#161616" stroke-width="4"/><text x="330" y="70" font-family="Bangers,Impact" font-size="34" fill="#E23B2E" stroke="#161616" stroke-width="1.5">?!</text></svg>`;
+ if(k==="checker")return `<svg ${W}><rect width="400" height="300" fill="#CFEAFB"/><rect x="0" y="0" width="400" height="120" fill="#EDE6D6"/>
+  <rect x="150" y="20" width="100" height="60" fill="#161616"/><text x="200" y="58" text-anchor="middle" font-family="Bangers,Impact" font-size="24" fill="#FFD23F">TAIPEI</text>
+  ${checker(0,140,400,160,8)}${person(70,250,"#E23B2E",1)}${person(110,250,"#2C9A55",1)}${person(150,256,"#F29A1F",1)}${person(300,236,"#2E6FD8",0)}
+  <circle cx="230" cy="214" r="14" fill="#FFD23F" stroke="#161616" stroke-width="3"/><path d="M223 216 Q230 224 237 216" stroke="#161616" stroke-width="3" fill="none"/>
+  <rect x="320" y="120" width="70" height="40" fill="#fff" stroke="#E23B2E" stroke-width="4"/><text x="355" y="146" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-weight="900" font-size="16" fill="#E23B2E">禁止坐</text></svg>`;
+ if(k==="corp")return `<svg ${W}><rect width="400" height="300" fill="#FFF3D6"/>
+  <rect x="40" y="70" width="320" height="170" fill="#fff" stroke="#161616" stroke-width="5"/>
+  <text x="200" y="128" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-weight="900" font-size="34" fill="#161616" text-decoration="line-through">台鐵局</text>
+  <path d="M200 140 V160" stroke="#E23B2E" stroke-width="6"/><path d="M190 152 L200 166 L210 152" fill="none" stroke="#E23B2E" stroke-width="6"/>
+  <text x="200" y="210" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-weight="900" font-size="38" fill="#E23B2E">台鐵公司</text>
+  <text x="70" y="50" font-family="Bangers,Impact" font-size="30" fill="#FFD23F" stroke="#161616" stroke-width="2">NEW!</text>
+  <rect x="290" y="250" width="80" height="34" fill="#8E44AD" stroke="#161616" stroke-width="4"/><text x="330" y="274" text-anchor="middle" font-family="Bangers,Impact" font-size="20" fill="#fff">$$$</text></svg>`;
+ if(k==="reno")return `<svg ${W}><rect width="400" height="300" fill="#DDEFFB"/>${checker(0,200,400,100,8)}
+  <rect x="200" y="200" width="200" height="100" fill="#D8D0BE"/><path d="M200 200 L400 300" stroke="#161616" stroke-width="3" opacity=".3"/>
+  <path d="M60 200 V40 H300" stroke="#F29A1F" stroke-width="10" fill="none"/><path d="M60 40 L100 80" stroke="#F29A1F" stroke-width="8"/>
+  <path d="M260 40 V100" stroke="#161616" stroke-width="3"/><rect x="236" y="100" width="48" height="30" fill="#161616"/>
+  <rect x="120" y="96" width="100" height="64" fill="#2E6FD8" stroke="#161616" stroke-width="5"/><text x="170" y="138" text-anchor="middle" font-family="Bangers,Impact" font-size="26" fill="#FFD23F">600"</text>
+  <path d="M320 200 L340 160 L360 200Z" fill="#F29A1F" stroke="#161616" stroke-width="4"/>
+  <text x="350" y="70" text-anchor="middle" font-family="Bangers,Impact" font-size="34" fill="#E23B2E" stroke="#161616" stroke-width="1.5">10億</text></svg>`;
+ return scene(k)}
+function sceneBg(k){return ({lobby:"#CFEAFB",notice:"#E9E1CF",checker:"#CFEAFB",corp:"#FFF3D6",reno:"#DDEFFB"})[k]||"#fff"}
+
 function mirror(cracks,w=200,shine=false){
  const c=Math.min(cracks,5);const lines=["M40 30 L70 80 L58 96 L84 140","M70 80 L110 70 L130 100","M84 140 L120 160 L128 200","M58 96 L30 120 L34 170","M110 70 L120 40 L150 30"];
  return `<svg viewBox="0 0 180 230" width="${w}" height="${w*1.28}" aria-label="鏡子"><ellipse cx="90" cy="115" rx="84" ry="108" fill="#161616"/><ellipse cx="90" cy="115" rx="72" ry="96" fill="${shine?"#BDE7FF":"#9FC9E0"}" stroke="#FFD23F" stroke-width="6"/>
@@ -416,28 +567,22 @@ function mirror(cracks,w=200,shine=false){
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
 function connNote(t){const c=document.getElementById("conn");if(!t){c.style.display="none";return}c.textContent=t;c.style.display="block"}
-const stampHTML=(k,sz=70,fs=20)=>`<span class="stamp" style="color:${SK[k].c};width:${sz}px;height:${sz}px;font-size:${fs}px">${SK[k].t}</span>`;
 const sv=v=>v>0?"+"+v:String(v);
+function burst(c1,c2){let r="";for(let i=0;i<36;i++){const a=i*10*Math.PI/180,b=(i*10+5)*Math.PI/180;r+=`<path d="M1200 1200 L${1200+1700*Math.cos(a)} ${1200+1700*Math.sin(a)} L${1200+1700*Math.cos(b)} ${1200+1700*Math.sin(b)}Z" fill="${c2}"/>`}
+ return `<div class="burstbg"><svg viewBox="0 0 2400 2400"><rect width="2400" height="2400" fill="${c1}"/>${r}</svg></div>`}
 
-/* 遊戲說明（主辦與手機共用） */
+/* ---------------- 遊戲說明 ---------------- */
 const HOWTO=[
- {h:"你們是誰？",p:"每組是交通局的一個<b>部門</b>，整組共用一支手機。每個部門都有一張<b>祕密立場卡</b>（只有你們的手機看得到），例如「維持秩序」「能省則省」「乘客第一」。每一年都至少有一張行動卡符合你們的立場。",
-  vis:()=>`<div class="stamps">${DEPTS.map(d=>`<span class="spec" style="background:${d.c};color:#fff">${d.n}</span>`).join("")}</div><div class="spec" style="margin-top:10px">🤫 祕密立場：只有自己知道</div>`},
- {h:"一回合怎麼走？",p:"每回合是一年（1982→1989）：<br>① 事件 → 📺 突發新聞 → ② 祕密行動 → ③ 同時翻牌 → ④ 當記者蓋章 → ⑤ 照鏡子算分。<br>大家都送出才會進下一步；時間到時主持人可以直接翻牌，還沒送出的組會<b>隨機出牌</b>。",
-  vis:()=>`<div style="display:flex;flex-direction:column;gap:8px;font-weight:900;font-size:24px">${["① 事件","📺 突發新聞","② 祕密行動","③ 翻牌","④ 記者蓋章","⑤ 照鏡子"].map(x=>`<div class="spec" style="font-size:24px">${x}</div>`).join("")}</div>`},
- {h:"祕密行動 + 押注",p:"從 4 張行動卡選 1 張，<b>★ 代表符合你們部門的立場</b>。<br>再押注：「明天報紙會把我們寫成——英雄、作秀、無能，還是冷血？」",
-  vis:()=>`<div style="width:150px">${icon("police")}</div><div class="spec">★ 符合部門立場</div>`},
- {h:"換你當記者",p:"所有行動翻開後，給<b>其他每一組</b>各蓋一個頭條章（不能蓋自己）。<br>每回合<b>英雄章只有 1 個、冷血章也只有 1 個</b>。<br>🗞️ 你蓋的章如果跟<b>多數記者一樣</b>（就是那組最後的頭條），每個 +1。亂蓋扣人分，自己也賺不到。",
-  vis:()=>`<div class="stamps">${STAMPS.map(s=>stampHTML(s.k,96,26)).join("")}</div>`},
- {h:"照鏡子・計分",p:"被蓋最多的章就是你們的<b>頭條</b>（平手時，押中其中一個就算猜中）。<br>每個章都有分數，另外還有兩種加分：",
-  vis:()=>`<div style="display:flex;flex-direction:column;gap:8px">${STAMPS.map(s=>`<div class="ptsrow">${stampHTML(s.k,62,18)}<span>每個 ${sv(s.v)}</span></div>`).join("")}<div class="ptsrow"><span class="spec">🪞 押中自己的頭條</span><span>+${ACC_BONUS}</span></div><div class="ptsrow"><span class="spec">★ 行動符合部門立場</span><span>+${AGENDA_BONUS}</span></div><div class="ptsrow"><span class="spec">🗞️ 蓋的章跟多數記者一樣</span><span>每個 +${PRESS_BONUS}</span></div></div>`},
- {h:"📺 突發新聞",p:"從第二年開始，翻完事件後會插播一則<b>突發新聞</b>，臨時改變<b>這一年</b>的規則，例如「冷血章 −4」「部門立場 +2」。<br>最後一年是<b>大號外</b>：所有章的分數加倍，最有機會翻盤。手機上方會一直提醒你這回合的特殊規則。",
-  vis:()=>`<div style="width:340px;border:5px solid #161616;border-radius:12px;overflow:hidden">${newsroom()}</div>`},
- {h:"兩張髒牌（整場各 1 次）",p:"📰 <b>爆料</b>：在蓋章畫面，按某一組下方的「對他們爆料」，你給他們的章<b>算兩倍</b>。揭曉時會公開是誰爆的料。<br>🔄 <b>甩鍋</b>：送出行動前的第 ③ 步，指定一組。這回合你們收到的<b>「冷血」章全部轉給他們</b>。<br>用掉後，手機上方的圖示就會消失。",
-  vis:()=>`<div style="display:flex;gap:24px"><div style="width:140px">${icon("leak")}</div><div style="width:140px">${icon("buck")}</div></div><div class="stamps"><span class="spec leak">📰 爆料</span><span class="spec buck">🔄 甩鍋</span></div>`},
- {h:"最後",p:"總分最高的部門獲勝。結算時會<b>公開每個部門的祕密立場</b>——<br>想一想：你們是在為自己的部門做決定，還是為整個組織？",
-  vis:()=>`<div style="width:160px">${icon("trophy")}</div>`}
-];
+ {h:"你們是誰？",p:"每組是<b>台鐵</b>的一個部門，整組共用一支手機。每個部門在意的事不一樣，手機上看得到。<br>每一年，你們還會拿到一張<b>外部身分卡</b>：旅客、移工團體、街友權益團體、市議員、記者或商場業者。",
+  vis:()=>`<div class="stamps">${DEPTS.map(d=>`<span class="spec" style="background:${d.c};color:#fff">${d.n}</span>`).join("")}</div><div class="stamps" style="margin-top:12px">${OUTS.map(o=>`<span class="spec">${o.e} ${o.n}</span>`).join("")}</div>`},
+ {h:"一年只要做兩件事",p:"每回合是北車真實發生過的一年（2014→2026）。<br>① 看事件<br>② <b>公司會議</b>：手機上選一個做法，喊話拉票；主持人開票前都能改票，多數決<br>③ <b>照鏡子</b>：換上外部身分評價，再猜全班多數的反應<br>④ 看結算",
+  vis:()=>`<div style="display:flex;flex-direction:column;gap:8px">${["① 事件","② 公司會議（手機選 1 個）","③ 照鏡子（手機按 2 下）","④ 結算"].map(x=>`<div class="spec" style="font-size:22px">${x}</div>`).join("")}</div>`},
+ {h:"灰色的做法＝「這不像我們」",p:"每個做法都屬於一種想法：<b>管理、商業、形象、公共空間</b>。<br>台鐵現在的認同不允許的想法，做法會變灰、選不了。<br>每個做法都有一個<b>提案部門</b>：被採用後，外界讚，提案部門得分；外界罵，提案部門背鍋。",
+  vis:()=>`<div style="display:flex;flex-direction:column;gap:8px">${FK.map((k,i)=>`<div class="spec" style="font-size:20px;background:${i?"#ddd":FRAMES[k].c};color:${i?"#888":"#fff"}">${i?"🔒 ":""}${FRAMES[k].n}</div>`).join("")}</div>`},
+ {h:"照鏡子",p:"台鐵做出決定後，換上你們這一年的<b>外部身分</b>，真心評價：👍 讚、😐 無感、👎 罵。<br><b>公司形象 ＋＝ 讚的票數 − 罵的票數</b>（最後一年 ×2）。<br>同一個畫面再猜：<b>全班多數會怎麼看？</b>猜中 +2。<br>你以為的外界，和真正的外界，常常不一樣。",
+  vis:()=>`<div style="display:flex;gap:20px;font-size:64px">👍😐👎</div>`},
+ {h:"計分與「認同會變」",p:"<b>提案分</b>：你們的提案被採用時，形象變多少就得（扣）多少。<br><b>鏡子分</b>：猜中 +2。<b>公司形象</b>最後算進每一組。<br>卡片上寫著每個做法會推動哪一種「我們是誰」。<br>解鎖：被外界罵一次 →「形象問題」；公共空間守門人 ≥ 1 →「公共空間問題」；企業經營 ≥ 3 →「商業問題」。形象跌到 −5，就不能再「維持現狀」。",
+  vis:()=>`<div class="tracks" style="width:320px">${Object.entries(TRACKS).map(([k,t],i)=>`<div class="trk"><span>${t.n}</span><div class="bar"><i style="width:${[60,20,0][i]}%;background:${t.c}"></i></div><b></b></div>`).join("")}</div>`}];
 
 /* =====================================================================
    連線層
@@ -479,31 +624,58 @@ function ClientNet(room,onMsg,onStatus){
  return {send:d=>{if(conn&&conn.open)try{conn.send(d)}catch(e){}}};
 }
 
+
 /* =====================================================================
    主辦（大螢幕）
    ===================================================================== */
 let H,net,connOf={},tick;
-const HKEY="headline-host-v4";
+const HKEY="headline-hall-host-v2";
 function hNew(){const room=Math.random().toString(36).slice(2,6).toUpperCase().replace(/[01OI]/g,"X");
- return {room,groups:[],plan:[0,1,2,3,4],k:0,phase:"lobby",act:{},judge:{},res:{},ev:{},evDeck:shuffle(EVENTS.map(e=>e.k)),mi:-1,order:[],timerEnd:0,tp:0}}
-function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-const curEv=()=>EK[H.ev[H.k]]||null;
-const heroMax=()=>curEv()&&curEv().k==="twohero"?2:1;
-const PRESS_BONUS=1;
-const limOf=k=>k==="hero"?heroMax():k==="cold"?1:99;
+ return {room,groups:[],plan:[0,1,2,3,4],k:0,phase:"lobby",id:{...ID0},image:0,V:{},J:{},RES:{},hist:[],seen:{},timerEnd:0,fp:0,tp:0}}
 function hSave(){try{localStorage.setItem(HKEY,JSON.stringify(H))}catch(e){}}
 function hLoad(){try{return JSON.parse(localStorage.getItem(HKEY))}catch(e){return null}}
 const G=id=>H.groups.find(g=>g.id===id);
 const curR=()=>ROUNDS[H.plan[H.k]];
-function newGroup(d,manual){return {id:"g"+Date.now().toString(36)+Math.random().toString(36).slice(2,4),name:d.n,color:d.c,tag:d.tag,ag:d.ag,agd:d.agd,online:!manual,manual:!!manual,leak:1,buck:1}}
+const outOf=(g,k)=>OUTS[(DEPTS.findIndex(d=>d.n===g.name)+k)%OUTS.length];
+function newGroup(d,manual){return {id:"g"+Date.now().toString(36)+Math.random().toString(36).slice(2,4),name:d.n,color:d.c,goal:d.goal,ag:d.ag,agd:d.agd,online:!manual,manual:!!manual}}
+function allowed(){const a=["manage","none"];if(H.id.B>=3)a.push("biz");if(H.scolded)a.push("image");if(H.id.P>=1)a.push("public");return a}
+const crisis=()=>H.image<=-5;
+function actOK(a,k){const X=H.RES[k]||{};if(a.fr==="none")return !X.crisis;return allowed().includes(a.fr)}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ---------------- 音效（Web Audio 合成，不需要音檔） ---------------- */
+const SFX=(()=>{let ac=null,on=true;try{on=localStorage.getItem("hall-sound")!=="off"}catch(e){}
+ const ctx=()=>{if(!ac){try{ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(ac&&ac.state==="suspended")ac.resume();return ac};
+ function tone(f,t0,d,type="square",v=.12,f2){const a=ctx();if(!a||!on)return;const o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.setValueAtTime(f,a.currentTime+t0);if(f2)o.frequency.exponentialRampToValueAtTime(f2,a.currentTime+t0+d);
+   g.gain.setValueAtTime(v,a.currentTime+t0);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+t0+d);o.connect(g).connect(a.destination);o.start(a.currentTime+t0);o.stop(a.currentTime+t0+d+.02)}
+ function noise(t0,d,v=.2,hp=800){const a=ctx();if(!a||!on)return;const b=a.createBuffer(1,a.sampleRate*d,a.sampleRate),x=b.getChannelData(0);for(let i=0;i<x.length;i++)x[i]=(Math.random()*2-1)*(1-i/x.length);
+   const s=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain();s.buffer=b;f.type="highpass";f.frequency.value=hp;g.gain.value=v;s.connect(f).connect(g).connect(a.destination);s.start(a.currentTime+t0)}
+ return {
+  get on(){return on},toggle(){on=!on;try{localStorage.setItem("hall-sound",on?"on":"off")}catch(e){}if(on)this.ding()},
+  unlock(){ctx()},
+  ding(){tone(880,0,.25,"triangle",.18);tone(1320,.08,.3,"triangle",.12)},
+  blip(){tone(660,0,.08,"square",.06)},
+  news(){[523,659,784,1046].forEach((f,i)=>tone(f,i*.12,.18,"square",.09));tone(1046,.5,.5,"triangle",.12)},
+  drum(){for(let i=0;i<14;i++)noise(i*.07,.06,.12,1500);tone(110,1.0,.35,"sawtooth",.18,55);noise(1.0,.4,.35,300)},
+  shine(){[784,988,1175,1568].forEach((f,i)=>tone(f,i*.09,.35,"triangle",.12))},
+  crack(){noise(0,.5,.45,2000);tone(220,0,.5,"sawtooth",.12,60)},
+  meh(){tone(392,0,.3,"triangle",.12);tone(370,.25,.4,"triangle",.1)},
+  whoosh(){noise(0,.8,.25,500);[523,784,1046,1568].forEach((f,i)=>tone(f,.3+i*.1,.4,"triangle",.1))},
+  fanfare(){[523,523,523,659,784,659,784].forEach((f,i)=>tone(f,i*.14,.2,"square",.1));tone(1046,1.0,.8,"triangle",.14)},
+  tick(){tone(1200,0,.05,"square",.05)}}})();
+
 function startHost(){
  document.getElementById("host").style.display="flex";
  H=hLoad()||hNew();if(Q.has("new"))H=hNew();
  H.groups.forEach(g=>g.online=false);hSave();
  net=HostNet(H.room,onHostMsg,id=>{const g=H.groups.find(g=>connOf[g.id]===id);if(g){g.online=false;delete connOf[g.id];hRender()}},()=>hRender());
  hRender();
- tick=setInterval(()=>{const el=document.getElementById("tmr");if(!el)return;const s=Math.max(0,Math.ceil((H.timerEnd-Date.now())/1000));el.textContent=s?s:"時間到";el.classList.toggle("low",s<=10)},500);
- addEventListener("keydown",e=>{const o=document.querySelector(".howto");if(!o)return;if(e.key==="ArrowRight")o.querySelector("#hn").click();if(e.key==="ArrowLeft")o.querySelector("#hp").click();if(e.key==="Escape")o.remove()});
+ addEventListener("pointerdown",()=>SFX.unlock(),{once:true});
+ let lastS=-1;
+ tick=setInterval(()=>{const el=document.getElementById("tmr");if(!el)return;const s=Math.max(0,Math.ceil((H.timerEnd-Date.now())/1000));el.textContent=s?s:"時間到";el.classList.toggle("low",s<=10);if(s<=5&&s>0&&s!==lastS)SFX.tick();lastS=s},250);
+ addEventListener("keydown",e=>{const o=document.querySelector(".howto");if(o){if(e.key==="ArrowRight")o.querySelector("#hn").click();if(e.key==="ArrowLeft")o.querySelector("#hp").click();if(e.key==="Escape")o.remove();return}
+   if(document.querySelector(".modal"))return;if(!["final","truth"].includes(H.phase))return;
+   const b=e.key==="ArrowRight"?document.getElementById("nx"):e.key==="ArrowLeft"?document.getElementById("pv"):null;if(b&&!b.disabled)b.click()});
 }
 function onHostMsg(id,m){
  if(m.t==="hello"){let g=(m.gid&&G(m.gid))||(m.claim&&G(m.claim));
@@ -511,70 +683,69 @@ function onHostMsg(id,m){
        if(off.length)net.send(id,{t:"pick",options:off.map(x=>({id:x.id,name:x.name,color:x.color}))});
        else net.send(id,{t:"full",msg:"遊戲已經開始了，請和隔壁組一起玩。"});return}
      if(H.groups.length>=DEPTS.length){net.send(id,{t:"full",msg:"已經滿 6 組了，請和其他組一起玩。"});return}
-     const d=DEPTS.find(d=>!H.groups.some(g=>g.name===d.n));g=newGroup(d,false);H.groups.push(g)}
+     const d=DEPTS.find(d=>!H.groups.some(g=>g.name===d.n));g=newGroup(d,false);H.groups.push(g);SFX.blip()}
    g.online=true;g.manual=false;Object.keys(connOf).forEach(k=>{if(connOf[k]===id)delete connOf[k]});connOf[g.id]=id;
    net.send(id,{t:"welcome",gid:g.id});hSave();hRender();return}
- const g=H.groups.find(g=>connOf[g.id]===id);if(!g)return;
- if(m.t==="act"&&H.phase==="act"&&m.k===H.k){(H.act[H.k]=H.act[H.k]||{})[g.id]={a:m.a,pred:m.pred,buck:(g.buck>0&&m.buck&&G(m.buck)&&m.buck!==g.id)?m.buck:null};hSave();hRender();checkAll()}
- if(m.t==="judge"&&H.phase==="judge"&&m.k===H.k){const used={};const map={};Object.entries(m.map||{}).forEach(([t,s])=>{used[s]=(used[s]||0)+1;if(used[s]>limOf(s))s="inept";map[t]=s});
-   (H.judge[H.k]=H.judge[H.k]||{})[g.id]={map,leak:(g.leak>0&&m.leak&&G(m.leak)&&m.leak!==g.id)?m.leak:null};hSave();hRender();checkAll()}
+ const g=H.groups.find(g=>connOf[g.id]===id);if(!g||m.k!==H.k)return;
+ if(m.t==="vote"&&H.phase==="vote"){const a=curR().acts[m.a];if(!a||!actOK(a,H.k))return;(H.V[H.k]=H.V[H.k]||{})[g.id]=m.a;SFX.blip();hSave();hRender();checkAll()}
+ if(m.t==="judge"&&H.phase==="judge"&&REACT[m.pred]&&REACT[m.vote]){(H.J[H.k]=H.J[H.k]||{})[g.id]={pred:m.pred,vote:m.vote};SFX.blip();hSave();hRender();checkAll()}
 }
-function checkAll(){
- if(H.phase==="act"&&H.groups.every(g=>(H.act[H.k]||{})[g.id]))setTimeout(()=>{if(H.phase==="act")go("reveal")},900);
- if(H.phase==="judge"&&H.groups.every(g=>(H.judge[H.k]||{})[g.id]))setTimeout(()=>{if(H.phase==="judge")go("mirror")},900);
+function phaseDone(ph){const o={vote:H.V,judge:H.J}[ph];return o&&H.groups.every(g=>(o[H.k]||{})[g.id]!==undefined)}
+function checkAll(){const ph=H.phase;if(ph==="vote")return;if(phaseDone(ph))setTimeout(()=>{if(H.phase===ph)go({vote:"decide",judge:"result"}[ph])},900)}
+function autofill(ph){const k=H.k;
+ if(ph==="vote"){H.V[k]=H.V[k]||{};const ok=curR().acts.map((a,i)=>i).filter(i=>actOK(curR().acts[i],k));H.groups.forEach(g=>{if(H.V[k][g.id]===undefined)H.V[k][g.id]=ok[Math.floor(Math.random()*ok.length)]})}
+ if(ph==="judge"){H.J[k]=H.J[k]||{};const ks=Object.keys(REACT);H.groups.forEach(g=>{if(!H.J[k][g.id])H.J[k][g.id]={pred:ks[Math.floor(Math.random()*3)],vote:ks[Math.floor(Math.random()*3)]}})}}
+function go(ph){const k=H.k;
+ if(ph==="event"){const R=curR();H.RES[k]={crisis:crisis(),imgStart:H.image};if(R.auto){Object.entries(R.auto).forEach(([t,v])=>H.id[t]=Math.min(6,H.id[t]+v))}if(R.scold&&!H.scolded){H.scolded=true;H.RES[k].forced=true}SFX.news()}
+ if(ph==="vote"){H.timerEnd=Date.now()+60000;SFX.ding()}
+ if(ph==="decide"){autofill("vote");const c={};Object.values(H.V[k]).forEach(i=>c[i]=(c[i]||0)+1);const mx=Math.max(...Object.values(c));const top=Object.keys(c).filter(i=>c[i]===mx).map(Number);
+   H.RES[k].win=top.length>1?shuffle(top)[0]:top[0];H.RES[k].tie=top.length>1;H.RES[k].vc=c;SFX.drum()}
+ if(ph==="judge"){H.timerEnd=Date.now()+45000;SFX.ding()}
+ if(ph==="result"){autofill("judge");computeRound();const d=H.RES[k].delta;setTimeout(()=>d>0?SFX.shine():d<0?SFX.crack():SFX.meh(),300)}
+ if(ph==="shift")SFX.whoosh();
+ if(ph==="final"){H.fp=0;SFX.fanfare()}
+ if(ph==="truth"){H.tp=0;SFX.news()}
+ H.phase=ph;hSave();hRender()}
+function computeRound(){const k=H.k,R=curR(),X=H.RES[k];const win=R.acts[X.win];
+ const cnt={up:0,meh:0,down:0};Object.values(H.J[k]).forEach(j=>cnt[j.vote]++);
+ const mx=Math.max(...Object.values(cnt));X.maj=Object.keys(cnt).filter(r=>cnt[r]===mx);X.cnt=cnt;
+ let d=(cnt.up-cnt.down)*(R.big?2:1);d=Math.max(-8,Math.min(8,d));X.delta=d;X.raw=cnt.up-cnt.down;
+ const before=allowed();const idb={...H.id};
+ Object.entries(win.id).forEach(([t,v])=>H.id[t]=Math.min(6,H.id[t]+v));
+ H.image=Math.max(-20,Math.min(20,H.image+d));if(d<0)H.scolded=true;
+ const after=allowed();X.unlock=after.filter(f=>!before.includes(f));X.idb=idb;X.ida={...H.id};X.img=H.image;
+ const UL={public:"解鎖「公共空間問題」：台鐵開始覺得，大廳上的人也是我們的事。",image:"解鎖「形象問題」：被外界罵了，台鐵開始在意外界怎麼看。",biz:"解鎖「商業問題」：我們是一家公司了，大廳是資產。"};
+ X.lines=X.unlock.map(f=>UL[f]);
+ if(H.image<=-5&&X.imgStart>-5)X.lines.push("形象危機：明年起不能再選「維持現狀」。");
+ X.pts={};H.groups.forEach(g=>{const j=H.J[k][g.id];X.pts[g.id]={dept:win.own.includes(g.goal)?d:0,own:win.own.includes(g.goal),mirror:X.maj.includes(j.pred)?2:0,pred:j.pred,vote:j.vote,out:outOf(g,k).n,my:H.V[k][g.id]}});
+ H.hist[k]={y:R.y,win:X.win,id:{...H.id},img:H.image};
 }
-function go(ph){H.phase=ph;
- if(ph==="act")H.timerEnd=Date.now()+100000;
- if(ph==="judge")H.timerEnd=Date.now()+80000;
- if(ph==="reveal"){H.act[H.k]=H.act[H.k]||{};H.groups.forEach(g=>{if(!H.act[H.k][g.id])H.act[H.k][g.id]={a:Math.floor(Math.random()*4),pred:STAMPS[Math.floor(Math.random()*4)].k,buck:null,auto:1};
-   const x=H.act[H.k][g.id];if(x.buck){if(g.buck>0)g.buck--;else x.buck=null}})}
- if(ph==="news"){if(!H.ev[H.k]){const yr=curR().y,usedK=Object.values(H.ev);let pool=EVENTS.filter(e=>e.y.includes(yr)&&!usedK.includes(e.k));if(!pool.length)pool=EVENTS.filter(e=>e.y.includes(yr));H.ev[H.k]=shuffle(pool)[0].k;if(H.ev[H.k]==="leakback")H.groups.forEach(g=>g.leak=Math.max(g.leak,1))}}
- if(ph==="truth")H.tp=0;
- if(ph==="final")H.fp=0;
- if(ph==="mirror"){H.judge[H.k]=H.judge[H.k]||{};H.groups.forEach(g=>{const j=H.judge[H.k][g.id];if(j&&j.leak){if(g.leak>0)g.leak--;else j.leak=null}});computeRound();H.mi=-1;H.order=H.groups.map(g=>g.id)}
- hSave();hRender()}
-function computeRound(){const k=H.k,res={},raw={},leaked={};
- H.groups.forEach(g=>{raw[g.id]={hero:0,show:0,inept:0,cold:0};leaked[g.id]=[]});
- H.groups.forEach(j=>{const J=(H.judge[k]||{})[j.id];if(!J)return;Object.entries(J.map).forEach(([t,s])=>{if(!raw[t]||t===j.id||!SK[s])return;const w=J.leak===t?2:1;raw[t][s]+=w;if(w===2)leaked[t].push(j.id)})});
- const E=curEv()?curEv().k:null;
- if(E==="coldsnap")H.groups.forEach(g=>{const tg=curR().acts[H.act[k][g.id].a].tg||[];if(tg.includes("care"))raw[g.id].hero++;if(tg.includes("order"))raw[g.id].cold++});
- const VAL={hero:E==="herohalf"?1:E==="big"?4:2,show:0,inept:E==="big"?-2:-1,cold:(E==="coldx2"||E==="big")?-4:-2};
- const AB=E==="big"?4:ACC_BONUS, GB=E==="agenda2"?2:AGENDA_BONUS;
- const fin={};H.groups.forEach(g=>fin[g.id]={...raw[g.id]});
- const buckFrom={};H.groups.forEach(g=>buckFrom[g.id]=[]);
- const buckOut={};
- H.groups.forEach(g=>{const b=H.act[k][g.id].buck;if(b&&fin[b]){const mv=raw[g.id].cold;buckOut[g.id]={to:b,n:mv};if(mv>0){fin[g.id].cold-=mv;fin[b].cold+=mv;buckFrom[b].push({from:g.id,n:mv})}}});
- H.groups.forEach(g=>{const c=fin[g.id];const mx=Math.max(...Object.values(c));const top=mx>0?Object.keys(c).filter(s=>c[s]===mx):[];
-   const pred=H.act[k][g.id].pred,acc=top.includes(pred);const sp=STAMPS.reduce((s,x)=>s+VAL[x.k]*c[x.k],0);
-   const agenda=(curR().acts[H.act[k][g.id].a].tg||[]).includes(g.tag);
-   res[g.id]={counts:c,top,pred,acc,agenda,ab:AB,gb:GB,val:VAL,stampPts:sp,pts:sp+(acc?AB:0)+(agenda?GB:0),a:H.act[k][g.id].a,leakedBy:leaked[g.id],buckOut:buckOut[g.id]||null,buckFrom:buckFrom[g.id]}});
- H.groups.forEach(j=>{const J=(H.judge[k]||{})[j.id];let n=0;if(J)Object.entries(J.map).forEach(([t,st])=>{if(res[t]&&t!==j.id&&res[t].top.includes(st))n++});res[j.id].press=n;res[j.id].pts+=n*PRESS_BONUS});
- H.res[k]=res}
-function totals(){const t={};H.groups.forEach(g=>t[g.id]={pts:0,acc:0,hero:0,cracks:0,show:0,cold:0,rounds:0,agenda:0,img:0});
- Object.values(H.res).forEach(res=>Object.entries(res).forEach(([id,x])=>{if(!t[id])return;t[id].rounds++;t[id].agenda+=x.agenda?1:0;t[id].img+=x.stampPts;t[id].pts+=x.pts;t[id].acc+=x.acc?1:0;t[id].cracks+=x.acc?0:1;t[id].hero+=x.counts.hero;t[id].show+=x.counts.show;t[id].cold+=x.counts.cold}));return t}
+function totals(){const t={};H.groups.forEach(g=>t[g.id]={pts:0,dept:0,mirror:0,hit:0,rounds:0,won:0});
+ Object.values(H.RES).forEach(X=>{if(!X.pts)return;Object.entries(X.pts).forEach(([id,p])=>{if(!t[id])return;t[id].rounds++;t[id].dept+=p.dept;t[id].mirror+=p.mirror;t[id].hit+=p.mirror?1:0;t[id].won+=p.my===X.win?1:0;t[id].pts+=p.dept+p.mirror})});return t}
+const finalPts=(t,id)=>t[id].pts+H.image;
 
+/* ---------------- 主畫面 ---------------- */
+const PHN={lobby:"等待各組加入",event:"事件",vote:"公司會議",decide:"正式決定",judge:"照鏡子",result:"結算",shift:"認同改寫",final:"結算",truth:"真相"};
 function hRender(){
  const el=document.getElementById("host");const R=curR();
- const phaseName={lobby:"等待各組加入",event:"事件",news:"突發新聞",act:"祕密行動",reveal:"行動揭曉",judge:"記者時間",mirror:"照鏡子",final:"結算",truth:"真相"}[H.phase];
- const showTimer=H.phase==="act"||H.phase==="judge";
- el.innerHTML=`<div class="hhead"><div class="logo">HEADLINE!<small>頭條！鏡中人 · v7</small></div>
-  ${["lobby","final","truth"].includes(H.phase)?"":`<div class="yearchip">${R.y}</div><div class="phase">ROUND ${H.k+1}/${H.plan.length} · ${phaseName}</div>`}
-  <div class="hspace"></div>${showTimer?`<div class="timer" id="tmr"></div>`:""}<div class="ctrl" id="ctrl"></div>${H.phase!=="lobby"?`<button class="btn w" id="rst" style="font-size:15px;padding:8px 10px" title="重新開始">⟲</button>`:""}</div>
+ const showTimer=["vote","judge"].includes(H.phase);
+ el.innerHTML=`<div class="hhead"><div class="logo">HEADLINE!${H.phase==="lobby"?"<small>北車大廳・鏡中人</small>":""}</div>
+  ${["lobby","final","truth"].includes(H.phase)?"":`<div class="yearchip">${R.y}</div><div class="phase">ROUND ${H.k+1}/${H.plan.length} · ${PHN[H.phase]}</div>`}
+  <div class="hspace"></div>${H.phase!=="lobby"?idMini():""}${showTimer?`<div class="timer" id="tmr"></div>`:""}<div class="ctrl" id="ctrl"></div>
+  <button class="btn w" id="snd" style="font-size:15px;padding:8px 10px" title="音效開關">${SFX.on?"🔊":"🔇"}</button>${H.phase!=="lobby"?`<button class="btn w" id="rst" style="font-size:15px;padding:8px 10px" title="重新開始">⟲</button>`:""}</div>
   <div class="hmain" id="hm"></div><div class="hfoot" id="hf"></div>`;
  const rst=el.querySelector("#rst");if(rst)rst.onclick=restartMenu;
+ el.querySelector("#snd").onclick=()=>{SFX.toggle();hRender()};
  const hm=el.querySelector("#hm"),ctrl=el.querySelector("#ctrl"),hf=el.querySelector("#hf");
- const t=totals();
- hf.innerHTML=H.groups.map(g=>{let st="";
-   if(H.phase==="lobby")st="✕";
-   if(H.phase==="act")st=(H.act[H.k]||{})[g.id]?"✓":"…";
-   if(H.phase==="judge")st=(H.judge[H.k]||{})[g.id]?"✓":"…";
-   const cards=`<span class="cards" title="剩下的髒牌">${g.leak?"📰":""}${g.buck?"🔄":""}</span>`;
-   return `<div class="gchip ${st==="✓"?"ok":""} ${g.online||g.manual?"":"off"}" data-g="${g.id}" title="${H.phase==="lobby"?"點一下移除這組":"點一下可代打"}"><span class="dot" style="background:${g.color}"></span><span class="nm">${esc(g.name)}${g.manual?" ✋":""}</span>
-   ${H.phase==="lobby"?"":cards}${st?`<span class="st">${st}</span>`:`<span class="sc">${t[g.id]?t[g.id].pts:0}</span>`}</div>`}).join("")||`<div class="tiny">還沒有組別加入</div>`;
+ const t=totals();const o={vote:H.V,judge:H.J}[H.phase];
+ hf.innerHTML=H.groups.map(g=>{let st="";if(H.phase==="lobby")st="✕";if(o)st=(o[H.k]||{})[g.id]!==undefined?"✓":"…";
+   return `<div class="gchip ${st==="✓"?"ok":""} ${g.online||g.manual?"":"off"}" data-g="${g.id}" title="${H.phase==="lobby"?"點一下移除這組":"點一下可代打"}"><span class="dot" style="background:${g.color}"></span><span class="nm">${esc(g.name)}${g.manual?" ✋":""}</span>${st?`<span class="st">${st}</span>`:`<span class="sc">${t[g.id]?t[g.id].pts:0}</span>`}</div>`}).join("")||`<div class="tiny">還沒有組別加入</div>`;
  hf.querySelectorAll(".gchip").forEach(c=>c.onclick=()=>chipClick(c.dataset.g));
- ({lobby:hLobby,event:hEvent,news:hNews,act:hAct,reveal:hReveal,judge:hJudge,mirror:hMirror,final:hFinal,truth:hTruth})[H.phase](hm,ctrl);
+ ({lobby:hLobby,event:hEvent,vote:hVote,decide:hDecide,judge:hJudge,result:hResult,shift:hShift,final:hFinal,truth:hTruth})[H.phase](hm,ctrl);
  broadcast();
 }
+function idMini(){return `<div class="idmini" title="公司的認同與形象">${Object.entries(TRACKS).map(([k,t])=>`<span><i style="background:${t.c}"></i>${t.n} <b>${H.id[k]}</b></span>`).join("")}<span class="img ${H.image<0?"neg":""}">🪞 形象 <b>${sv(H.image)}</b></span></div>`}
+function tracksHTML(a,b){return `<div class="tracks">${Object.entries(TRACKS).map(([k,t])=>{const v=a[k],p=b?b[k]:v;return `<div class="trk"><span>${t.n}</span><div class="bar"><i style="width:${v/6*100}%;background:${t.c}"></i></div><b>${v}${b&&v!==p?`<em>${sv(v-p)}</em>`:""}</b></div>`}).join("")}</div>`}
 function howtoOverlay(){let i=0;const o=document.createElement("div");o.className="howto";document.body.appendChild(o);
  const draw=()=>{const s=HOWTO[i];o.innerHTML=`<div class="hhead"><div class="logo">HOW TO PLAY<small>遊戲說明 ${i+1}/${HOWTO.length}</small></div><div class="hspace"></div><button class="btn w" id="hx">關閉 ✕</button></div>
   <div class="pg"><div><h1>STEP ${i+1}</h1><h2>${s.h}</h2><p>${s.p}</p></div><div class="box vis pop">${s.vis()}</div></div>
@@ -584,13 +755,12 @@ function hLobby(hm,ctrl){
  const url=location.origin+location.pathname+"?room="+H.room+(LOCAL?"&local=1":"");
  hm.innerHTML=`<div class="lobby"><div class="box qrbox"><div class="cap" style="font-size:24px">一組一支手機，掃這裡加入</div><div id="qr"></div><div class="url">${esc(url)}</div>
   <div class="tiny">房間代碼 <b style="font-size:22px;color:#161616">${H.room}</b> · 已加入 ${H.groups.length} / 6 組</div></div>
-  <div class="box rules"><h2>HOW TO PLAY</h2>
-   <div class="r"><i>1</i><div>每組是交通局的一個<b>部門</b>，每回合是一年。</div></div>
-   <div class="r"><i>2</i><div><b>祕密行動：</b>選行動，並押注「明天報紙會怎麼寫我們」。</div></div>
-   <div class="r"><i>3</i><div><b>當記者：</b>給其他每一組蓋頭條章。英雄、冷血各只有 1 個；跟多數記者一樣 +1。</div></div>
-   <div class="r"><i>4</i><div><b>照鏡子：</b>章有分數，猜中別人眼中的自己 +2。</div></div>
-   <div class="stamps">${STAMPS.map(s=>`<span style="display:flex;align-items:center;gap:4px;font-weight:900;font-size:20px">${stampHTML(s.k,64,18)}${sv(s.v)}</span>`).join("")}</div>
-   <div class="r" style="margin-top:4px;align-items:center"><span class="spec leak">📰 爆料</span><span class="spec buck">🔄 甩鍋</span><div>整場各 1 次</div></div>
+  <div class="box rules"><h2>台鐵・台北車站大廳 2014→2026</h2>
+   <div class="r"><i>1</i><div>每組是<b>台鐵的一個部門</b>，每回合是北車真實發生過的一年。</div></div>
+   <div class="r"><i>2</i><div><b>公司會議：</b>手機上選一個做法，喊話拉票，多數決。每個做法有<b>提案部門</b>：外界讚它得分，外界罵它背鍋。</div></div>
+   <div class="r"><i>3</i><div><b>照鏡子：</b>換上外部身分評價，再猜全班多數的反應。形象 ＝ 讚 − 罵。</div></div>
+   <div class="r"><i>4</i><div>公司的決定會改寫「我們是誰」；公司形象最後算進每一組。</div></div>
+   <div class="tiny">改編自真實事件；台鐵各部門的選項為假設情境。</div>
    <button class="btn y" id="how" style="align-self:flex-start">📖 完整遊戲說明</button></div></div>`;
  try{new QRCode(hm.querySelector("#qr"),{text:url,width:300,height:300,correctLevel:QRCode.CorrectLevel.M})}catch(e){hm.querySelector("#qr").innerHTML=`<div style="width:300px;height:300px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900">QR 載入失敗<br>請輸入上方網址</div>`}
  hm.querySelector("#how").onclick=howtoOverlay;
@@ -599,115 +769,110 @@ function hLobby(hm,ctrl){
  ctrl.querySelector("#add").onclick=()=>{if(H.groups.length>=6)return;const d=DEPTS.find(d=>!H.groups.some(g=>g.name===d.n));H.groups.push(newGroup(d,true));hSave();hRender()};
  ctrl.querySelector("#go").onclick=()=>{H.k=0;go("event")};
 }
-function hEvent(hm,ctrl){
- const R=curR();
- hm.innerHTML=`<div class="panels">${R.p.map((p,i)=>`<div class="box panel flip" style="animation-delay:${i*.35}s">
-   ${p.cap?`<div class="cap">${p.cap}</div>`:""}
-   ${p.scene?`<div class="scene" style="background:${SCENE_BG[p.scene]}">${scene(p.scene)}</div>`:""}
-   ${p.bubble?`<div class="bubble">${p.bubble}</div><div class="who">${p.who}</div>`:""}
-   ${p.news?`<div class="newsmini"><b>THE LOOKING GLASS · 頭版</b><div>${p.news}</div></div><div class="who">${p.who}</div>`:""}
-   ${p.sfx?`<div class="sfx big">${p.sfx}</div>`:""}
-   ${p.sub?`<div class="cap foot" style="background:#fff">${p.sub}</div>`:""}</div>`).join("")}</div>`;
- const hasEv=EVENTS.some(e=>e.y.includes(R.y)),bigEv=EVENTS.some(e=>e.big&&e.y.includes(R.y));
- ctrl.innerHTML=hasEv?`<button class="btn y" id="go">${bigEv?"📰 號外！":"📺 插播新聞"} ▶</button>`:`<button class="btn" id="go">開始行動 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go(hasEv?"news":"act");
+function hEvent(hm,ctrl){const R=curR(),X=H.RES[H.k];
+ hm.innerHTML=`${X.forced?`<div class="evstrip" style="background:#F29A1F"><b style="background:#161616">被罵了</b>網路吵翻、民團上街<span>· 解鎖「形象問題」：台鐵開始在意外界怎麼看。</span></div>`:""}${X.crisis?`<div class="evstrip"><b>CRISIS</b>形象危機<span>· 形象已經跌到 ${sv(H.image)}，今年不能再選「維持現狀」。</span></div>`:""}
+  <div class="evpage">
+   <div class="box evscene flip"><div class="scene" style="background:${sceneBg(R.scene)}">${scene2(R.scene)}</div><div class="cap evtag">改編自真實事件</div></div>
+   <div class="evtext"><div class="cap" style="font-size:24px;align-self:flex-start">${R.cap}</div>
+    <h1 class="evtitle pop">${R.t}</h1>
+    <div class="box evrecap flip" style="animation-delay:.3s">${R.recap}</div>
+    <div class="evquote flip" style="animation-delay:.6s"><div class="bubble">${R.bubble}</div><div class="who">${R.who}</div></div></div></div>`;
+ ctrl.innerHTML=`<button class="btn" id="go">公司會議 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("vote");
 }
-function hNews(hm,ctrl){const e=curEv();
- hm.innerHTML=`${e.big?burst("#161616","#2a2a2a"):burst("#E23B2E","#C62E22")}<div class="news onburst ${e.big?"bignews":""}" style="padding:10px 30px 30px">
-  <div class="tv pop">${newsroom()}<div class="ticker"><div>突發新聞 BREAKING NEWS　★　${esc(e.t)}　★　${esc(e.d)}　★　本回合規則改變</div></div></div>
-  <div class="card flip">${e.big?`<div class="flash" style="font-size:64px">號外！EXTRA!</div>`:`<div class="flash">BREAKING NEWS!</div>`}<h1>${esc(e.t)}</h1><div class="d">${esc(e.d)}</div>
-   <div class="rule">${e.big?"⚠ 最後一年・分數翻倍":"⚠ 只在這一年有效"}</div></div></div>`;
- ctrl.innerHTML=`<button class="btn" id="go">開始行動 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("act");
+function actCard(a,i,opt={}){const ok=opt.lock?true:actOK(a,H.k);const F=FRAMES[a.fr];const win=opt.win===i;
+ return `<div class="box acard ${opt.still?"":"flip"} ${ok?"":"locked"} ${win?"winc":""} ${opt.win!==undefined&&!win?"dim":""}" style="animation-delay:${(opt.j||0)*.1}s">
+  <div class="ftag" style="background:${ok?F.c:"#bbb"}">${a.fr==="none"?"—":(ok?"":"🔒 ")+F.n}</div>
+  <div class="art">${icon2(a.ic)}</div><div class="t">${a.t}</div><div class="tiny">${a.s}</div>${idFx(a)}
+  ${ok?gainHTML(a,true):`<div class="lockwhy">${a.fr==="none"?"形象危機：不能再假裝沒事":F.lock}</div>`}
+  ${opt.vc?`<div class="vcount">${"🙋".repeat(opt.vc[i]||0)||"　"}<b>${opt.vc[i]||0}</b></div>`:""}
+  ${win?`<div class="sfx pop" style="position:absolute;top:-30px;right:-14px;font-size:44px;transform:rotate(10deg)">台鐵決定！</div>`:""}</div>`}
+function hVote(hm,ctrl){const R=curR();const n=Object.keys(H.V[H.k]||{}).length;const still=hVote.k===H.k;hVote.k=H.k;
+ hm.innerHTML=`<div class="vhead"><div class="box vscene"><div class="scene" style="background:${sceneBg(R.scene)}">${scene2(R.scene)}</div></div>
+   <div class="vtext"><div class="qtitle"><span>②</span>${R.y}・${R.t}：台鐵要怎麼做？</div><div class="vrecap">${R.recap}</div></div></div>
+  <div class="acards">${R.acts.map((a,i)=>actCard(a,i,{j:i,still,vc:Object.values(H.V[H.k]||{}).reduce((c,v)=>(c[v]=(c[v]||0)+1,c),{})})).join("")}</div>
+  <div class="statusrow"><div class="cap" style="font-size:20px">🔒 灰色＝「這不像我們」　·　提案部門：形象變多少，就得（扣）多少分</div><div class="sfx" style="font-size:40px">喊話拉票！</div><div class="cap" style="font-size:26px">${n} / ${H.groups.length} 組已選${n===H.groups.length?"・可以開票":"・開票前都能改"}</div></div>`;
+ ctrl.innerHTML=`<button class="btn y" id="go">時間到，開票 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("decide");
 }
-function qBox(R,extra){return `<div class="box qbox"><div class="cap" style="align-self:flex-start">${R.y}・${R.t}</div><div class="rc">${R.recap}</div>${extra||""}</div>`}
-function hAct(hm,ctrl){
- const R=curR();const n=Object.keys(H.act[H.k]||{}).length;
- hm.innerHTML=`${evStrip()}<div class="qpanel">${qBox(R,`<div style="margin-top:auto" class="tiny">押注：明天報紙會把我們寫成——</div><div class="stamps">${STAMPS.map(s=>stampHTML(s.k,64,18)).join("")}</div><div class="tiny">🔄 想甩鍋的組，可以在手機上偷偷指定對象。</div>`)}
-  <div class="qright"><div class="qtitle"><span>①</span>這一年，你們部門要做什麼？</div>
-   <div class="opts4">${R.acts.map((a,i)=>`<div class="box ocard flip" style="animation-delay:${i*.12}s"><div class="L">${"ABCD"[i]}</div><div class="art">${icon(a.ic)}</div><div class="t">${a.t}</div><div class="tiny">${a.s}</div></div>`).join("")}</div>
-   <div class="statusrow"><div class="sfx" style="font-size:64px">SHHH…</div><div class="cap" style="font-size:30px">${n} / ${H.groups.length} 組已送出</div></div></div></div>`;
- ctrl.innerHTML=`<button class="btn y" id="go">時間到，翻牌 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("reveal");
+function hDecide(hm,ctrl){const R=curR(),X=H.RES[H.k];
+ hm.innerHTML=`${burst("#FFD23F","#FFC21A")}<div class="onburst" style="flex:1;display:flex;flex-direction:column;gap:14px">
+  <div class="qtitle" style="background:#fff;align-self:flex-start;padding:6px 14px;border:4px solid #161616">${R.y}・台鐵的正式決定${X.tie?"（平手抽籤）":""}</div>
+  <div class="acards">${R.acts.map((a,i)=>actCard(a,i,{j:i,vc:X.vc,win:X.win,lock:actOK(a,H.k)?false:false})).join("")}</div></div>`;
+ ctrl.innerHTML=`<button class="btn" id="go">照鏡子 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("judge");
 }
-function cols(n){return n<=3?n:n===4?4:3}
-function actGrid(R,small){return `<div class="grid" style="grid-template-columns:repeat(${cols(H.groups.length)},1fr);padding-top:20px">${H.groups.map((g,i)=>{const a=R.acts[H.act[H.k][g.id].a];
-   return `<div class="box card ${small?"":"flip"}" style="animation-delay:${i*.3}s"><div class="dept" style="background:${g.color}">${esc(g.name)}</div><div class="art">${icon(a.ic)}</div><div class="t">${a.t}</div><div class="tiny">${a.s}</div>${small?"":`<div class="sfx bam pop" style="animation-delay:${i*.3+.4}s">${["BAM!","POW!","WHAM!","ZAP!","BOOM!","KRAK!"][i%6]}</div>`}</div>`}).join("")}</div>`}
-function hReveal(hm,ctrl){
- hm.innerHTML=burst("#2E6FD8","#2862C2")+`<div class="onburst" style="flex:1;display:flex;flex-direction:column">${actGrid(curR(),false)}</div>`;
- ctrl.innerHTML=`<button class="btn" id="go">記者時間 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("judge");
+function hJudge(hm,ctrl){const R=curR(),X=H.RES[H.k];const a=R.acts[X.win];const n=Object.keys(H.J[H.k]||{}).length;
+ hm.innerHTML=`<div class="judgeview">${actCard(a,X.win,{win:X.win})}
+  <div class="jsteps"><div class="qtitle"><span>③</span>照鏡子：拿起手機</div>
+   <div class="box jstep"><b>1</b><div>換上手機裡的<b>外部身分</b>，真心評價台鐵的決定</div></div>
+   <div class="outs">${H.groups.map(g=>`<span class="spec" style="font-size:20px">${outOf(g,H.k).e} ${outOf(g,H.k).n}</span>`).join("")}</div>
+   <div class="box jstep"><b>2</b><div>再猜：<b>全班多數</b>會讚、無感，還是罵？猜中 +2</div></div>
+   <div class="cap" style="font-size:20px">形象變化 ＝ 讚的票數 − 罵的票數${R.big?"，<b style='color:#E23B2E'>今年全國都在看 ×2</b>":""}</div>
+   <div class="cap" style="font-size:30px;align-self:flex-start">📱 ${n} / ${H.groups.length} 組已在手機送出</div></div></div>`;
+ ctrl.innerHTML=`<button class="btn y" id="go">時間到，揭曉 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("result");
 }
-function hJudge(hm,ctrl){
- const R=curR();const n=Object.keys(H.judge[H.k]||{}).length;
- hm.innerHTML=`${evStrip()}<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap"><div class="qtitle"><span>②</span>你們是記者！給其他每一組蓋頭條章</div>
-   <div class="stamps">${STAMPS.map(s=>stampHTML(s.k,58,16)).join("")}</div><span class="spec">每人：英雄 ${heroMax()} 個・冷血 1 個</span><span class="spec" style="background:#BDE8C8">🗞️ 蓋的章跟多數記者一樣 +1</span><span class="spec leak">📰 爆料＝這個章算兩倍</span>
-   <div class="cap" style="margin-left:auto;font-size:26px">${n} / ${H.groups.length} 組已蓋完</div></div>${actGrid(R,true)}`;
- ctrl.innerHTML=`<button class="btn y" id="go">時間到，照鏡子 ▶</button>`;ctrl.querySelector("#go").onclick=()=>go("mirror");
+function hResult(hm,ctrl){const R=curR(),X=H.RES[H.k];
+ const outs=H.groups.map((g,i)=>{const p=X.pts[g.id];return `<div class="box oreact pop" style="animation-delay:${i*.15}s"><span class="oe">${outOf(g,H.k).e}</span><span class="on">${outOf(g,H.k).n}</span><span class="ov">${REACT[p.vote].e}</span></div>`}).join("");
+ const preds=H.groups.map(g=>{const p=X.pts[g.id];const ok=p.mirror>0;return `<div class="prow"><span class="dot" style="background:${g.color}"></span><span class="pn">${esc(g.name)}</span><span>${p.own?`提案 ${sv(p.dept)}`:`<i style="color:#aaa">—</i>`}</span><span>猜 ${REACT[p.pred].e}</span><span class="${ok?"ok":"ng"}">${ok?"✓ +2":"✕"}</span><b>${sv(p.dept+p.mirror)}</b></div>`}).join("");
+ const lastRound=H.k>=H.plan.length-1;
+ hm.innerHTML=`<div class="resgrid">
+  <div class="rcol"><div class="qtitle"><span>外</span>外界的真實反應</div><div class="oreacts">${outs}</div>
+   <div class="cnts">${Object.keys(REACT).map(r=>`<span class="${X.maj.includes(r)?"maj":""}">${REACT[r].e} ${X.cnt[r]}</span>`).join("")}</div></div>
+  <div class="rcol mid"><div class="${X.delta<0?"shake":"pop"}">${mirror(X.delta<0?Math.min(5,-X.delta+1):0,170,X.delta>0)}</div>
+   <div class="sfx" style="font-size:64px;color:${X.delta>0?"var(--yel)":X.delta<0?"var(--red)":"#fff"}">${X.delta>0?"SHINE!":X.delta<0?"KRAK!":"……"}</div>
+   <div class="cap" style="font-size:24px;text-align:center">讚 ${X.cnt.up} − 罵 ${X.cnt.down}${R.big?" ，×2":""}<br>公司形象 ${sv(X.delta)}　→　${sv(H.image)}</div>${tracksHTML(X.ida,X.idb)}</div>
+  <div class="rcol"><div class="qtitle"><span>內</span>各部門這一年</div><div class="preds">${preds}</div>
+   <div class="tiny">提案部門：形象變多少，就得（扣）多少分<br>猜中外界多數 +2；公司形象最後算進每一組</div></div></div>
+  ${X.lines.length?`<div class="evstrip" style="background:#2E6FD8"><b style="background:#161616">IDENTITY SHIFT</b>${X.lines.map(esc).join("　")}</div>`:""}`;
+ ctrl.innerHTML=`<button class="btn" id="go">${lastRound?"最終結算 ▶":X.lines.length?"認同改寫 ▶":"下一年 ▶"}</button>`;
+ ctrl.querySelector("#go").onclick=()=>{if(lastRound)go("final");else if(X.lines.length)go("shift");else{H.k++;go("event")}};
 }
-function hMirror(hm,ctrl){
- const R=curR(),res=H.res[H.k];
- if(H.mi<0){hm.innerHTML=`${burst("#2E6FD8","#2862C2")}<div class="center onburst" style="color:#fff"><div class="sfx" style="font-size:120px">MIRROR, MIRROR…</div><h1>你以為的自己 vs. 別人眼中的你</h1><p>一組一組揭曉。</p></div>`}
- else{const g=G(H.order[H.mi]),x=res[g.id],a=R.acts[x.a],mx=Math.max(1,...Object.values(x.counts));
-   const hl=x.top.length?SK[x.top[0]].h.replace("{d}",g.name):`${g.name}？沒有人注意到`;
-   const evs=[];
-   if(x.leakedBy.length)evs.push(`<span class="ev leak pop">📰 被 ${x.leakedBy.map(id=>esc(G(id).name)).join("、")} 爆料！</span>`);
-   if(x.buckOut)evs.push(`<span class="ev buck pop">🔄 甩鍋給 ${esc(G(x.buckOut.to).name)}${x.buckOut.n?`，丟出 ${x.buckOut.n} 個冷血章`:"（但沒有冷血章可丟）"}</span>`);
-   x.buckFrom.forEach(b=>evs.push(`<span class="ev buck pop">💥 ${esc(G(b.from).name)} 甩來 ${b.n} 個冷血章！</span>`));
-   hm.innerHTML=`${burst(x.acc?"#7CC6F0":"#FFC9C2",x.acc?"#9ED6F5":"#FFB3A8")}<div class="mirrorstage onburst"><div class="mleft"><div class="box" style="padding:6px 16px;background:${g.color};color:#fff;font-weight:900;font-size:28px">${esc(g.name)}</div>
-     <div class="${x.acc?"pop":"shake"}">${mirror(x.acc?0:3,240,x.acc)}</div><div class="sfx" style="font-size:72px;color:${x.acc?"var(--yel)":"var(--red)"}">${x.acc?"SHINE!":"KRAK!"}</div></div>
-    <div class="mright"><div class="tiny">行動：${a.t}</div>
-     <div class="headline"><div class="mast"><span>明鏡日報</span><span>${R.y}</span></div><div class="hl">${hl}</div></div>
-     ${evs.length?`<div class="events">${evs.join("")}</div>`:""}
-     <div class="tally">${STAMPS.map((s,i)=>`<div class="col"><span>${x.counts[s.k]}</span><div class="bar pop" style="height:${10+x.counts[s.k]/mx*110}px;background:${s.c};animation-delay:${i*.15}s"></div>${stampHTML(s.k,60,17)}<span style="${x.val&&x.val[s.k]!==s.v?"color:var(--red);font-size:22px":""}">${sv(x.val?x.val[s.k]:s.v)}</span></div>`).join("")}</div>
-     <div class="verdict">他們押注自己會被寫成 ${stampHTML(x.pred,60,17)} ${x.acc?"——猜中了！":"——猜錯了。"}<br>印章 ${sv(x.stampPts)}${x.acc?`　猜中 +${x.ab}`:""}${x.agenda?`　★部門立場 +${x.gb}`:""}${x.press?`　🗞️記者命中 +${x.press}`:""}　＝　<b style="color:var(--red);font-size:34px">${sv(x.pts)}</b></div></div></div>`}
- const last=H.mi>=H.order.length-1,lastRound=H.k>=H.plan.length-1;
- ctrl.innerHTML=last?`<button class="btn" id="go">${lastRound?"最終結算 ▶":"下一年 ▶"}</button>`:`<button class="btn y" id="go">揭曉${H.mi<0?"第一組":"下一組"} ▶</button>`;
- ctrl.querySelector("#go").onclick=()=>{if(!last){H.mi++;hSave();hRender()}else if(!lastRound){H.k++;go("event")}else go("final")};
+function hShift(hm,ctrl){const X=H.RES[H.k];
+ hm.innerHTML=`${burst("#7CC6F0","#9ED6F5")}<div class="stage onburst"><div class="kicker">IDENTITY SHIFT!</div>
+  <div style="display:flex;gap:40px;align-items:center;justify-content:center"><div class="shake">${mirror(3,190,false)}</div><div class="sfx" style="font-size:90px">→</div><div class="pop">${mirror(0,190,true)}</div></div>
+  <h1>台鐵的「我們是誰」改變了</h1><div class="bigq" style="font-size:30px;padding:22px 34px;text-align:left">${X.lines.map(l=>"・"+esc(l)).join("<br>")}</div>${tracksHTML(X.ida,X.idb)}</div>`;
+ ctrl.innerHTML=`<button class="btn" id="go">下一年 ▶</button>`;ctrl.querySelector("#go").onclick=()=>{H.k++;go("event")};
 }
+
+const idFx=a=>{const e=Object.entries(a.id||{});return e.length?`<div class="idfx">${e.map(([t,v])=>`<span style="color:${TRACKS[t].c}">${TRACKS[t].n} +${v}</span>`).join(" ")}</div>`:""};
+/* 背景放射線：只轉漸層角度，元素本身不動，所以不會轉出邊界 */
+function burst(c1,c2){return `<div class="burstbg" style="--c1:${c1};--c2:${c2}"></div>`}
+
 function pager(ctrl,n,key,last){const p=H[key]||0;
  ctrl.innerHTML=`<div class="pgdots">${Array.from({length:n},(_,j)=>`<i class="${j===p?"on":""}"></i>`).join("")}</div><button class="btn w" id="pv" ${p?"":"disabled"}>◀</button>${p<n-1?`<button class="btn" id="nx">下一頁 ▶</button>`:last||""}`;
  ctrl.querySelector("#pv").onclick=()=>{H[key]=Math.max(0,p-1);hSave();hRender()};
  const nx=ctrl.querySelector("#nx");if(nx)nx.onclick=()=>{H[key]=p+1;hSave();hRender()}}
-document.addEventListener("keydown",e=>{if(!IS_HOST||document.querySelector(".howto,.modal"))return;if(!["final","truth"].includes(H.phase))return;
- const b=e.key==="ArrowRight"?document.getElementById("nx"):e.key==="ArrowLeft"?document.getElementById("pv"):null;if(b&&!b.disabled)b.click()});
 function hFinal(hm,ctrl){
- const t=totals();const rows=[...H.groups].sort((a,b)=>t[b.id].pts-t[a.id].pts);const p=H.fp||0;
+ const t=totals();const rows=[...H.groups].sort((a,b)=>finalPts(t,b.id)-finalPts(t,a.id));const p=H.fp||0;
  const best=k=>[...H.groups].sort((a,b)=>t[b.id][k]-t[a.id][k])[0];
  if(p===0){const top=rows.slice(0,3),ord=[1,0,2].filter(i=>top[i]),hgt=[300,220,170];
   hm.innerHTML=`${burst("#FFD23F","#FFC21A")}<div class="stage onburst"><div class="kicker">FINAL SCORE</div>
-   <div class="podium">${ord.map(i=>{const g=top[i];return `<div class="pod pop" style="animation-delay:${(2-i)*.5}s"><div class="nm">${esc(g.name)}</div><div class="pt">${t[g.id].pts}</div><div class="blk" style="height:${hgt[i]}px;background:${g.color}">#${i+1}</div></div>`}).join("")}</div>
-   ${rows.length>3?`<div class="restlist">${rows.slice(3).map((g,i)=>`<div class="box"><span style="color:${g.color}">●</span> #${i+4} ${esc(g.name)}　${t[g.id].pts}</div>`).join("")}</div>`:""}</div>`}
- if(p===1)hm.innerHTML=`<div class="stage"><div class="kicker">SECRET AGENDAS</div><h1>每個部門的祕密立場，現在公開</h1>
-   <div class="agrid">${rows.map((g,i)=>`<div class="agcard flip" style="animation-delay:${i*.2}s"><div class="hd" style="background:${g.color}">${esc(g.name)}</div><div class="bd"><div class="tiny">🤫 祕密立場</div><div class="ag">${esc(g.ag)}</div>
-    <div class="meter">${Array.from({length:t[g.id].rounds},(_,j)=>`<i class="${j<t[g.id].agenda?"on":""}">${j<t[g.id].agenda?"★":""}</i>`).join("")}</div><div class="tiny">${t[g.id].rounds} 年中有 ${t[g.id].agenda} 年照立場行動</div></div></div>`).join("")}</div></div>`;
- if(p===2){const aw=[["🪞","最看得清自己",best("acc"),"#7CC6F0"],["🦸","全城英雄",best("hero"),"#2E6FD8"],["🧊","最常被罵冷血",best("cold"),"#E23B2E"],["🤫","最照本位行動",best("agenda"),"#8E44AD"]];
-  hm.innerHTML=`<div class="stage"><div class="kicker">AWARDS</div><div class="awards">${aw.map((a,i)=>`<div class="award pop" style="background:${a[3]}22;animation-delay:${i*.3}s"><div class="e">${a[0]}</div><div class="t">${a[1]}</div><div class="w" style="background:${a[2].color}">${esc(a[2].name)}</div></div>`).join("")}</div></div>`}
- if(p===3)hm.innerHTML=`<div class="stage"><div class="bigq">每個部門的立場都說得通。<br>但照立場做的事，<span style="color:var(--red)">別人怎麼看？</span><br>你們是在替部門決定，還是替整個組織決定？</div></div>`;
+   <div class="cap" style="font-size:24px">每一組都加上公司形象 ${sv(H.image)}：公司被罵，大家一起扣</div>
+   <div class="podium">${ord.map(i=>{const g=top[i];return `<div class="pod pop" style="animation-delay:${(2-i)*.5}s"><div class="nm">${esc(g.name)}</div><div class="pt">${finalPts(t,g.id)}</div><div class="blk" style="height:${hgt[i]}px;background:${g.color}">#${i+1}</div></div>`}).join("")}</div>
+   ${rows.length>3?`<div class="restlist">${rows.slice(3).map((g,i)=>`<div class="box"><span style="color:${g.color}">●</span> #${i+4} ${esc(g.name)}　${finalPts(t,g.id)}</div>`).join("")}</div>`:""}</div>`}
+ if(p===1){const hs=H.plan.map((ri,k)=>H.hist[k]).filter(Boolean);
+  hm.innerHTML=`<div class="stage"><div class="kicker">WHO ARE WE?</div><h1>台鐵的「我們是誰」，這五年怎麼變？</h1>
+   <div class="journey">${hs.map((h,k)=>{const R=ROUNDS[H.plan[k]];return `<div class="jcol flip" style="animation-delay:${k*.2}s"><div class="y">${h.y}</div><div class="s">${FRAMES[R.acts[h.win].fr].n}</div><div class="w">${R.acts[h.win].t}</div>${tracksHTML(h.id)}<div class="im ${h.img<0?"neg":""}">🪞 形象 ${sv(h.img)}</div></div>`}).join("")}</div>
+   <div class="lead" style="font-size:24px">一開始只有「管理問題」的做法能選；後來哪些想法被解鎖，是你們一年一年的決定造成的。</div></div>`}
+ if(p===2){const aw=[["🪞","最看得清鏡子",best("hit"),"#7CC6F0"],["📣","最能帶動公司",best("won"),"#FFD23F"],["🏢","最會提案",best("dept"),"#8E44AD"]];
+  hm.innerHTML=`<div class="stage"><div class="kicker">AWARDS</div><div class="awards" style="grid-template-columns:repeat(3,1fr)">${aw.map((a,i)=>`<div class="award pop" style="background:${a[3]}33;animation-delay:${i*.3}s"><div class="e">${a[0]}</div><div class="t">${a[1]}</div><div class="w" style="background:${a[2].color}">${esc(a[2].name)}</div></div>`).join("")}</div></div>`}
+ if(p===3)hm.innerHTML=`<div class="stage"><div class="bigq">你們用部門身分預測的「外界」，<br>和你們換上外部身分後的反應，<span style="color:var(--red)">一樣嗎？</span><br>台鐵的決定，是為了大廳上的人，還是為了鏡子裡的自己？</div></div>`;
  pager(ctrl,4,"fp",`<button class="btn w" id="go">真相（報告最後再按）</button>`);
- const go2=ctrl.querySelector("#go");if(go2)go2.onclick=()=>go("truth");
+ const g2=ctrl.querySelector("#go");if(g2)g2.onclick=()=>go("truth");
 }
-function hTruth(hm,ctrl){
- const t=totals();const p=H.tp||0;const accAll=H.groups.reduce((s,g)=>s+t[g.id].acc,0),tot=H.groups.reduce((s,g)=>s+t[g.id].rounds,0);
+function hTruth(hm,ctrl){const p=H.tp||0;const t=totals();
+ const hit=H.groups.reduce((s,g)=>s+t[g.id].hit,0),tot=H.groups.reduce((s,g)=>s+t[g.id].rounds,0);
  if(p===0)hm.innerHTML=`${burst("#161616","#222")}<div class="stage onburst" style="color:#fff"><div class="kicker" style="background:var(--red);color:#fff">THE TRUTH</div>
-   <div class="lead" style="color:var(--yel)">你們剛剛經營的「交通局」，其實是——</div><h1 class="pop" style="font-size:96px">紐約與紐澤西港務局</h1>
-   <div class="lead">1982–1989 年，它在車站和機場遇到愈來愈多無家可歸的人。<br>Dutton &amp; Dukerich（1991）訪談了 25 個人，追蹤它怎麼一步步改變做法。</div></div>`;
- if(p===1){const cols=H.plan.map((ri,k)=>{const R=ROUNDS[ri];const cnt=[0,0,0,0];Object.values(H.act[k]||{}).forEach(x=>cnt[x.a]++);const mx=Math.max(...cnt);
-    const topI=cnt.map((c,i)=>c===mx&&mx>0?i:-1).filter(i=>i>=0);const real=R.acts.map((a,i)=>a.pa?i:-1).filter(i=>i>=0);const hit=topI.some(i=>real.includes(i));
-    return `<div class="tlcol flip" style="animation-delay:${k*.2}s"><div class="y">${R.y}</div><div class="s">${R.t}</div>
-     <div class="row"><small>全班最多人選</small>${topI.map(i=>R.acts[i].t).join("、")||"—"}</div>
-     <div class="row real"><small>真實的港務局</small>${real.map(i=>R.acts[i].t).join("、")}</div>
-     <div class="match" style="background:${hit?"#BDE8C8":"#FFC9C2"}">${hit?"✓ 跟港務局一樣":"✕ 跟港務局不同"}</div></div>`}).join("");
-  hm.innerHTML=`<div class="stage"><div class="kicker">YOU vs. PORT AUTHORITY</div><div class="timeline" style="grid-template-columns:repeat(${H.plan.length},1fr)">${cols}</div>
-   <div class="lead" style="font-size:22px">從「找警察」到「自己蓋中心、再把功勞讓出去」——港務局的做法，是被鏡子裡的形象一步步推著改變的。</div></div>`}
- if(p===2)hm.innerHTML=`${burst("#7CC6F0","#9ED6F5")}<div class="stage onburst"><div class="kicker">MIRROR CHECK</div><div class="lead">全班押中「別人眼中的自己」</div>
-   <div class="sfx pop" style="font-size:220px;line-height:1">${Math.round(accAll/Math.max(1,tot)*100)}%</div>
-   <div class="bigq" style="font-size:34px;padding:22px 34px">形象（image）＝ 你<b>以為</b>別人怎麼看你。<br>它不一定等於別人真的怎麼看你。</div></div>`;
- if(p===3){const used=[...new Set(Object.values(H.ev||{}))].filter(k=>!["coldx2","leakback"].includes(k)).map(k=>EK[k]).filter(Boolean);
-  const items=[["🤫 部門立場","論文訪談了高層、專案小組、幕僚、第一線四群人，每群人都從自己的位置看這個問題。","真實"],
-   ["📰 爆料卡","警察工會跟管理層談不攏，聘了公關公司散布港務局的負面新聞。","真實"],
-   ["🔄 甩鍋卡","市政府答應接手接待中心又反悔——「沒有別人會處理」。","真實"],
-   ...used.map(e=>["📺 "+e.t,e.src.replace(/^論文：/,""),"突發新聞"])].slice(0,6);
-  hm.innerHTML=`<div class="stage"><div class="kicker">IT ALL HAPPENED</div><h1>遊戲裡的機制，都是真的</h1>
-   <div class="realgrid">${items.map((x,i)=>`<div class="box flip" style="animation-delay:${i*.15}s"><span class="tag">${x[2]}</span><div class="gm">${esc(x[0])}</div><div class="rl">${esc(x[1])}</div></div>`).join("")}</div></div>`}
+   <h1 class="pop" style="font-size:80px">這些事，都真的發生過</h1>
+   <div class="lead">台北車站大廳，2014 到 2026。<br>而 1982 到 1989 年，紐約港務局也走過一模一樣的路。</div></div>`;
+ if(p===1)hm.innerHTML=`<div class="stage"><div class="kicker">YOU vs. 台鐵</div><div class="timeline" style="grid-template-columns:repeat(${H.plan.length},1fr)">${H.plan.map((ri,k)=>{const R=ROUNDS[ri],X=H.RES[k];
+    return `<div class="tlcol flip" style="animation-delay:${k*.2}s"><div class="y">${R.y}</div><div class="s">${R.t}</div><div class="row"><small>全班的台鐵</small>${X&&X.win!==undefined?R.acts[X.win].t:"—"}</div><div class="row real"><small>真實的台鐵</small>${R.real}</div></div>`}).join("")}</div></div>`;
+ if(p===2)hm.innerHTML=`<div class="stage"><div class="kicker">北車 = 港務局？</div><h1>同一條調適的路，晚了三十年</h1><div class="timeline" style="grid-template-columns:repeat(${H.plan.length},1fr)">${H.plan.map((ri,k)=>{const R=ROUNDS[ri];
+    return `<div class="tlcol flip" style="animation-delay:${k*.2}s"><div class="y">${R.y}</div><div class="row real">${R.pa}</div></div>`}).join("")}</div>
+   <div class="lead" style="font-size:24px">論文的資料停在 1989 年 5 月，受訪者說「我們還像變形蟲一樣」。北車的故事，也還在寫。</div></div>`;
+ if(p===3)hm.innerHTML=`${burst("#7CC6F0","#9ED6F5")}<div class="stage onburst"><div class="kicker">MIRROR CHECK</div><div class="lead">全班用部門身分，猜中外界多數反應的比例</div>
+   <div class="sfx pop" style="font-size:220px;line-height:1">${Math.round(hit/Math.max(1,tot)*100)}%</div>
+   <div class="bigq" style="font-size:32px;padding:22px 34px">形象（image）是內部人<b>以為</b>外界怎麼看；<br>聲譽（reputation）是外界<b>真的</b>怎麼看。</div></div>`;
  if(p===4)hm.innerHTML=`<div class="stage"><div class="kicker">TAKE AWAY</div><div class="three">
-   ${[["你是誰，決定你看見什麼問題。","認同 ＝ 濾網"],["別人怎麼看你，決定你何時行動。","形象 ＝ 鏡子"],["你做了什麼，最後改寫你是誰。","調適 ＝ 循環"]].map((x,i)=>`<div class="box pop" style="animation-delay:${i*.5}s"><div class="n">${i+1}</div><div><div class="l">${x[0]}</div><div class="k">${x[1]}</div></div></div>`).join("")}</div></div>`;
+   ${[["你是誰，決定你看見什麼問題。","認同 ＝ 濾網：灰色的選項"],["別人怎麼看你，決定你何時行動。","形象 ＝ 鏡子：被罵才解鎖「形象問題」"],["你做了什麼，最後改寫你是誰。","調適 ＝ 循環：IDENTITY SHIFT"]].map((x,i)=>`<div class="box pop" style="animation-delay:${i*.5}s"><div class="n">${i+1}</div><div><div class="l">${x[0]}</div><div class="k">${x[1]}</div></div></div>`).join("")}</div></div>`;
  pager(ctrl,5,"tp",`<button class="btn w" id="go" style="font-size:16px">開新的一局</button>`);
  const g2=ctrl.querySelector("#go");if(g2)g2.onclick=()=>{if(confirm("清除這局，重新開始？")){H=hNew();hSave();location.href=location.pathname+(LOCAL?"?local=1":"")}};
 }
@@ -717,52 +882,45 @@ function restartMenu(){const m=document.createElement("div");m.className="modal"
  <div style="display:flex;flex-direction:column;gap:12px"><button class="btn y" id="r1">⟲ 重新開始這一局（保留已加入的組別，回到大廳）</button>
  <button class="btn" id="r2">✕ 全部重來（新房間、新 QR code，大家要重新掃）</button><button class="btn w" id="rx">取消</button></div></div>`;document.body.appendChild(m);
  m.querySelector("#rx").onclick=()=>m.remove();
- m.querySelector("#r1").onclick=()=>{H.k=0;H.act={};H.judge={};H.res={};H.ev={};H.evDeck=shuffle(EVENTS.map(e=>e.k));H.fp=0;H.tp=0;H.mi=-1;H.order=[];H.groups.forEach(g=>{g.leak=1;g.buck=1});m.remove();go("lobby")};
+ m.querySelector("#r1").onclick=()=>{const keep=H.groups,room=H.room,plan=H.plan;H=hNew();H.room=room;H.groups=keep;H.plan=plan;m.remove();go("lobby")};
  m.querySelector("#r2").onclick=()=>{H.groups.forEach(g=>{const c=connOf[g.id];if(c)net.send(c,{t:"full",msg:"主持人開了新的一局，請重新掃描大螢幕上的 QR code。"})});H=hNew();hSave();setTimeout(()=>location.href=location.pathname+(LOCAL?"?local=1":""),300)};}
+
 /* 移除 / 代打 */
-function chipClick(gid){const g=G(gid);if(!g)return;
+function chipClick(gid){const g=G(gid);if(!g)return;const k=H.k;
  if(H.phase==="lobby"){if(!confirm(`移除「${g.name}」？`))return;
    const cid=connOf[gid];if(cid)net.send(cid,{t:"full",msg:"主持人把這一組移除了。重新整理頁面可以再加入。"});
-   delete connOf[gid];H.groups=H.groups.filter(x=>x.id!==gid);hSave();hRender();return}
- const R=curR();
- if(H.phase==="act"){let a=null,p=null;
-   const m=document.createElement("div");m.className="modal";m.innerHTML=`<div class="box"><h2>代打：${esc(g.name)}</h2><p class="tiny">請該組口頭告訴你，再點選。</p>
-   <div class="acts" style="grid-template-columns:repeat(4,1fr);margin-top:10px">${R.acts.map((x,i)=>`<button class="act" data-a="${i}">${icon(x.ic)}${x.t}</button>`).join("")}</div>
-   <p style="margin-top:12px;font-weight:900">他們押注的頭條：</p><div class="sts" style="grid-template-columns:repeat(4,1fr)">${STAMPS.map(s=>`<button class="stbtn" data-p="${s.k}"><span class="ic" style="background:${s.c}"></span>${s.t}</button>`).join("")}</div>
-   ${g.buck>0?`<p style="margin-top:12px;font-weight:900">🔄 甩鍋（可不選）：</p><div class="stamps">${H.groups.filter(o=>o.id!==gid).map(o=>`<button class="spec" data-b="${o.id}">${esc(o.name)}</button>`).join("")}</div>`:""}
-   <div style="display:flex;gap:10px;margin-top:16px"><button class="btn w" id="x">取消</button><button class="btn" id="ok">送出</button></div></div>`;document.body.appendChild(m);
-   let bk=null;m.querySelectorAll("[data-b]").forEach(b=>b.onclick=()=>{bk=bk===b.dataset.b?null:b.dataset.b;m.querySelectorAll("[data-b]").forEach(x=>x.style.background=x.dataset.b===bk?"#C9F0D6":"#fff")});
-   m.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{a=+b.dataset.a;m.querySelectorAll("[data-a]").forEach(x=>x.classList.toggle("sel",x===b))});
-   m.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{p=b.dataset.p;m.querySelectorAll("[data-p]").forEach(x=>x.classList.toggle("sel",x===b))});
-   m.querySelector("#x").onclick=()=>m.remove();
-   m.querySelector("#ok").onclick=()=>{if(a===null||!p)return;(H.act[H.k]=H.act[H.k]||{})[gid]={a,pred:p,buck:bk};m.remove();hSave();hRender();checkAll()}}
- else if(H.phase==="judge"){const map={};const others=H.groups.filter(x=>x.id!==gid);
-   const m=document.createElement("div");m.className="modal";m.innerHTML=`<div class="box"><h2>代打：${esc(g.name)} 當記者</h2><p class="tiny">英雄章最多 ${heroMax()} 個，冷血章最多 1 個。</p>
-   ${others.map(o=>`<div class="target" style="border-bottom:2px solid #161616"><div class="tt">${icon(R.acts[H.act[H.k][o.id].a].ic)}<span>${esc(o.name)}：${R.acts[H.act[H.k][o.id].a].t}</span></div>
-   <div class="mini">${STAMPS.map(s=>`<button data-o="${o.id}" data-s="${s.k}">${s.t}</button>`).join("")}</div>${g.leak>0?`<button class="leakbtn" data-l="${o.id}">📰 對他們爆料</button>`:""}</div>`).join("")}
-   <div style="display:flex;gap:10px;margin-top:16px"><button class="btn w" id="x">取消</button><button class="btn" id="ok">送出</button></div></div>`;document.body.appendChild(m);
-   const paint=()=>m.querySelectorAll("[data-o]").forEach(x=>{const on=map[x.dataset.o]===x.dataset.s;x.classList.toggle("sel",on);x.style.background=on?SK[x.dataset.s].c:"#fff";
-     x.disabled=!on&&Object.values(map).filter(v=>v===x.dataset.s).length>=limOf(x.dataset.s)});
-   m.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{map[b.dataset.o]=b.dataset.s;paint()});
-   let lk=null;m.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{lk=lk===b.dataset.l?null:b.dataset.l;m.querySelectorAll("[data-l]").forEach(x=>x.classList.toggle("on",x.dataset.l===lk))});
-   m.querySelector("#x").onclick=()=>m.remove();
-   m.querySelector("#ok").onclick=()=>{if(others.some(o=>!map[o.id]))return;(H.judge[H.k]=H.judge[H.k]||{})[gid]={map,leak:lk};m.remove();hSave();hRender();checkAll()}}
+   H.groups=H.groups.filter(x=>x.id!==gid);delete connOf[gid];hSave();hRender();return}
+ const m=document.createElement("div");m.className="modal";const close=()=>m.remove();
+ if(H.phase==="vote"){const R=curR();
+   m.innerHTML=`<div class="box"><h2>代打：${esc(g.name)}</h2><p class="tiny">台鐵要怎麼做？</p><div class="pgrid">${R.acts.map((a,i)=>`<button class="btn w" data-a="${i}" ${actOK(a,k)?"":"disabled"}>${a.t}${a.own.includes(g.goal)?"（你們提案）":""}</button>`).join("")}</div><button class="btn w" id="x" style="margin-top:12px">取消</button></div>`;
+   document.body.appendChild(m);m.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{(H.V[k]=H.V[k]||{})[gid]=+b.dataset.a;close();hSave();hRender();checkAll()})}
+ else if(H.phase==="judge"){let pred=null,vote=null;const o=outOf(g,k);
+   m.innerHTML=`<div class="box"><h2>代打：${esc(g.name)}</h2><p class="tiny">1. 以「${o.e} ${o.n}」的身分評價</p><div class="rbtns">${Object.keys(REACT).map(r=>`<button type="button" class="rbtn" data-v="${r}"><span>${REACT[r].e}</span>${REACT[r].t}</button>`).join("")}</div>
+     <p class="tiny" style="margin-top:10px">2. 猜全班多數的反應</p><div class="rbtns">${Object.keys(REACT).map(r=>`<button type="button" class="rbtn" data-p="${r}"><span>${REACT[r].e}</span>${REACT[r].t}</button>`).join("")}</div>
+     <div style="display:flex;gap:10px;margin-top:14px"><button class="btn w" id="x">取消</button><button class="btn" id="ok" disabled>送出</button></div></div>`;
+   document.body.appendChild(m);
+   m.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{pred=b.dataset.p;m.querySelectorAll("[data-p]").forEach(x=>x.classList.toggle("sel",x===b));m.querySelector("#ok").disabled=!(pred&&vote)});
+   m.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{vote=b.dataset.v;m.querySelectorAll("[data-v]").forEach(x=>x.classList.toggle("sel",x===b));m.querySelector("#ok").disabled=!(pred&&vote)});
+   m.querySelector("#ok").onclick=()=>{if(!pred||!vote)return;(H.J[k]=H.J[k]||{})[gid]={pred,vote};close();hSave();hRender();checkAll()}}
+ else{m.innerHTML=`<div class="box"><h2>${esc(g.name)}</h2><p class="tiny" style="margin:10px 0">這個階段不需要代打。</p><button class="btn w" id="x">好</button></div>`;document.body.appendChild(m)}
+ const x=m.querySelector("#x");if(x)x.onclick=close;
 }
 /* 傳給各組手機的狀態 */
-function broadcast(){if(!net)return;
- H.groups.forEach(g=>{const id=connOf[g.id];if(!id)return;const R=curR();const t=totals();
-   const e=curEv();const v={t:"state",phase:H.phase,k:H.k,hm:heroMax(),ev:e&&["news","act","reveal","judge","mirror"].includes(H.phase)?{t:e.t,d:e.d,big:e.big}:null,n:H.plan.length,y:R.y,title:R.t,recap:R.recap,me:{id:g.id,name:g.name,color:g.color,ag:g.ag,agd:g.agd},leak:g.leak,buck:g.buck,score:t[g.id]?t[g.id].pts:0};
-   if(H.phase==="act"){v.acts=R.acts.map(a=>({t:a.t,s:a.s,ic:a.ic,m:(a.tg||[]).includes(g.tag)}));v.done=!!(H.act[H.k]||{})[g.id];v.others=H.groups.filter(o=>o.id!==g.id).map(o=>({id:o.id,name:o.name,color:o.color}))}
-   if(H.phase==="judge"){v.targets=H.groups.filter(o=>o.id!==g.id).map(o=>{const a=R.acts[H.act[H.k][o.id].a];return {id:o.id,name:o.name,color:o.color,t:a.t,ic:a.ic}});v.done=!!(H.judge[H.k]||{})[g.id]}
-   if(H.phase==="mirror"){const idx=H.order.indexOf(g.id);if(idx>=0&&idx<=H.mi){const x=H.res[H.k][g.id];v.res={...x,leakedBy:x.leakedBy.map(i=>G(i).name),buckOut:x.buckOut?{to:G(x.buckOut.to).name,n:x.buckOut.n}:null,buckFrom:x.buckFrom.map(b=>({from:G(b.from).name,n:b.n}))}}v.mine=R.acts[H.act[H.k][g.id].a].t}
-   if(H.phase==="final"||H.phase==="truth"){const rows=[...H.groups].sort((a,b)=>t[b.id].pts-t[a.id].pts);v.rank=rows.findIndex(x=>x.id===g.id)+1;v.ng=H.groups.length;v.tot=t[g.id]}
+function broadcast(){if(!net)return;const R=curR(),t=totals();
+ H.groups.forEach(g=>{const id=connOf[g.id];if(!id)return;const k=H.k,X=H.RES[k]||{};
+   const v={t:"state",phase:H.phase,k,n:H.plan.length,y:R.y,title:R.t,recap:R.recap,me:{id:g.id,name:g.name,color:g.color,ag:g.ag,agd:g.agd,goal:g.goal},score:t[g.id]?t[g.id].pts:0,image:H.image,crisis:!!X.crisis};
+   if(H.phase==="vote"){v.acts=R.acts.map((a,i)=>{const F=FRAMES[a.fr];const ok=actOK(a,k);return {i,t:a.t,s:a.s,ic:a.ic,idt:Object.entries(a.id||{}).map(([t,v])=>TRACKS[t].n+" +"+v).join(" "),e:a.own.includes(g.goal)?1:0,ok,fr:F.n,fc:F.c,lock:a.fr==="none"?"形象危機：不能再假裝沒事":F.lock,up:ownOf(a).map(d=>d.n)}});const my=(H.V[k]||{})[g.id];v.done=my!==undefined;v.my=v.done?R.acts[my].t:"";v.vc=Object.values(H.V[k]||{}).length;v.ng=H.groups.length}
+   if(H.phase==="decide"||H.phase==="judge"){const a=R.acts[X.win];v.win={t:a.t,s:a.s,ic:a.ic,e:a.own.includes(g.goal)?1:0,own:ownOf(a).map(d=>d.n)};v.out=outOf(g,k);v.big=!!R.big;v.done=!!(H.J[k]||{})[g.id]}
+   if(H.phase==="result"&&X.pts){v.res={...X.pts[g.id],maj:X.maj,delta:X.delta,cnt:X.cnt,big:!!R.big,img:H.image,lines:X.lines}}
+   if(H.phase==="shift")v.lines=X.lines;
+   if(H.phase==="final"||H.phase==="truth"){const rows=[...H.groups].sort((a,b)=>finalPts(t,b.id)-finalPts(t,a.id));v.rank=rows.findIndex(x=>x.id===g.id)+1;v.ng=H.groups.length;v.tot={...t[g.id],final:finalPts(t,g.id)}}
    net.send(id,v)})}
 
 /* =====================================================================
    各組手機
    ===================================================================== */
-let P={gid:null,st:null,sel:{},jmap:{},leak:null,key:"",step:0},cnet;
-const PKEY="headline-gid-"+ROOM;
+let P={gid:null,st:null,sel:{},key:""},cnet;
+const PKEY="headline-hall-gid-"+ROOM;
 function startPlayer(){
  document.getElementById("player").style.display="flex";
  try{P.gid=sessionStorage.getItem(PKEY)}catch(e){}
@@ -771,80 +929,72 @@ function startPlayer(){
    if(m.t==="welcome"){P.gid=m.gid;try{sessionStorage.setItem(PKEY,m.gid)}catch(e){};P.pick=null;connNote("");pRender()}
    if(m.t==="pick"){P.pick=m.options;pRender()}
    if(m.t==="full"){P.full=m.msg;P.st=null;pRender()}
-   if(m.t==="state"){const prev=P.st;P.st=m;P.full=null;const key=m.phase+"|"+m.k+"|"+(m.done?1:0)+"|"+(m.res?1:0)+"|"+m.leak+m.buck;
-     if(key!==P.key){if(!prev||prev.k!==m.k||prev.phase!==m.phase){P.sel={buck:null};P.jmap={};P.leak=null;P.step=0}P.key=key;
-       if(m.res&&!(prev&&prev.res))buzz(m.res.acc?[30]:[80,50,80]);pRender()}}
+   if(m.t==="state"){const prev=P.st;P.st=m;P.full=null;const key=m.phase+"|"+m.k+"|"+(m.done?1:0)+"|"+(m.my||"")+"|"+(m.res?1:0)+"|"+(m.acts?m.acts.map(a=>a.ok?1:0).join(""):"");
+     if(key!==P.key){if(!prev||prev.k!==m.k||prev.phase!==m.phase){P.sel={};P.re=false}P.key=key;
+       if(m.res&&!(prev&&prev.res))buzz(m.res.mirror?[30]:[80,50,80]);pRender()}}
  },s=>{if(s==="open"){connNote("");cnet.send({t:"hello",gid:P.gid})}
    if(s==="lost")connNote("連線中斷，重新連線中…");
    if(s==="err")connNote("找不到主辦，重試中…（確認主辦畫面開著）");
    if(s==="nolib"){P.nolib=1;pRender()}});
  setInterval(()=>{if(!P.st&&!P.pick&&!P.full&&cnet)cnet.send({t:"hello",gid:P.gid})},4000);
 }
-function rulesBox(){return `<div class="box prules"><h3>HOW TO PLAY</h3>
- ${HOWTO.map((s,i)=>`<div class="row"><i>${i+1}</i><div><b>${s.h}</b><br>${s.p}</div></div>`).join("")}
- <div style="font-weight:900">計分表</div><div class="stamps" style="gap:8px">${STAMPS.map(s=>`<span style="display:flex;align-items:center;gap:2px;font-weight:900">${stampHTML(s.k,46,13)}${sv(s.v)}</span>`).join("")}</div>
- <div class="stamps" style="gap:8px"><span class="spec">🪞 押中自己的頭條 +${ACC_BONUS}</span><span class="spec">★ 符合部門立場 +${AGENDA_BONUS}</span><span class="spec">🗞️ 蓋的章跟多數記者一樣，每個 +${PRESS_BONUS}</span></div></div>`}
+function rulesBox(){return `<div class="box prules"><h3>HOW TO PLAY</h3>${HOWTO.map((s,i)=>`<div class="row"><i>${i+1}</i><div><b>${s.h}</b><br>${s.p}</div></div>`).join("")}</div>`}
+const eMark=(e,own)=>e?`<span class="em up">★ 你們的提案：形象變多少，你們就得（扣）多少</span>`:`<span class="em">${own&&own.length?"提案："+own.map(esc).join("、"):"沒有部門提案（不處理，也沒人負責）"}</span>`;
 function pRender(){
  const el=document.getElementById("player"),s=P.st;
  if(P.nolib){el.innerHTML=`<div class="lookup"><div class="sfx">OOPS!</div><p>手機無法載入連線元件。<br>請確認有網路，或請主持人幫你們「代打」。</p></div>`;return}
  if(P.full){el.innerHTML=`<div class="lookup"><div class="sfx">SORRY!</div><p>${esc(P.full)}</p></div>`;return}
- if(P.pick&&!s){el.innerHTML=`<div class="lookup"><div class="sfx">RE-JOIN</div><p>遊戲已經開始了。<br>你們是哪一組？</p>${P.pick.map(o=>`<button class="btn" data-claim="${o.id}" style="background:${o.color};width:100%">${esc(o.name)}</button>`).join("")}</div>`;
+ if(P.pick&&!s){el.innerHTML=`<div class="lookup"><div class="sfx">RE-JOIN</div><p>遊戲已經開始了。<br>你們是哪一組？</p>${P.pick.map(o=>`<button type="button" class="btn" data-claim="${o.id}" style="background:${o.color};width:100%">${esc(o.name)}</button>`).join("")}</div>`;
    el.querySelectorAll("[data-claim]").forEach(b=>b.onclick=()=>cnet.send({t:"hello",claim:b.dataset.claim}));return}
  if(!s){el.innerHTML=`<div class="lookup"><div class="sfx">HEADLINE!</div><p>連線到主辦中…<br><span class="pnote">房間 ${esc(ROOM)}</span></p></div>`;return}
  const inGame=!["lobby","final","truth"].includes(s.phase);
- const top=`<div class="ptop" style="background:${s.me.color}"><span>${esc(s.me.name)}</span><span style="font-size:15px">${s.leak?"📰":""}${s.buck?"🔄":""}</span>${inGame?`<span class="yr">${s.y}</span>`:""}</div>`;
- const q=(inGame&&["act","judge","reveal","event"].includes(s.phase)?`<div class="pq"><b>${s.y}・${esc(s.title)}　<span style="color:#888">(${s.k+1}/${s.n})</span></b>${esc(s.recap)}</div>`:"")+(s.ev&&["act","judge","reveal"].includes(s.phase)?`<div class="pev"><b>BREAKING</b>${esc(s.ev.t)}：${esc(s.ev.d)}</div>`:"");
- let body="";
+ const top=`<div class="ptop" style="background:${s.me.color}"><span>${esc(s.me.name)}</span><span style="font-size:14px">🪞 ${sv(s.image)}</span>${inGame?`<span class="yr">${s.y}</span>`:""}</div>`;
+ const q=inGame&&["event","vote"].includes(s.phase)?`<div class="pq"><b>${s.y}・${esc(s.title)}　<span style="color:#888">(${s.k+1}/${s.n})</span></b>${esc(s.recap)}</div>`:"";
  const look=(big,t)=>`<div class="lookup"><div class="sfx">${big}</div><p>${t}</p><div class="cap">抬頭看大螢幕 ↑</div></div>`;
- if(s.phase==="lobby")body=`<div class="lookup" style="flex:none;margin:6px 0"><div class="sfx">WELCOME!</div><p>你們這組是交通局的</p><div class="box" style="padding:8px 18px;font-size:28px;font-weight:900;background:${s.me.color};color:#fff">${esc(s.me.name)}</div></div>
-  <div class="box" style="padding:14px;background:#161616;color:#fff"><div style="font-size:13px;color:#FFD23F;font-weight:900">🤫 你們的祕密部門立場（別給其他組看）</div><div style="font-size:26px;font-weight:900;margin-top:4px">${esc(s.me.ag)}</div><div style="font-size:14px;margin-top:4px">${esc(s.me.agd)}</div><div style="font-size:13px;margin-top:6px;color:#FFD23F">行動卡上有 ★ 的，就是符合立場的選擇（+${AGENDA_BONUS}）</div></div>
+ let body="";
+ if(s.phase==="lobby")body=`<div class="lookup" style="flex:none;margin:6px 0"><div class="sfx">WELCOME!</div><p>你們這組是台鐵的</p><div class="box" style="padding:8px 18px;font-size:28px;font-weight:900;background:${s.me.color};color:#fff">${esc(s.me.name)}</div></div>
+  <div class="box" style="padding:14px;background:#161616;color:#fff"><div style="font-size:13px;color:#FFD23F;font-weight:900">你們部門在意的事</div><div style="font-size:26px;font-weight:900;margin-top:4px">${esc(s.me.ag)}</div><div style="font-size:14px;margin-top:4px">${esc(s.me.agd)}</div><div style="font-size:13px;margin-top:6px;color:#FFD23F">公司採用你們提案的做法時：外界讚，你們得分；外界罵，你們背鍋。</div></div>
   <p class="pnote">整組共用這一支手機。等主持人開始前，先看看規則 ↓</p>${rulesBox()}`;
- if(s.phase==="event")body=look(s.y+"!","看看這一年發生了什麼。");
- if(s.phase==="news")body=`<div class="lookup"><div class="sfx" style="color:#E23B2E">${s.ev.big?"號外！":"BREAKING!"}</div><div class="box" style="padding:12px 14px;text-align:left"><div style="font-size:22px;font-weight:900">${esc(s.ev.t)}</div><div style="font-size:15px;font-weight:700;margin-top:6px;line-height:1.5">${esc(s.ev.d)}</div></div><div class="cap">這一年的規則改了！抬頭看大螢幕 ↑</div></div>`;
- if(s.phase==="reveal")body=look("BAM!","所有部門的行動同時翻開了！");
- if(s.phase==="act"){
-   if(s.done)body=look("SENT!","已送出。等其他部門……");
-   else if(P.step===0){body=`<h2>① 這一年，你們部門要做什麼？</h2><div class="spec" style="font-size:13px">🤫 你們的立場：${esc(s.me.ag)}　★＝符合（+${AGENDA_BONUS}）</div><div class="acts">${s.acts.map((a,i)=>`<button class="act ${P.sel.a===i?"sel":""}" data-a="${i}"><span class="L">${"ABCD"[i]}</span>${a.m?`<span style="position:absolute;right:6px;top:2px;font-size:22px;color:#E23B2E">★</span>`:""}${icon(a.ic)}${a.t}<small>${a.s}</small></button>`).join("")}</div>
-     <button class="btn" id="nx" ${P.sel.a==null?"disabled":""}>下一步：押注 ▶</button>`}
-   else if(P.step===1){const a=s.acts[P.sel.a];body=`<div class="box" style="padding:8px 10px;display:flex;align-items:center;gap:10px;font-weight:900"><span style="width:44px">${icon(a.ic)}</span>你們選了：${a.t}</div>
-     <h2>② 你覺得明天報紙會把你們寫成什麼？</h2><p class="pnote">猜中「別人眼中的你」+${s.ev&&s.ev.big?4:ACC_BONUS}</p>
-     <div class="sts">${STAMPS.map(x=>`<button class="stbtn ${P.sel.p===x.k?"sel":""}" data-p="${x.k}"><span class="ic" style="background:${x.c}"></span><span>${x.t}<small>${sv(x.v)} 分</small></span></button>`).join("")}</div>
-     <div style="display:flex;gap:10px"><button class="btn w" id="bk">◀</button><button class="btn" id="nx2" style="flex:1" ${P.sel.p?"":"disabled"}>${s.buck?"下一步 ▶":"送出 ✓"}</button></div>`}
-   else{body=`<h2>③ 要用 🔄 甩鍋卡嗎？</h2><p class="pnote">整場只有一張。這回合你們收到的「冷血」章，會全部轉給你指定的那組。</p>
-     <div class="sts" style="grid-template-columns:1fr"><button class="stbtn ${!P.sel.buck?"sel":""}" data-b="">不用，留著</button>${s.others.map(o=>`<button class="stbtn ${P.sel.buck===o.id?"sel":""}" data-b="${o.id}"><span class="ic" style="background:${o.color}"></span>甩給 ${esc(o.name)}</button>`).join("")}</div>
-     <div style="display:flex;gap:10px"><button class="btn w" id="bk2">◀</button><button class="btn" id="sd" style="flex:1">送出 ✓</button></div>`}}
+ if(s.phase==="event")body=look(s.y+"!","看大螢幕上這一年發生了什麼。"+(s.crisis?"<br><b style='color:#E23B2E'>形象危機：今年不能再選「維持現狀」。</b>":""));
+ if(s.phase==="vote"){
+   if(s.done&&!P.re)body=`<div class="lookup"><div class="sfx">VOTED!</div><p>你們選了<br><b style="font-size:24px">${esc(s.my)}</b></p><p>繼續喊話拉票吧！<br>被說服了？主持人開票前都可以改。</p><button type="button" class="btn w" id="re">↺ 改選</button><div class="cap">抬頭看大螢幕 ↑</div></div>`;
+   else body=`<h2>② 公司會議：台鐵要怎麼做？</h2><p class="pnote">選一個做法。想想外界會讚還是罵。🔒 灰色＝「這不像我們」</p>
+    <div class="vopts">${s.acts.map(a=>`<button type="button" class="vbtn ${P.sel.a===a.i?"sel":""}" data-a="${a.i}" ${a.ok?"":"disabled"}>
+      <span class="ic">${icon2(a.ic)}</span><span class="tt"><span class="ft" style="background:${a.ok?a.fc:"#bbb"}">${a.ok?"":"🔒 "}${esc(a.fr)}</span><b>${esc(a.t)}</b><small>${esc(a.s)}</small>${a.idt?`<small style="color:#2E6FD8;font-weight:900">${esc(a.idt)}</small>`:""}
+      ${a.ok?eMark(a.e,a.up):`<small class="lockwhy2">${esc(a.lock)}</small>`}</span></button>`).join("")}</div>
+    <button type="button" class="btn" id="vs" ${P.sel.a!==undefined?"":"disabled"}>送出 ✓</button>`}
+ if(s.phase==="decide")body=`<div class="lookup"><div class="sfx">台鐵決定！</div><div class="box" style="padding:12px 16px;display:flex;gap:12px;align-items:center"><span style="width:60px">${icon2(s.win.ic)}</span><div style="text-align:left"><b style="font-size:20px">${esc(s.win.t)}</b><br>${eMark(s.win.e,s.win.own)}</div></div><div class="cap">抬頭看大螢幕 ↑</div></div>`;
  if(s.phase==="judge"){
-   if(s.done)body=look("PRINTED!","印章都蓋好了。等其他記者……");
-   else{const all=s.targets.every(t=>P.jmap[t.id]);const heroes=Object.keys(P.jmap).filter(k=>P.jmap[k]==="hero");
-     body=`<h2>你們是記者！給每一組蓋一個章。</h2><p class="pnote">英雄章 ${s.hm||1} 個、冷血章 1 個。<b>你蓋的章跟多數記者一樣，你們 +${PRESS_BONUS}</b>——想像全城讀者會怎麼看。${s.leak?"📰 爆料卡可以讓一個章算兩倍（整場一次）。":""}</p>
-     ${s.targets.map(t=>`<div class="box target"><div class="tt">${icon(t.ic)}<span><span style="color:${t.color}">${esc(t.name)}</span><br>${t.t}</span></div>
-      <div class="mini">${STAMPS.map(x=>{const on=P.jmap[t.id]===x.k;const lim=x.k==="hero"?(s.hm||1):x.k==="cold"?1:99;const dis=!on&&Object.values(P.jmap).filter(v=>v===x.k).length>=lim;return `<button data-o="${t.id}" data-s="${x.k}" class="${on?"sel":""}" style="${on?"background:"+x.c:""}" ${dis?"disabled":""}>${x.t}</button>`}).join("")}</div>
-      ${s.leak?`<button class="leakbtn ${P.leak===t.id?"on":""}" data-l="${t.id}">📰 ${P.leak===t.id?"已爆料：這個章算兩倍":"對他們爆料"}</button>`:""}</div>`).join("")}
-     <button class="btn" id="js" ${all?"":"disabled"}>送去印刷 ✓</button>`}}
- if(s.phase==="mirror"){
-   if(!s.res)body=look("MIRROR…","主持人正在一組一組揭曉。<br>你們做了：「"+esc(s.mine||"")+"」");
-   else{const x=s.res;const ev=[];if(x.leakedBy.length)ev.push(`📰 被 ${x.leakedBy.map(esc).join("、")} 爆料！`);if(x.buckOut)ev.push(`🔄 甩鍋給 ${esc(x.buckOut.to)}，丟出 ${x.buckOut.n} 個冷血章`);x.buckFrom.forEach(b=>ev.push(`💥 ${esc(b.from)} 甩來 ${b.n} 個冷血章`));
-     body=`<div class="box res"><div>${mirror(x.acc?0:3,140,x.acc)}</div><div class="sfx" style="color:${x.acc?"var(--yel)":"var(--red)"}">${x.acc?"SHINE!":"KRAK!"}</div>
-     <p style="font-weight:900;font-size:17px">別人把你們寫成：${x.top.length?x.top.map(k=>stampHTML(k,54,15)).join(" "):"（沒人注意）"}</p>
-     <p style="font-weight:700">你們以為：<b>${SK[x.pred].t}</b></p>${x.agenda?`<div class="spec">★ 符合部門立場 +${AGENDA_BONUS}</div>`:""}${x.press?`<div class="spec">🗞️ 當記者命中 ${x.press} 次 +${x.press}</div>`:""}${ev.map(e=>`<div class="spec">${e}</div>`).join("")}<p class="cap">本回合 ${sv(x.pts)}　·　累計 ${s.score}</p></div><p class="pnote">抬頭看大螢幕 ↑</p>`}}
+   if(s.done)body=look("SENT!","已送出。等大家照完鏡子……");
+   else body=`<div class="box" style="padding:10px 12px;display:flex;gap:10px;align-items:center"><span style="width:44px">${icon2(s.win.ic)}</span><b>台鐵決定：${esc(s.win.t)}</b></div>
+     <div class="box outcard"><div style="font-size:13px;font-weight:900;color:#FFD23F">這一年，你們的外部身分是</div><div style="font-size:28px;font-weight:900">${s.out.e} ${esc(s.out.n)}</div><div style="font-size:14px">${esc(s.out.d)}</div></div>
+     <h2>1. 以「${esc(s.out.n)}」的身分，你怎麼看？</h2><p class="pnote">讚、罵的票數會決定公司形象。${s.big?`<b style="color:#E23B2E">今年全國都在看 ×2</b>`:""}</p>
+     <div class="rbtns">${Object.keys(REACT).map(r=>`<button type="button" class="rbtn ${P.sel.v===r?"sel":""}" data-vo="${r}"><span>${REACT[r].e}</span>${REACT[r].t}</button>`).join("")}</div>
+     <h2>2. 猜猜：全班多數會怎麼看？<small style="font-size:13px;color:#555">（猜中 +2）</small></h2>
+     <div class="rbtns">${Object.keys(REACT).map(r=>`<button type="button" class="rbtn ${P.sel.p===r?"sel":""}" data-pr="${r}"><span>${REACT[r].e}</span>${REACT[r].t}</button>`).join("")}</div>
+     <button type="button" class="btn" id="js" ${P.sel.v&&P.sel.p?"":"disabled"}>送出 ✓</button>`}
+ if(s.phase==="result"){if(!s.res)body=look("……","揭曉中");else{const x=s.res;
+   body=`<div class="box res"><div>${mirror(x.mirror?0:3,130,!!x.mirror)}</div><div class="sfx" style="color:${x.mirror?"var(--yel)":"var(--red)"}">${x.mirror?"SHINE!":"KRAK!"}</div>
+    <p style="font-weight:900">你們猜：${REACT[x.pred].e}　全班多數：${x.maj.map(r=>REACT[r].e).join(" ")}</p>
+    <p class="pnote">讚 ${x.cnt.up} − 罵 ${x.cnt.down}${x.big?"，×2":""} ＝ 公司形象 ${sv(x.delta)} → ${sv(x.img)}</p><p class="pnote">${x.own?`提案分 ${sv(x.dept)}　`:""}鏡子分 +${x.mirror}</p><p class="cap">累計 ${s.score}</p>
+    ${x.lines&&x.lines.length?`<div class="spec" style="background:#BFE0FF;font-size:13px;line-height:1.4">🪞 ${x.lines.map(esc).join("<br>")}</div>`:""}</div><p class="pnote">抬頭看大螢幕 ↑</p>`}}
+ if(s.phase==="shift")body=`<div class="lookup"><div class="sfx" style="color:#2E6FD8">SHIFT!</div><div class="box" style="padding:12px 14px;text-align:left;font-weight:700;font-size:15px;line-height:1.5">${(s.lines||[]).map(esc).join("<br>")}</div><div class="cap">抬頭看大螢幕 ↑</div></div>`;
  if(s.phase==="final"||s.phase==="truth"){const t=s.tot;body=`<div class="lookup"><div class="sfx">#${s.rank}</div><p>${esc(s.me.name)}　${s.ng} 組中第 ${s.rank} 名</p>
-   <div class="box" style="padding:14px 18px;font-weight:900;line-height:1.7">總分 ${t.pts}<br>猜中別人眼中的自己 ${t.acc}/${t.rounds} 次<br>英雄 ×${t.hero} · 冷血 ×${t.cold}<br>照部門立場行動 ${t.agenda}/${t.rounds} 次</div>
-   ${s.phase==="truth"?`<div class="cap">你們經營的交通局，就是紐約港務局。<br>答案在大螢幕上 ↑</div>`:`<div class="cap">真相，留到報告最後。</div>`}</div>`}
+   <div class="box" style="padding:14px 18px;font-weight:900;line-height:1.7;text-align:left">總分 ${t.final}（含公司形象 ${sv(s.image)}）<br>提案分 ${sv(t.dept)}<br>看清鏡子 ${t.hit}/${t.rounds} 次</div>
+   ${s.phase==="truth"?`<div class="cap">真相在大螢幕上 ↑</div>`:`<div class="cap">真相，留到報告最後。</div>`}</div>`}
  el.innerHTML=top+q+`<div class="pbody">${body}</div>`;
- el.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{P.sel.a=+b.dataset.a;buzz(8);pRender()});
  const on=(id,f)=>{const b=el.querySelector(id);if(b)b.onclick=f};
- on("#nx",()=>{P.step=1;pRender()});on("#bk",()=>{P.step=0;pRender()});on("#bk2",()=>{P.step=1;pRender()});
- el.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{P.sel.p=b.dataset.p;buzz(8);pRender()});
- el.querySelectorAll("[data-b]").forEach(b=>b.onclick=()=>{P.sel.buck=b.dataset.b||null;buzz(8);pRender()});
- const send=()=>{cnet.send({t:"act",k:s.k,a:P.sel.a,pred:P.sel.p,buck:P.sel.buck||null});buzz(20)};
- on("#nx2",()=>{if(s.buck){P.step=2;pRender()}else{send();el.querySelector("#nx2").disabled=true}});
- on("#sd",()=>{send();el.querySelector("#sd").disabled=true});
- el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{P.jmap[b.dataset.o]=b.dataset.s;buzz(8);const y=scrollY;pRender();scrollTo(0,y)});
- el.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{P.leak=P.leak===b.dataset.l?null:b.dataset.l;buzz(15);const y=scrollY;pRender();scrollTo(0,y)});
- on("#js",()=>{cnet.send({t:"judge",k:s.k,map:P.jmap,leak:P.leak});buzz(20);el.querySelector("#js").disabled=true});
+ const keep=f=>{const y=scrollY;f();pRender();scrollTo(0,y)};
+ el.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>keep(()=>{P.sel.a=+b.dataset.a;buzz(8)}));
+ on("#re",()=>{P.re=true;pRender()});
+ on("#vs",()=>{P.re=false;cnet.send({t:"vote",k:s.k,a:P.sel.a});buzz(20);el.querySelector("#vs").disabled=true});
+ el.querySelectorAll("[data-pr]").forEach(b=>b.onclick=()=>keep(()=>{P.sel.p=b.dataset.pr;buzz(8)}));
+ el.querySelectorAll("[data-vo]").forEach(b=>b.onclick=()=>keep(()=>{P.sel.v=b.dataset.vo;buzz(8)}));
+ on("#js",()=>{cnet.send({t:"judge",k:s.k,pred:P.sel.p,vote:P.sel.v});buzz(20);el.querySelector("#js").disabled=true});
 }
 
 if(IS_HOST)startHost();else startPlayer();
+
 </script>
 </body>
 </html>
